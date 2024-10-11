@@ -1,0 +1,80 @@
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:layout_height="match_parent"
+    android:layout_width="match_parent"
+    android:id="@+id/user">
+
+
+    <ImageView
+        android:id="@+id/fotoPerfil"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_centerHorizontal="true"
+        android:layout_marginTop="20pt"
+        tools:srcCompat="@tools:sample/avatars" />
+
+    <TextView
+        android:id="@+id/nombreUsuario"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_below="@id/fotoPerfil"
+        android:layout_centerInParent="true"
+        android:layout_marginTop="10pt"
+        android:text="Nombre Usuario" />
+
+    <TextView
+        android:id="@+id/correoUsuario"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_below="@id/nombreUsuario"
+        android:layout_centerInParent="true"
+        android:layout_marginTop="5pt"
+        android:text="correousuario@gmail.com" />
+
+    <Button
+        android:id="@+id/botonHome"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_below="@id/correoUsuario"
+        android:layout_marginTop="30pt"
+        android:text="Inicio" />
+
+    <Button
+        android:id="@+id/botonColeccionables"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_below="@id/botonHome"
+        android:layout_marginTop="10pt"
+        android:text="Coleccionables" />
+
+    <Button
+        android:id="@+id/botonAjustes"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_below="@id/botonColeccionables"
+        android:layout_marginTop="10pt"
+        android:text="Ajustes" />
+
+    <TextView
+        android:id="@+id/cambiarFoto"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_below="@id/botonAjustes"
+        android:layout_centerInParent="true"
+        android:layout_marginTop="20pt"
+        android:text="Cambiar foto de perfil" />
+
+    <TextView
+        android:id="@+id/cerrarSesion"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_below="@id/cambiarFoto"
+        android:layout_centerInParent="true"
+        android:layout_marginTop="10pt"
+        android:text="CERRAR SESIÓN" />
+
+</RelativeLayout>
+
+
+
