@@ -1,3 +1,9 @@
 <resources>
     <string name="app_name">ElRinconDelTenedor</string>
+    <string name="no_tienes_restaurantes_guardados">No tienes restaurantes guardados.</string>
+    <string name="icono_de_restaurante">Icono de restaurante</string>
+    <string name="mis_restaurantes_guardados">Mis Restaurantes Guardados</string>
+    <string name="imagen_del_restaurante">Imagen del restaurante</string>
+    <string name="nombre_del_restaurante">Nombre del Restaurante</string>
+    <string name="descripci_n_breve_del_restaurante">Descripción breve del restaurante</string>
 </resources>
