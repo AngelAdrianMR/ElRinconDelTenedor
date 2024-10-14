@@ -6,7 +6,6 @@
     android:orientation="vertical"
     android:padding="16dp">
 
-    <!-- Barra superior con el título y la imagen al lado -->
     <LinearLayout
         android:layout_width="match_parent"
         android:layout_height="wrap_content"

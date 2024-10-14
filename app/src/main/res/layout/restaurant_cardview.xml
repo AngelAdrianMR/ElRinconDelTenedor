@@ -13,7 +13,6 @@
         android:orientation="vertical"
         android:padding="16dp">
 
-        <!-- Imagen del restaurante -->
         <ImageView
             android:id="@+id/imageViewRestaurant"
             android:layout_width="match_parent"
@@ -22,7 +21,6 @@
             android:src="@drawable/"
             android:contentDescription="@string/imagen_del_restaurante" />
 
-        <!-- Nombre del restaurante -->
         <TextView
             android:id="@+id/textViewRestaurantName"
             android:layout_width="match_parent"
