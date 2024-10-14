@@ -14,7 +14,7 @@
         android:padding="8dp">
 
         <TextView
-            android:id="@+id/textViewTitle"
+            android:id="@+id/textTittle"
             android:layout_width="0dp"
             android:layout_height="wrap_content"
             android:layout_weight="1"
@@ -24,17 +24,17 @@
             android:textColor="@android:color/black" />
 
         <ImageView
-            android:id="@+id/imageViewBanner"
+            android:id="@+id/imageUser"
             android:layout_width="48dp"
             android:layout_height="48dp"
             android:src="@drawable/logo"
-            android:contentDescription="@string/icono_de_restaurante"
+            android:contentDescription="@string/imageuser"
             android:layout_marginStart="8dp"
             android:scaleType="centerInside" />
     </LinearLayout>
 
     <TextView
-        android:id="@+id/textViewEmpty"
+        android:id="@+id/textEmpty"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:text="@string/no_tienes_restaurantes_guardados"
@@ -44,7 +44,7 @@
         android:layout_marginTop="15dp" />
 
     <androidx.recyclerview.widget.RecyclerView
-        android:id="@+id/recyclerViewRestaurants"
+        android:id="@+id/recyclerViewRestaurant"
         android:layout_width="match_parent"
         android:layout_height="0dp"
         android:layout_weight="1"
