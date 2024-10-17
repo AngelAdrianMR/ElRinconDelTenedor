@@ -2,4 +2,5 @@
     <string name="app_name">ElRinconDelTenedor</string>
     <string name="foto_usuario">foto usuario\n</string>
     <string name="buscador">barra de busqueda\n</string>
+    <string name="nombre_del_restaurante">Nombre del restaurante</string>
 </resources>
