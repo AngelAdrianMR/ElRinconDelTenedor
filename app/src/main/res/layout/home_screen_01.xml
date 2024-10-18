@@ -38,7 +38,7 @@
         android:inputType="textShortMessage"
         android:hint="@string/buscador"
         android:textSize="16sp"
-        android:background="@drawable/round_edit_text"
+        android:background="@drawable/round_edit_text_home_screen_01"
         android:padding="8dp"
         android:layout_marginTop="25dp"
         android:autofillHints="name"/>
