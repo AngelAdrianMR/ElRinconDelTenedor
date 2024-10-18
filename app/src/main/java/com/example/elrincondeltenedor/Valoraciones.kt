@@ -4,17 +4,17 @@ import android.os.Bundle
 import androidx.activity.enableEdgeToEdge
 import androidx.appcompat.app.AppCompatActivity
 import androidx.recyclerview.widget.LinearLayoutManager
-import com.example.elrincondeltenedor.databinding.ActivityMainOpinionsBinding
+import com.example.elrincondeltenedor.databinding.ValoracionesRecyclerviewBinding
 
-class MainActivity_Valoraciones : AppCompatActivity() {
+class Valoraciones : AppCompatActivity() {
 
-    private lateinit var binding: ActivityMainOpinionsBinding
+    private lateinit var binding: ValoracionesRecyclerviewBinding
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         enableEdgeToEdge()
 
-        binding = ActivityMainOpinionsBinding.inflate(layoutInflater)
+        binding = ValoracionesRecyclerviewBinding.inflate(layoutInflater)
         setContentView(binding.root)
 
         binding.recyclerViewRestaurant.layoutManager = LinearLayoutManager(this)
