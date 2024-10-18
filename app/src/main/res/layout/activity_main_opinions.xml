@@ -2,41 +2,30 @@
 <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
     android:orientation="vertical"
     android:padding="16dp">
 
-    <LinearLayout
+    <androidx.appcompat.widget.Toolbar
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:orientation="horizontal"
-        android:gravity="center_vertical"
-        android:padding="8dp">
-
-        <TextView
-            android:id="@+id/textTittle"
-            android:layout_width="0dp"
-            android:layout_height="wrap_content"
-            android:layout_weight="1"
-            android:text="Opiniones"
-            android:textSize="20sp"
-            android:textStyle="bold"
-            android:textColor="@android:color/black" />
+        android:elevation="4dp"
+        app:title="Valoraciones">
 
         <ImageView
-            android:id="@+id/imageUser"
             android:layout_width="48dp"
             android:layout_height="48dp"
             android:src="@drawable/logo"
-            android:contentDescription="@string/imageuser"
-            android:layout_marginStart="8dp"
-            android:scaleType="centerInside" />
-    </LinearLayout>
+            android:layout_marginStart="180sp"
+            android:contentDescription="@string/imageuser"/>
+
+    </androidx.appcompat.widget.Toolbar>
 
     <TextView
         android:id="@+id/textEmpty"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:text="El restaurante no tiene opiniones."
+        android:text="El restaurante no tiene valoraciones."
         android:textSize="15sp"
         android:layout_gravity="center"
         android:visibility="gone"
