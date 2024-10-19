@@ -38,7 +38,7 @@
         android:inputType="textShortMessage"
         android:hint="@string/buscador"
         android:textSize="16sp"
-        android:background="@drawable/round_edit_text_home_screen_01"
+        android:background="@drawable/round_edit_text"
         android:padding="8dp"
         android:layout_marginTop="25dp"
         android:autofillHints="name"/>
@@ -49,7 +49,8 @@
         android:src="@drawable/mapa"
         android:layout_marginTop="15dp"
         android:contentDescription="@string/mapadelmundo"
-        android:id="@+id/mapa_mundo"/>
+        android:id="@+id/mapa_mundo"
+        android:layout_gravity="center"/>
 
     <Button
         android:layout_width="wrap_content"
