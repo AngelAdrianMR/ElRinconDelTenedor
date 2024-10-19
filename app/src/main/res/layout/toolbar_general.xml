@@ -14,11 +14,14 @@
         app:title="@string/app_name">
 
         <ImageView
+            android:id="@+id/imageuser"
             android:layout_width="48dp"
             android:layout_height="48dp"
+            android:focusable="true"
             android:src="@drawable/logo"
             android:layout_marginStart="180sp"
-            android:contentDescription="@string/imageuser"/>
+            android:contentDescription="@string/imageuser"
+            android:clickable="true"/>
 
     </androidx.appcompat.widget.Toolbar>
 </androidx.constraintlayout.widget.ConstraintLayout>
