@@ -10,6 +10,11 @@
         android:layout_width="match_parent"
         android:layout_height="wrap_content" />
 
+    <FrameLayout
+        android:id="@+id/fragment_container"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent" />
+
     <EditText
         android:layout_width="300dp"
         android:layout_height="48dp"
@@ -37,5 +42,7 @@
         android:layout_marginTop="15dp"
         android:layout_gravity="center"
         android:text="@string/lista_de_restaurantes"/>
+
+
 
 </LinearLayout>
