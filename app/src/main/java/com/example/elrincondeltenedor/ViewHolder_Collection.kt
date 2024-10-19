@@ -1,4 +1,12 @@
 package com.example.elrincondeltenedor
 
-class ViewHolder_Collection {
+import androidx.recyclerview.widget.RecyclerView
+import com.example.elrincondeltenedor.databinding.CollectionCardviewBinding
+
+class ViewHolder_Collection (private val binding: CollectionCardviewBinding) : RecyclerView.ViewHolder(binding.root) {
+    fun bind(item: ItemData) {
+        binding.item = item
+        binding.executePendingBindings()
+    }
+
 }

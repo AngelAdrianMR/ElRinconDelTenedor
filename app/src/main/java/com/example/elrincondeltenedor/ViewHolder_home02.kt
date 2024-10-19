@@ -4,7 +4,7 @@ import androidx.recyclerview.widget.RecyclerView
 import com.example.elrincondeltenedor.databinding.Home02CardviewBinding
 
 
-class ItemViewHolder_home02 (private val binding: Home02CardviewBinding) : RecyclerView.ViewHolder(binding.root) {
+class ViewHolder_home02 (private val binding: Home02CardviewBinding) : RecyclerView.ViewHolder(binding.root) {
     fun bind(item: ItemData) {
         binding.item = item
         binding.executePendingBindings()

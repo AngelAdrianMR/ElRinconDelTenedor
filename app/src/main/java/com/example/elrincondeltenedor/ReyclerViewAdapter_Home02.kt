@@ -7,17 +7,17 @@ import androidx.recyclerview.widget.RecyclerView
 import com.example.elrincondeltenedor.databinding.Home02CardviewBinding
 
 class RecyclerViewAdapter_Home02(private val items: List<ItemData>) :
-    RecyclerView.Adapter<ItemViewHolder_home02>() {
+    RecyclerView.Adapter<ViewHolder_home02>() {
     private lateinit var binding: Home02CardviewBinding
 
-    override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): ItemViewHolder_home02 {
+    override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): ViewHolder_home02 {
         binding = Home02CardviewBinding.inflate(LayoutInflater.from(parent.context), parent, false)
-        return ItemViewHolder_home02(binding)
+        return ViewHolder_home02(binding)
     }
 
 
 
-    override fun onBindViewHolder(holder: ItemViewHolder_home02, position: Int) {
+    override fun onBindViewHolder(holder: ViewHolder_home02, position: Int) {
         val currentItem = items[position]
 
         holder.bind(currentItem)
