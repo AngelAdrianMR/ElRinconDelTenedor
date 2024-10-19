@@ -1,7 +1,7 @@
 package com.example.elrincondeltenedor
 
 
-    data class ItemData_Valoraciones(
+    data class ItemData(
         val text: String,
         val imageResId: Int
     )

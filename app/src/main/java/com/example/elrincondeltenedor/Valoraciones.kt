@@ -19,7 +19,7 @@ class Valoraciones : AppCompatActivity() {
 
         binding.recyclerViewRestaurant.layoutManager = LinearLayoutManager(this)
         val items = listOf(
-            ItemData_Valoraciones("Usuario 1", R.drawable.logo)
+            ItemData("Usuario 1", R.drawable.logo)
         )
 
         binding.recyclerViewRestaurant.adapter = RecyclerViewAdapter_Valoraciones(items)

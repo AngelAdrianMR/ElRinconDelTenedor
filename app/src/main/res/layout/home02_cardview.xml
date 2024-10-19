@@ -5,7 +5,7 @@
     <data>
         <variable
             name="item"
-            type="com.example.elrincondeltenedor.CardView" />
+            type="com.example.elrincondeltenedor.ItemData" />
     </data>
 
     <androidx.cardview.widget.CardView

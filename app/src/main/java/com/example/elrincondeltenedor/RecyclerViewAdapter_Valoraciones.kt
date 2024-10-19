@@ -6,7 +6,7 @@ import android.widget.Toast
 import androidx.recyclerview.widget.RecyclerView
 import com.example.elrincondeltenedor.databinding.ItemCardviewValoracionesBinding
 
-class RecyclerViewAdapter_Valoraciones (private val items: List<ItemData_Valoraciones>) :
+class RecyclerViewAdapter_Valoraciones (private val items: List<ItemData>) :
     RecyclerView.Adapter<ViewHolder_Valoraciones>() {
 
     override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): ViewHolder_Valoraciones {
