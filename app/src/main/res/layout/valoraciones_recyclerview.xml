@@ -6,20 +6,10 @@
     android:orientation="vertical"
     android:padding="16dp">
 
-    <androidx.appcompat.widget.Toolbar
+    <include
+        layout="@layout/toolbar_general"
         android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:elevation="4dp"
-        app:title="Valoraciones">
-
-        <ImageView
-            android:layout_width="48dp"
-            android:layout_height="48dp"
-            android:src="@drawable/logo"
-            android:layout_marginStart="180sp"
-            android:contentDescription="@string/imageuser"/>
-
-    </androidx.appcompat.widget.Toolbar>
+        android:layout_height="wrap_content" />
 
     <TextView
         android:id="@+id/textEmpty"
