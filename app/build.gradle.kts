@@ -41,7 +41,9 @@ android {
 }
 
 dependencies {
-
+    implementation (libs.core.ktx)
+    implementation (libs.androidx.navigation.fragment.ktx)
+    implementation (libs.androidx.appcompat.appcompat)
     implementation(libs.appcompat)
     implementation(libs.androidx.recyclerview)
     implementation(libs.androidx.cardview)

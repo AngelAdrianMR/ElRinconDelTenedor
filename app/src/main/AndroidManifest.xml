@@ -13,7 +13,7 @@
         android:theme="@style/Theme.ElRinconDelTenedor"
         tools:targetApi="31">
         <activity
-            android:name=".Home01"
+            android:name=".MainActivity"
             android:exported="true">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
@@ -21,6 +21,13 @@
                 <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
         </activity>
+        <activity android:name=".Home02"/>
+        <activity android:name=".Collection"/>
+        <activity android:name=".Home01"/>
+        <activity android:name=".BaseActivity"/>
+        <activity android:name=".ProfileUser"/>
+        <activity android:name=".Setting"/>
+        <activity android:name=".Valoraciones"/>
     </application>
 
 </manifest>
