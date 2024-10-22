@@ -1,0 +1,127 @@
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:id="@+id/main"
+    android:orientation="vertical">
+
+
+
+
+
+<LinearLayout
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    android:orientation="horizontal"
+    android:gravity="center_vertical"
+    android:padding="8dp"
+    >
+
+    <TextView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:id="@+id/titulopantalla"
+        android:text="@string/restaurante"
+        android:layout_marginStart="20pt"
+        android:textSize="24sp"/>
+
+    <ImageView
+        android:id="@+id/userphto"
+        android:layout_width="48dp"
+        android:layout_height="48dp"
+        android:layout_marginStart="50pt"
+        android:contentDescription="@string/foto_user"
+        tools:srcCompat="@tools:sample/avatars" />
+
+</LinearLayout>
+
+
+
+
+
+<LinearLayout
+android:layout_width="match_parent"
+android:layout_height="match_parent"
+android:orientation="vertical"
+android:gravity="center_horizontal"
+android:padding="10pt">
+
+<TextView
+    android:layout_width="wrap_content"
+    android:layout_height="wrap_content"
+    android:id="@+id/nombreRest"
+    android:text="@string/nombre_del_restaurantee"
+    android:textSize="30sp"
+    />
+
+<ImageView
+    android:id="@+id/imagenRest"
+    android:layout_width="302dp"
+    android:layout_height="209dp"
+    android:layout_marginTop="10pt"
+    app:srcCompat="@android:drawable/ic_menu_crop" />
+
+<TextView
+    android:id="@+id/descripcionRest"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    android:layout_marginTop="10pt"
+    android:padding="40dp"/>
+
+<LinearLayout
+    android:layout_width="wrap_content"
+    android:layout_height="wrap_content"
+    android:layout_marginTop="10pt"
+    android:gravity="center_vertical"
+    android:orientation="horizontal"
+    android:padding="8dp">
+
+    <ImageView
+        android:id="@+id/imageView4"
+        android:layout_width="30pt"
+        android:layout_height="30pt"
+        app:srcCompat="@android:drawable/btn_star_big_on" />
+    <ImageView
+        android:id="@+id/imageView5"
+        android:layout_width="30pt"
+        android:layout_height="30pt"
+        app:srcCompat="@android:drawable/btn_star_big_on" />
+    <ImageView
+        android:id="@+id/imageView6"
+        android:layout_width="30pt"
+        android:layout_height="30pt"
+        app:srcCompat="@android:drawable/btn_star_big_on" />
+    <ImageView
+        android:id="@+id/imageView7"
+        android:layout_width="30pt"
+        android:layout_height="30pt"
+        app:srcCompat="@android:drawable/btn_star_big_on" />
+    <ImageView
+        android:id="@+id/imageView8"
+        android:layout_width="30pt"
+        android:layout_height="30pt"
+        app:srcCompat="@android:drawable/btn_star_big_on" />
+</LinearLayout>
+
+<Button
+    android:id="@+id/btnGuardar"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    android:layout_marginTop="10pt"
+    android:text="@string/guardar_en_coleccionables" />
+
+<Button
+    android:id="@+id/btnValorar"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    android:layout_marginTop="10pt"
+    android:text="@string/valorar" />
+
+
+</LinearLayout>
+
+
+
+
+    </LinearLayout>

@@ -26,4 +26,9 @@
     <string name="contrasenia">Contraseña</string>
     <string name="introduce_la_contrsenia">introduce la contrseña</string>
     <string name="inicar_sesion">Inicar Sesión</string>
+    <string name="restaurante">RESTAURANTE</string>
+    <string name="foto_user">foto user</string>
+    <string name="nombre_del_restaurantee">Nombre del restaurante</string>
+    <string name="guardar_en_coleccionables">Guardar en coleccionables</string>
+    <string name="valorar">Valorar</string>
 </resources>
