@@ -41,9 +41,4 @@ class CollectionFragment : Fragment() {
         _binding = null
     }
 
-    @Deprecated("Deprecated in Java")
-    override fun onCreateOptionsMenu(menu: Menu, inflater: MenuInflater) {
-        inflater.inflate(R.menu.menu_options, menu) // Asegúrate de que el nombre del archivo de menú sea correcto
-        super.onCreateOptionsMenu(menu, inflater)
-    }
 }

@@ -47,13 +47,46 @@
         android:id="@+id/profileUserFragment"
         android:name="com.example.elrincondeltenedor.ProfileUserFragment"
         android:label="Profile User"
-        tools:layout="@layout/screen_user_profile" />
+        tools:layout="@layout/screen_user_profile" >
+        <action
+            android:id="@+id/action_profileUserFragment_to_loginFragment"
+            app:destination="@id/loginFragment" />
+    </fragment>
 
     <fragment
         android:id="@+id/settingsFragment"
         android:name="com.example.elrincondeltenedor.SettingFragment"
         android:label="Settings"
         tools:layout="@layout/setting_screen" />
+
+    <fragment
+        android:id="@+id/loginFragment"
+        android:name="com.example.elrincondeltenedor.loginFragment"
+        android:label="Settings"
+        tools:layout="@layout/login_screen" >
+        <action
+            android:id="@+id/action_loginFragment_to_home01Fragment"
+            app:destination="@id/home01Fragment" />
+    </fragment>
+
+    <fragment
+        android:id="@+id/valoracionesFragment"
+        android:name="com.example.elrincondeltenedor.ValoracionesFragment"
+        android:label="Settings"
+        tools:layout="@layout/valoraciones_recyclerview" />
+
+    <fragment
+        android:id="@+id/detailFragment"
+        android:name="com.example.elrincondeltenedor.DetailsFragment"
+        android:label="Settings"
+        tools:layout="@layout/restaurant_detail_screen" >
+        <action
+            android:id="@+id/action_detailFragment_to_collectionFragment"
+            app:destination="@id/collectionFragment" />
+        <action
+            android:id="@+id/action_detailFragment_to_valoracionesFragment"
+            app:destination="@id/valoracionesFragment" />
+    </fragment>
 
     <fragment
         android:id="@+id/collectionFragment"

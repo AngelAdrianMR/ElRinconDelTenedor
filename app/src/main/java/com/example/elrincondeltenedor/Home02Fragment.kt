@@ -19,10 +19,6 @@ class Home02Fragment : Fragment() {
     private lateinit var adapter: RecyclerViewAdapter_Home02
     private var dataList: List<ItemData> = listOf()
 
-    override fun onCreate(savedInstanceState: Bundle?) {
-        super.onCreate(savedInstanceState)
-        setHasOptionsMenu(true) // Permite que el fragmento tenga su propio menú
-    }
 
     override fun onCreateView(
         inflater: LayoutInflater, container: ViewGroup?,
@@ -50,33 +46,6 @@ class Home02Fragment : Fragment() {
                 .replace(R.id.nav_host_fragment, Home01Fragment())
                 .addToBackStack(null)
                 .commit()
-        }
-    }
-
-    override fun onCreateOptionsMenu(menu: Menu, inflater: MenuInflater) {
-        inflater.inflate(R.menu.menu_options, menu) // Inflar el mismo menú que en Home01Fragment
-        super.onCreateOptionsMenu(menu, inflater)
-    }
-
-    override fun onOptionsItemSelected(item: MenuItem): Boolean {
-        return when (item.itemId) {
-            R.id.action_settings -> {
-                // Lógica para abrir la configuración
-                true
-            }
-            R.id.action_collection -> {
-                // Lógica para manejar la acción de colección
-                true
-            }
-            R.id.action_profile -> {
-                // Lógica para abrir el perfil
-                true
-            }
-            R.id.action_logout -> {
-                // Lógica para cerrar sesión
-                true
-            }
-            else -> super.onOptionsItemSelected(item)
         }
     }
 

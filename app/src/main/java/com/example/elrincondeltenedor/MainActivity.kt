@@ -1,20 +1,24 @@
 package com.example.elrincondeltenedor
 
+import android.content.Intent
 import android.os.Bundle
 import android.view.Menu
 import android.view.MenuItem
+import android.view.View
+import android.widget.ImageView
+import android.widget.PopupMenu
 import androidx.activity.enableEdgeToEdge
 import androidx.appcompat.app.AppCompatActivity
 import androidx.navigation.fragment.NavHostFragment
 import androidx.navigation.ui.AppBarConfiguration
 import androidx.navigation.ui.NavigationUI
 import com.example.elrincondeltenedor.databinding.ActivityMainBinding
+import com.example.elrincondeltenedor.databinding.SettingScreenBinding
 import com.example.elrincondeltenedor.databinding.ToolbarGeneralBinding
 
 class MainActivity : AppCompatActivity() {
 
     private lateinit var binding: ActivityMainBinding
-    private lateinit var toolbarBinding: ToolbarGeneralBinding
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
@@ -23,51 +27,48 @@ class MainActivity : AppCompatActivity() {
         binding = ActivityMainBinding.inflate(layoutInflater)
         setContentView(binding.root)
 
-        // Inflar el binding para la Toolbar
-        toolbarBinding = ToolbarGeneralBinding.inflate(layoutInflater)
-        setSupportActionBar(toolbarBinding.toolBar) // Configura la Toolbar como ActionBar
-
-        // Configura el NavController
-        val navHostFragment = supportFragmentManager.findFragmentById(R.id.nav_host_fragment) as NavHostFragment
-        val navController = navHostFragment.navController
-
-        // Configura la AppBar
-        val appBarConfiguration = AppBarConfiguration(navController.graph)
-
-        // Configurar la Toolbar con el NavController
-        NavigationUI.setupActionBarWithNavController(this, navController, appBarConfiguration)
-        NavigationUI.setupWithNavController(toolbarBinding.toolBar, navController)
+        configureFloatingMenu()
     }
 
-    // Inflar el menú
-    override fun onCreateOptionsMenu(menu: Menu?): Boolean {
-        menuInflater.inflate(R.menu.menu_options, menu) // Asegúrate de que el archivo de menú existe
-        return true
-    }
-
-    override fun onOptionsItemSelected(item: MenuItem): Boolean {
-        val navHostFragment = supportFragmentManager.findFragmentById(R.id.nav_host_fragment) as NavHostFragment
-        val navController = navHostFragment.navController
-
-        return when (item.itemId) {
-            R.id.action_settings -> {
-                navController.navigate(R.id.settingsFragment)
-                true
-            }
-            R.id.action_collection -> {
-                navController.navigate(R.id.collectionFragment)
-                true
-            }
-            R.id.action_profile -> {
-                navController.navigate(R.id.profileUserFragment)
-                true
-            }
-            android.R.id.home -> {
-                navController.navigate(R.id.home01Fragment)
-                true
-            }
-            else -> super.onOptionsItemSelected(item)
+    private fun configureFloatingMenu() {
+        val fabMenu = findViewById<ImageView>(R.id.imageMenu)
+        fabMenu.setOnClickListener { view ->
+            showPopupMenu(view)
         }
+    }
+
+    private fun showPopupMenu(view: View) {
+        val popupMenu = PopupMenu(this, view)
+
+        popupMenu.menuInflater.inflate(R.menu.menu_options, popupMenu.menu)
+
+        popupMenu.setOnMenuItemClickListener { menuItem: MenuItem ->
+            when (menuItem.itemId) {
+                R.id.action_settings -> {
+                    val intent = Intent(this, SettingFragment::class.java)
+                    startActivity(intent)
+
+                    true
+                }
+                R.id.action_collection -> {
+
+                    true
+                }
+                R.id.action_profile -> {
+
+                    true
+                }
+                android.R.id.home -> {
+
+                    true
+                }
+                else -> false
+            }
+
+        }
+
+        popupMenu.show()
+
     }
 
     override fun onSupportNavigateUp(): Boolean {
