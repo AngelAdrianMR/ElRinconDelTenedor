@@ -21,13 +21,7 @@
                 <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
         </activity>
-        <activity android:name=".Home02"/>
-        <activity android:name=".Collection"/>
-        <activity android:name=".Home01"/>
-        <activity android:name=".BaseActivity"/>
-        <activity android:name=".ProfileUser"/>
-        <activity android:name=".Setting"/>
-        <activity android:name=".Valoraciones"/>
+
     </application>
 
 </manifest>

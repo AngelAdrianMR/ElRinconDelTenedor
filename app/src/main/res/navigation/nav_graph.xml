@@ -1,0 +1,71 @@
+<?xml version="1.0" encoding="utf-8"?>
+<navigation xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:id="@+id/nav_graph"
+    tools:ignore="InvalidNavigation"
+    app:startDestination="@id/home01Fragment">
+    <fragment
+        android:id="@+id/home01Fragment"
+        android:name="com.example.elrincondeltenedor.Home01Fragment"
+        android:label="Home 01"
+        tools:layout="@layout/home_screen_01" >
+        <action
+            android:id="@+id/action_home01Fragment_to_home02Fragment"
+            app:destination="@id/home02Fragment" />
+        <action
+            android:id="@+id/action_home01Fragment_to_profileUserFragment"
+            app:destination="@id/profileUserFragment" />
+        <action
+            android:id="@+id/action_home01Fragment_to_settingsFragment"
+            app:destination="@id/settingsFragment" />
+        <action
+            android:id="@+id/action_home01Fragment_to_collectionFragment"
+            app:destination="@id/collectionFragment" />
+    </fragment>
+
+    <fragment
+        android:id="@+id/home02Fragment"
+        android:name="com.example.elrincondeltenedor.Home02Fragment"
+        android:label="Home 02"
+        tools:layout="@layout/screen_home_02" >
+        <action
+            android:id="@+id/action_home02Fragment_to_home01Fragment"
+            app:destination="@id/home01Fragment" />
+        <action
+            android:id="@+id/action_home02Fragment_to_profileUserFragment"
+            app:destination="@id/profileUserFragment" />
+        <action
+            android:id="@+id/action_home02Fragment_to_collectionFragment"
+            app:destination="@id/collectionFragment" />
+        <action
+            android:id="@+id/action_home02Fragment_to_settingsFragment"
+            app:destination="@id/settingsFragment" />
+    </fragment>
+
+    <fragment
+        android:id="@+id/profileUserFragment"
+        android:name="com.example.elrincondeltenedor.ProfileUserFragment"
+        android:label="Profile User"
+        tools:layout="@layout/screen_user_profile" />
+
+    <fragment
+        android:id="@+id/settingsFragment"
+        android:name="com.example.elrincondeltenedor.SettingFragment"
+        android:label="Settings"
+        tools:layout="@layout/setting_screen" />
+
+    <fragment
+        android:id="@+id/collectionFragment"
+        android:name="com.example.elrincondeltenedor.CollectionFragment"
+        android:label="Collection"
+        tools:layout="@layout/collection_screen" >
+        <action
+            android:id="@+id/action_collectionFragment_to_profileUserFragment"
+            app:destination="@id/profileUserFragment" />
+        <action
+            android:id="@+id/action_collectionFragment_to_settingsFragment"
+            app:destination="@id/settingsFragment" />
+    </fragment>
+
+</navigation>

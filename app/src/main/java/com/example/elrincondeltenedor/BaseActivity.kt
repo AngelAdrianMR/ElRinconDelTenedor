@@ -41,7 +41,7 @@ open class BaseActivity : AppCompatActivity() {
         popupMenu.setOnMenuItemClickListener { item ->
             when (item.itemId) {
                 R.id.action_settings -> {
-                    startActivity(Intent(this, Setting::class.java))
+                    startActivity(Intent(this, SettingFragment::class.java))
                     true
                 }
                 R.id.action_collection -> {
@@ -49,7 +49,7 @@ open class BaseActivity : AppCompatActivity() {
                     true
                 }
                 R.id.action_profile -> {
-                    startActivity(Intent(this, ProfileUser::class.java))
+                    startActivity(Intent(this, ProfileUserFragment::class.java))
                     true
                 }
                 R.id.action_logout -> {
