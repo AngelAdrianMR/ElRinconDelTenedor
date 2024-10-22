@@ -1,0 +1,424 @@
+Index: app/src/main/java/com/example/elrincondeltenedor/MainActivity_UserProfile.kt
+===================================================================
+diff --git a/app/src/main/java/com/example/elrincondeltenedor/MainActivity_UserProfile.kt b/app/src/main/java/com/example/elrincondeltenedor/MainActivity_UserProfile.kt
+deleted file mode 100644
+--- a/app/src/main/java/com/example/elrincondeltenedor/MainActivity_UserProfile.kt	(revision ab25f440b7b0c17153e3d9293548bfac57d49b41)
++++ /dev/null	(revision ab25f440b7b0c17153e3d9293548bfac57d49b41)
+@@ -1,20 +0,0 @@
+-package com.example.elrincondeltenedor
+-
+-import android.os.Bundle
+-import androidx.activity.enableEdgeToEdge
+-import androidx.appcompat.app.AppCompatActivity
+-import androidx.core.view.ViewCompat
+-import androidx.core.view.WindowInsetsCompat
+-
+-class MainActivity_UserProfile : AppCompatActivity() {
+-    override fun onCreate(savedInstanceState: Bundle?) {
+-        super.onCreate(savedInstanceState)
+-        enableEdgeToEdge()
+-        setContentView(R.layout.user_profile)
+-        ViewCompat.setOnApplyWindowInsetsListener(findViewById(R.id.user)) { v, insets ->
+-            val systemBars = insets.getInsets(WindowInsetsCompat.Type.systemBars())
+-            v.setPadding(systemBars.left, systemBars.top, systemBars.right, systemBars.bottom)
+-            insets
+-        }
+-    }
+-}
+\ No newline at end of file
+Index: app/src/main/res/values/colors.xml
+IDEA additional info:
+Subsystem: com.intellij.openapi.diff.impl.patch.BaseRevisionTextPatchEP
+<+><?xml version=\"1.0\" encoding=\"utf-8\"?>\r\n<resources>\r\n    <color name=\"black\">#FF000000</color>\r\n    <color name=\"white\">#FFFFFFFF</color>\r\n</resources>
+Subsystem: com.intellij.openapi.diff.impl.patch.CharsetEP
+<+>UTF-8
+===================================================================
+diff --git a/app/src/main/res/values/colors.xml b/app/src/main/res/values/colors.xml
+--- a/app/src/main/res/values/colors.xml	(revision ab25f440b7b0c17153e3d9293548bfac57d49b41)
++++ b/app/src/main/res/values/colors.xml	(date 1729270138000)
+@@ -2,4 +2,5 @@
+ <resources>
+     <color name="black">#FF000000</color>
+     <color name="white">#FFFFFFFF</color>
++    <color name="green">#a9dfbf</color>
+ </resources>
+\ No newline at end of file
+Index: app/src/main/res/layout/valoraciones_restaurante.xml
+IDEA additional info:
+Subsystem: com.intellij.openapi.diff.impl.patch.CharsetEP
+<+>UTF-8
+===================================================================
+diff --git a/app/src/main/res/layout/valoraciones_restaurante.xml b/app/src/main/res/layout/valoraciones_restaurante.xml
+new file mode 100644
+--- /dev/null	(date 1729270138000)
++++ b/app/src/main/res/layout/valoraciones_restaurante.xml	(date 1729270138000)
+@@ -0,0 +1,47 @@
++<?xml version="1.0" encoding="utf-8"?>
++<layout xmlns:android="http://schemas.android.com/apk/res/android"
++    xmlns:app="http://schemas.android.com/apk/res-auto">
++    
++    <data>
++        <variable
++            name="item"
++            type="com.example.elrincondeltenedor.CardView" />
++    </data>
++    
++<androidx.cardview.widget.CardView
++    android:layout_width="match_parent"
++    android:layout_height="wrap_content"
++    android:layout_margin="8dp"
++    app:cardCornerRadius="8dp"
++    app:cardElevation="4dp">
++    
++
++    <LinearLayout
++        android:layout_width="match_parent"
++        android:layout_height="wrap_content"
++        android:orientation="vertical"
++        android:padding="16dp">
++
++
++        <TextView
++            android:id="@+id/nameRestaurant"
++            android:layout_width="match_parent"
++            android:layout_height="wrap_content"
++            android:text="@string/nombre_del_restaurante"
++            android:textSize="18sp"
++            android:textStyle="bold"
++            android:layout_marginTop="8dp"
++            android:textColor="@android:color/black" />
++
++        <TextView
++            android:id="@+id/descriptionRestaurant"
++            android:layout_width="match_parent"
++            android:layout_height="wrap_content"
++            android:text="Valoración"
++            android:textSize="14sp"
++            android:textColor="@android:color/darker_gray"
++            android:layout_marginTop="4dp" />
++
++    </LinearLayout>
++</androidx.cardview.widget.CardView>
++</layout>
+\ No newline at end of file
+Index: .idea/gradle.xml
+IDEA additional info:
+Subsystem: com.intellij.openapi.diff.impl.patch.BaseRevisionTextPatchEP
+<+><?xml version=\"1.0\" encoding=\"UTF-8\"?>\r\n<project version=\"4\">\r\n  <component name=\"GradleSettings\">\r\n    <option name=\"linkedExternalProjectsSettings\">\r\n      <GradleProjectSettings>\r\n        <option name=\"externalProjectPath\" value=\"$PROJECT_DIR$\" />\r\n        <option name=\"gradleJvm\" value=\"#GRADLE_LOCAL_JAVA_HOME\" />\r\n        <option name=\"modules\">\r\n          <set>\r\n            <option value=\"$PROJECT_DIR$\" />\r\n            <option value=\"$PROJECT_DIR$/app\" />\r\n          </set>\r\n        </option>\r\n        <option name=\"resolveExternalAnnotations\" value=\"false\" />\r\n      </GradleProjectSettings>\r\n    </option>\r\n  </component>\r\n</project>
+Subsystem: com.intellij.openapi.diff.impl.patch.CharsetEP
+<+>UTF-8
+===================================================================
+diff --git a/.idea/gradle.xml b/.idea/gradle.xml
+--- a/.idea/gradle.xml	(revision ab25f440b7b0c17153e3d9293548bfac57d49b41)
++++ b/.idea/gradle.xml	(date 1729275054000)
+@@ -1,5 +1,6 @@
+ <?xml version="1.0" encoding="UTF-8"?>
+ <project version="4">
++  <component name="GradleMigrationSettings" migrationVersion="1" />
+   <component name="GradleSettings">
+     <option name="linkedExternalProjectsSettings">
+       <GradleProjectSettings>
+Index: app/src/main/res/layout/home_02.xml
+IDEA additional info:
+Subsystem: com.intellij.openapi.diff.impl.patch.CharsetEP
+<+>UTF-8
+===================================================================
+diff --git a/app/src/main/res/layout/home_02.xml b/app/src/main/res/layout/home_02.xml
+new file mode 100644
+--- /dev/null	(date 1729270138000)
++++ b/app/src/main/res/layout/home_02.xml	(date 1729270138000)
+@@ -0,0 +1,63 @@
++<?xml version="1.0" encoding="utf-8"?>
++<LinearLayout
++    xmlns:android="http://schemas.android.com/apk/res/android"
++    android:layout_width="match_parent"
++    android:layout_height="match_parent"
++    android:orientation="vertical">
++
++    <androidx.appcompat.widget.Toolbar
++        android:layout_width="match_parent"
++        android:layout_height="wrap_content"
++        android:backgroundTint="@color/green">
++
++        <ImageView
++            android:layout_width="70dp"
++            android:layout_height="70dp"
++            android:id="@+id/imagen_usuario"
++            android:src="@drawable/logo"
++            android:contentDescription="@string/foto_usuario"
++            android:layout_gravity="start"
++            android:padding="16dp"
++            />
++
++        <TextView
++            android:layout_width="wrap_content"
++            android:layout_height="wrap_content"
++            android:text="@string/app_name"
++            android:layout_gravity="center"
++            android:paddingBottom="15dp"
++            android:paddingTop="15dp"/>
++
++
++    </androidx.appcompat.widget.Toolbar>
++
++    <EditText
++        android:layout_width="300dp"
++        android:layout_height="48dp"
++        android:layout_gravity="center"
++        android:inputType="textShortMessage"
++        android:hint="@string/buscador"
++        android:textSize="16sp"
++        android:background="@drawable/round_edit_text"
++        android:padding="8dp"
++        android:layout_marginTop="25dp"
++        android:layout_marginBottom="25dp"
++        android:autofillHints="name"/>
++
++    <androidx.recyclerview.widget.RecyclerView
++        android:layout_width="match_parent"
++        android:layout_height="wrap_content"
++        android:id="@+id/recyclerView">
++
++
++    </androidx.recyclerview.widget.RecyclerView>
++
++    <Button
++        android:layout_width="wrap_content"
++        android:layout_height="wrap_content"
++        android:text="Home_01"
++        android:layout_gravity="center"
++        android:id="@+id/boton_Home_01"
++        android:layout_marginTop="25dp"/>
++
++</LinearLayout>
+\ No newline at end of file
+Index: app/src/main/res/values/strings.xml
+IDEA additional info:
+Subsystem: com.intellij.openapi.diff.impl.patch.BaseRevisionTextPatchEP
+<+><resources>\r\n    <string name=\"app_name\">ElRinconDelTenedor</string>\r\n</resources>
+Subsystem: com.intellij.openapi.diff.impl.patch.CharsetEP
+<+>UTF-8
+===================================================================
+diff --git a/app/src/main/res/values/strings.xml b/app/src/main/res/values/strings.xml
+--- a/app/src/main/res/values/strings.xml	(revision ab25f440b7b0c17153e3d9293548bfac57d49b41)
++++ b/app/src/main/res/values/strings.xml	(date 1729270138000)
+@@ -1,3 +1,6 @@
+ <resources>
+     <string name="app_name">ElRinconDelTenedor</string>
++    <string name="foto_usuario">foto usuario\n</string>
++    <string name="buscador">barra de busqueda\n</string>
++    <string name="nombre_del_restaurante">Nombre del restaurante</string>
+ </resources>
+\ No newline at end of file
+Index: app/build.gradle.kts
+IDEA additional info:
+Subsystem: com.intellij.openapi.diff.impl.patch.BaseRevisionTextPatchEP
+<+>plugins {\r\n    alias(libs.plugins.android.application)\r\n    alias(libs.plugins.kotlin.android)\r\n}\r\n\r\nandroid {\r\n    namespace = \"com.example.elrincondeltenedor\"\r\n    compileSdk = 34\r\n\r\n    defaultConfig {\r\n        applicationId = \"com.example.elrincondeltenedor\"\r\n        minSdk = 24\r\n        targetSdk = 34\r\n        versionCode = 1\r\n        versionName = \"1.0\"\r\n\r\n        testInstrumentationRunner = \"androidx.test.runner.AndroidJUnitRunner\"\r\n    }\r\n\r\n    buildTypes {\r\n        release {\r\n            isMinifyEnabled = false\r\n            proguardFiles(\r\n                getDefaultProguardFile(\"proguard-android-optimize.txt\"),\r\n                \"proguard-rules.pro\"\r\n            )\r\n        }\r\n    }\r\n    compileOptions {\r\n        sourceCompatibility = JavaVersion.VERSION_1_8\r\n        targetCompatibility = JavaVersion.VERSION_1_8\r\n    }\r\n    kotlinOptions {\r\n        jvmTarget = \"1.8\"\r\n    }\r\n}\r\n\r\ndependencies {\r\n\r\n    implementation(libs.androidx.core.ktx)\r\n    implementation(libs.androidx.appcompat)\r\n    implementation(libs.material)\r\n    implementation(libs.androidx.activity)\r\n    implementation(libs.androidx.constraintlayout)\r\n    testImplementation(libs.junit)\r\n    androidTestImplementation(libs.androidx.junit)\r\n    androidTestImplementation(libs.androidx.espresso.core)\r\n}
+Subsystem: com.intellij.openapi.diff.impl.patch.CharsetEP
+<+>UTF-8
+===================================================================
+diff --git a/app/build.gradle.kts b/app/build.gradle.kts
+--- a/app/build.gradle.kts	(revision ab25f440b7b0c17153e3d9293548bfac57d49b41)
++++ b/app/build.gradle.kts	(date 1729270138000)
+@@ -33,10 +33,15 @@
+     kotlinOptions {
+         jvmTarget = "1.8"
+     }
++    buildFeatures{
++        viewBinding = true
++        dataBinding = true
++    }
+ }
+ 
+ dependencies {
+-
++    implementation(libs.androidx.recyclerview)
++    implementation(libs.androidx.cardview)
+     implementation(libs.androidx.core.ktx)
+     implementation(libs.androidx.appcompat)
+     implementation(libs.material)
+@@ -45,4 +50,5 @@
+     testImplementation(libs.junit)
+     androidTestImplementation(libs.androidx.junit)
+     androidTestImplementation(libs.androidx.espresso.core)
++    implementation(kotlin("script-runtime"))
+ }
+\ No newline at end of file
+Index: app/src/main/java/com/example/elrincondeltenedor/CardView.kt
+IDEA additional info:
+Subsystem: com.intellij.openapi.diff.impl.patch.CharsetEP
+<+>UTF-8
+===================================================================
+diff --git a/app/src/main/java/com/example/elrincondeltenedor/CardView.kt b/app/src/main/java/com/example/elrincondeltenedor/CardView.kt
+new file mode 100644
+--- /dev/null	(date 1729270138000)
++++ b/app/src/main/java/com/example/elrincondeltenedor/CardView.kt	(date 1729270138000)
+@@ -0,0 +1,6 @@
++package com.example.elrincondeltenedor
++
++data class CardView(
++    val text:String,
++    val imageResId: Int
++)
+\ No newline at end of file
+Index: gradle/libs.versions.toml
+IDEA additional info:
+Subsystem: com.intellij.openapi.diff.impl.patch.BaseRevisionTextPatchEP
+<+>[versions]\r\nagp = \"8.6.0\"\r\nkotlin = \"1.9.0\"\r\ncoreKtx = \"1.13.1\"\r\njunit = \"4.13.2\"\r\njunitVersion = \"1.2.1\"\r\nespressoCore = \"3.6.1\"\r\nappcompat = \"1.7.0\"\r\nmaterial = \"1.12.0\"\r\nactivity = \"1.9.2\"\r\nconstraintlayout = \"2.1.4\"\r\n\r\n[libraries]\r\nandroidx-core-ktx = { group = \"androidx.core\", name = \"core-ktx\", version.ref = \"coreKtx\" }\r\njunit = { group = \"junit\", name = \"junit\", version.ref = \"junit\" }\r\nandroidx-junit = { group = \"androidx.test.ext\", name = \"junit\", version.ref = \"junitVersion\" }\r\nandroidx-espresso-core = { group = \"androidx.test.espresso\", name = \"espresso-core\", version.ref = \"espressoCore\" }\r\nandroidx-appcompat = { group = \"androidx.appcompat\", name = \"appcompat\", version.ref = \"appcompat\" }\r\nmaterial = { group = \"com.google.android.material\", name = \"material\", version.ref = \"material\" }\r\nandroidx-activity = { group = \"androidx.activity\", name = \"activity\", version.ref = \"activity\" }\r\nandroidx-constraintlayout = { group = \"androidx.constraintlayout\", name = \"constraintlayout\", version.ref = \"constraintlayout\" }\r\n\r\n[plugins]\r\nandroid-application = { id = \"com.android.application\", version.ref = \"agp\" }\r\nkotlin-android = { id = \"org.jetbrains.kotlin.android\", version.ref = \"kotlin\" }\r\n\r\n
+Subsystem: com.intellij.openapi.diff.impl.patch.CharsetEP
+<+>UTF-8
+===================================================================
+diff --git a/gradle/libs.versions.toml b/gradle/libs.versions.toml
+--- a/gradle/libs.versions.toml	(revision ab25f440b7b0c17153e3d9293548bfac57d49b41)
++++ b/gradle/libs.versions.toml	(date 1729270138000)
+@@ -11,7 +11,9 @@
+ constraintlayout = "2.1.4"
+ 
+ [libraries]
++androidx-cardview = { module = "androidx.cardview:cardview" }
+ androidx-core-ktx = { group = "androidx.core", name = "core-ktx", version.ref = "coreKtx" }
++androidx-recyclerview = { module = "androidx.recyclerview:recyclerview" }
+ junit = { group = "junit", name = "junit", version.ref = "junit" }
+ androidx-junit = { group = "androidx.test.ext", name = "junit", version.ref = "junitVersion" }
+ androidx-espresso-core = { group = "androidx.test.espresso", name = "espresso-core", version.ref = "espressoCore" }
+Index: app/src/main/java/com/example/elrincondeltenedor/MainActivity.kt
+IDEA additional info:
+Subsystem: com.intellij.openapi.diff.impl.patch.CharsetEP
+<+>UTF-8
+===================================================================
+diff --git a/app/src/main/java/com/example/elrincondeltenedor/MainActivity.kt b/app/src/main/java/com/example/elrincondeltenedor/MainActivity.kt
+new file mode 100644
+--- /dev/null	(date 1729272168000)
++++ b/app/src/main/java/com/example/elrincondeltenedor/MainActivity.kt	(date 1729272168000)
+@@ -0,0 +1,26 @@
++package com.example.elrincondeltenedor
++
++import android.os.Bundle
++import androidx.activity.enableEdgeToEdge
++import androidx.appcompat.app.AppCompatActivity
++import androidx.recyclerview.widget.LinearLayoutManager
++
++
++class MainActivity : AppCompatActivity() {
++    private lateinit var binding: Activ
++    override fun onCreate(savedInstanceState: Bundle?) {
++        super.onCreate(savedInstanceState)
++        enableEdgeToEdge()
++
++
++        binding = Home02Binding.inflate(layoutInflater)
++        setContentView(binding.root)
++
++        binding.recyclerView.layoutManager = LinearLayoutManager(this)
++        val items = listOf(
++            CardView("1", R.drawable.logo)
++        )
++
++        binding.recyclerView.adapter = RecyclerViewAdapter(items)
++    }
++}
+\ No newline at end of file
+Index: app/src/main/res/drawable/round_edit_text.xml
+IDEA additional info:
+Subsystem: com.intellij.openapi.diff.impl.patch.CharsetEP
+<+>UTF-8
+===================================================================
+diff --git a/app/src/main/res/drawable/round_edit_text.xml b/app/src/main/res/drawable/round_edit_text.xml
+new file mode 100644
+--- /dev/null	(date 1729270138000)
++++ b/app/src/main/res/drawable/round_edit_text.xml	(date 1729270138000)
+@@ -0,0 +1,6 @@
++<?xml version="1.0" encoding="utf-8"?>
++<shape xmlns:android="http://schemas.android.com/apk/res/android" android:shape="rectangle">
++    <solid android:color="@color/green"/>
++    <corners android:radius="20dp"/>
++
++</shape>
+\ No newline at end of file
+Index: app/src/main/java/com/example/elrincondeltenedor/RecyclerViewAdapter.kt
+IDEA additional info:
+Subsystem: com.intellij.openapi.diff.impl.patch.CharsetEP
+<+>UTF-8
+===================================================================
+diff --git a/app/src/main/java/com/example/elrincondeltenedor/RecyclerViewAdapter.kt b/app/src/main/java/com/example/elrincondeltenedor/RecyclerViewAdapter.kt
+new file mode 100644
+--- /dev/null	(date 1729270138000)
++++ b/app/src/main/java/com/example/elrincondeltenedor/RecyclerViewAdapter.kt	(date 1729270138000)
+@@ -0,0 +1,34 @@
++package com.example.elrincondeltenedor
++
++import android.view.LayoutInflater
++import android.view.ViewGroup
++import android.widget.Toast
++import androidx.recyclerview.widget.RecyclerView
++import com.example.elrincondeltenedor.databinding.ValoracionesRestauranteBinding
++
++class RecyclerViewAdapter(private val items: List<CardView>) :
++    RecyclerView.Adapter<ItemViewHolder>() {
++        private lateinit var binding: ValoracionesRestauranteBinding
++
++    override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): ItemViewHolder {
++        binding = ValoracionesRestauranteBinding.inflate(LayoutInflater.from(parent.context), parent, false)
++        return ItemViewHolder(binding)
++    }
++
++
++
++    override fun onBindViewHolder(holder: ItemViewHolder, position: Int) {
++        val currentItem = items[position]
++
++        holder.bind(currentItem)
++
++        holder.itemView.setOnClickListener {
++            Toast.makeText(
++                holder.itemView.context,
++                "Clic en: ${currentItem.text}",
++                Toast.LENGTH_SHORT
++            ).show()
++        }
++    }
++    override fun getItemCount(): Int = items.size
++}
+\ No newline at end of file
+Index: app/src/main/AndroidManifest.xml
+IDEA additional info:
+Subsystem: com.intellij.openapi.diff.impl.patch.BaseRevisionTextPatchEP
+<+><?xml version=\"1.0\" encoding=\"utf-8\"?>\r\n<manifest xmlns:android=\"http://schemas.android.com/apk/res/android\"\r\n    xmlns:tools=\"http://schemas.android.com/tools\">\r\n\r\n    <application\r\n        android:allowBackup=\"true\"\r\n        android:dataExtractionRules=\"@xml/data_extraction_rules\"\r\n        android:fullBackupContent=\"@xml/backup_rules\"\r\n        android:icon=\"@mipmap/ic_launcher\"\r\n        android:label=\"@string/app_name\"\r\n        android:roundIcon=\"@mipmap/ic_launcher_round\"\r\n        android:supportsRtl=\"true\"\r\n        android:theme=\"@style/Theme.ElRinconDelTenedor\"\r\n        tools:targetApi=\"31\">\r\n        <activity\r\n            android:name=\".MainActivity_UserProfile\"\r\n            android:exported=\"true\">\r\n            <intent-filter>\r\n                <action android:name=\"android.intent.action.MAIN\" />\r\n\r\n                <category android:name=\"android.intent.category.LAUNCHER\" />\r\n            </intent-filter>\r\n        </activity>\r\n    </application>\r\n\r\n</manifest>
+Subsystem: com.intellij.openapi.diff.impl.patch.CharsetEP
+<+>UTF-8
+===================================================================
+diff --git a/app/src/main/AndroidManifest.xml b/app/src/main/AndroidManifest.xml
+--- a/app/src/main/AndroidManifest.xml	(revision ab25f440b7b0c17153e3d9293548bfac57d49b41)
++++ b/app/src/main/AndroidManifest.xml	(date 1729272168000)
+@@ -13,7 +13,7 @@
+         android:theme="@style/Theme.ElRinconDelTenedor"
+         tools:targetApi="31">
+         <activity
+-            android:name=".MainActivity_UserProfile"
++            android:name=".MainActivity"
+             android:exported="true">
+             <intent-filter>
+                 <action android:name="android.intent.action.MAIN" />
+Index: app/src/main/java/com/example/elrincondeltenedor/ItemViewHolder.kt
+IDEA additional info:
+Subsystem: com.intellij.openapi.diff.impl.patch.CharsetEP
+<+>UTF-8
+===================================================================
+diff --git a/app/src/main/java/com/example/elrincondeltenedor/ItemViewHolder.kt b/app/src/main/java/com/example/elrincondeltenedor/ItemViewHolder.kt
+new file mode 100644
+--- /dev/null	(date 1729270138000)
++++ b/app/src/main/java/com/example/elrincondeltenedor/ItemViewHolder.kt	(date 1729270138000)
+@@ -0,0 +1,12 @@
++package com.example.elrincondeltenedor
++
++import androidx.recyclerview.widget.RecyclerView
++import com.example.elrincondeltenedor.databinding.ValoracionesRestauranteBinding
++
++class ItemViewHolder (private val binding: ValoracionesRestauranteBinding) : RecyclerView.ViewHolder(binding.root) {
++    fun bind(item: CardView) {
++        binding.item = item
++        binding.executePendingBindings()
++    }
++
++}
+\ No newline at end of file
