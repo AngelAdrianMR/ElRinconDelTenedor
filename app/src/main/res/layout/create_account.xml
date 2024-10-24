@@ -156,8 +156,10 @@
             app:layout_constraintEnd_toEndOf="parent"
             android:text="@string/singup"
             android:autoLink="web"
-            android:linksClickable="true"
-            android:layout_marginBottom="15dp"/>
+            android:focusable="true"
+            android:clickable="true"
+            android:layout_marginBottom="15dp"
+            />
 
     </androidx.constraintlayout.widget.ConstraintLayout>
 

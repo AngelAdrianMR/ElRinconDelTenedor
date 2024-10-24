@@ -3,7 +3,7 @@ package com.example.elrincondeltenedor
 import android.content.Context
 import android.content.SharedPreferences
 
-class SharedPreferences(context: Context) {
+class SharedPreferencesManager(context: Context) {
     private val sharedPreferences: SharedPreferences = context.getSharedPreferences("MisAjustes", Context.MODE_PRIVATE)
 
     // Métodos para guardar y recuperar datos

@@ -15,6 +15,7 @@ import androidx.navigation.fragment.findNavController
 import androidx.navigation.ui.AppBarConfiguration
 import androidx.navigation.ui.NavigationUI
 import com.example.elrincondeltenedor.databinding.ActivityMainBinding
+import com.example.elrincondeltenedor.databinding.CreateAccountBinding
 import com.example.elrincondeltenedor.databinding.SettingScreenBinding
 import com.example.elrincondeltenedor.databinding.ToolbarGeneralBinding
 
