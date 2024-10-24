@@ -36,7 +36,7 @@ class LoginFragment : Fragment() {
     private fun cargarDatosGuardados() {
         // Cargar nombre y correo guardados en SharedPreferences
         val nombreUsuario = sharedPreferencesManager.getUserName()
-        val correoUsuario = sharedPreferencesManager.getUserEmail()
+        val correoUsuario = sharedPreferencesManager.getUserPassword()
 
         // Asignar los valores a los EditTexts correspondientes
         binding.email.setText(nombreUsuario ?: "") // Usar el operador Elvis para manejar null
@@ -46,6 +46,6 @@ class LoginFragment : Fragment() {
     private fun guardarDatos() {
         // Guardar los nuevos valores en SharedPreferencesManager
         sharedPreferencesManager.saveUserName(binding.email.text.toString())
-        sharedPreferencesManager.saveUserEmail(binding.psw.text.toString())
+        sharedPreferencesManager.saveUserPassword(binding.psw.text.toString())
     }
 }

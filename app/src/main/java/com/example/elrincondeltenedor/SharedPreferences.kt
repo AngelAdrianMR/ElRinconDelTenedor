@@ -15,11 +15,11 @@ class SharedPreferences(context: Context) {
         return sharedPreferences.getString("nombre_usuario", "Nombre Usuario")
     }
 
-    fun saveUserEmail(correo: String) {
+    fun saveUserPassword(correo: String) {
         sharedPreferences.edit().putString("correo_usuario", correo).apply()
     }
 
-    fun getUserEmail(): String? {
+    fun getUserPassword(): String? {
         return sharedPreferences.getString("correo_usuario", "correousuario@gmail.com")
     }
 }
