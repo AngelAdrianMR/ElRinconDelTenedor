@@ -9,7 +9,9 @@ import android.widget.ImageView
 import android.widget.PopupMenu
 import androidx.activity.enableEdgeToEdge
 import androidx.appcompat.app.AppCompatActivity
+import androidx.navigation.findNavController
 import androidx.navigation.fragment.NavHostFragment
+import androidx.navigation.fragment.findNavController
 import androidx.navigation.ui.AppBarConfiguration
 import androidx.navigation.ui.NavigationUI
 import com.example.elrincondeltenedor.databinding.ActivityMainBinding
@@ -42,24 +44,25 @@ class MainActivity : AppCompatActivity() {
 
         popupMenu.menuInflater.inflate(R.menu.menu_options, popupMenu.menu)
 
+        val navHostFragment = supportFragmentManager.findFragmentById(R.id.nav_host_fragment) as NavHostFragment
+        val navController = navHostFragment.navController
+
         popupMenu.setOnMenuItemClickListener { menuItem: MenuItem ->
             when (menuItem.itemId) {
                 R.id.action_settings -> {
-                    val intent = Intent(this, SettingFragment::class.java)
-                    startActivity(intent)
-
+                    navController.navigate(R.id.settingsFragment)
                     true
                 }
                 R.id.action_collection -> {
-
+                    navController.navigate(R.id.collectionFragment)
                     true
                 }
                 R.id.action_profile -> {
-
+                    navController.navigate(R.id.profileUserFragment)
                     true
                 }
-                android.R.id.home -> {
-
+                R.id.action_home01 -> {
+                    navController.navigate(R.id.home01Fragment)
                     true
                 }
                 else -> false

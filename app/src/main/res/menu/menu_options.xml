@@ -18,6 +18,12 @@
         app:showAsAction="never" />
 
     <item
+        android:id="@+id/action_home01"
+        android:title="Home01"
+        app:showAsAction="never" />
+
+
+    <item
         android:id="@+id/action_logout"
         android:title="Cerrar Sesión"
         app:showAsAction="never" />

@@ -20,7 +20,6 @@ class ValoracionesFragment : Fragment() {
         savedInstanceState: Bundle?
     ): View {
         _binding = ValoracionesRecyclerviewBinding.inflate(inflater, container, false)
-        setHasOptionsMenu(true) // Habilitar el menú
         return binding.root
     }
 
@@ -37,10 +36,6 @@ class ValoracionesFragment : Fragment() {
         binding.recyclerViewRestaurant.adapter = RecyclerViewAdapter_Valoraciones(items)
     }
 
-    override fun onCreateOptionsMenu(menu: Menu, inflater: MenuInflater) {
-        inflater.inflate(R.menu.menu_options, menu) // Asegúrate de usar el menú correcto
-        super.onCreateOptionsMenu(menu, inflater)
-    }
 
     override fun onDestroyView() {
         super.onDestroyView()
