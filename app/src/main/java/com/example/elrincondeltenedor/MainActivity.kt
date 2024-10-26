@@ -50,10 +50,6 @@ class MainActivity : AppCompatActivity() {
 
         popupMenu.setOnMenuItemClickListener { menuItem: MenuItem ->
             when (menuItem.itemId) {
-                R.id.action_settings -> {
-                    navController.navigate(R.id.settingsFragment)
-                    true
-                }
                 R.id.action_collection -> {
                     navController.navigate(R.id.collectionFragment)
                     true
@@ -64,6 +60,10 @@ class MainActivity : AppCompatActivity() {
                 }
                 R.id.action_home01 -> {
                     navController.navigate(R.id.home01Fragment)
+                    true
+                }
+                R.id.action_logout -> {
+                    navController.navigate(R.id.loginFragment)
                     true
                 }
                 else -> false

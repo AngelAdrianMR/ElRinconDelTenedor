@@ -2,9 +2,6 @@ package com.example.elrincondeltenedor
 
 import android.os.Bundle
 import android.view.LayoutInflater
-import android.view.Menu
-import android.view.MenuInflater
-import android.view.MenuItem
 import android.view.View
 import android.view.ViewGroup
 import androidx.fragment.app.Fragment
@@ -47,6 +44,8 @@ class Home02Fragment : Fragment() {
                 .addToBackStack(null)
                 .commit()
         }
+
+
     }
 
     override fun onDestroyView() {
@@ -61,4 +60,6 @@ class Home02Fragment : Fragment() {
             ItemData("Item 3", R.drawable.casa)
         )
     }
+
+
 }

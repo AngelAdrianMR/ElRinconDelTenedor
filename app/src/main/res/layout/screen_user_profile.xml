@@ -40,12 +40,6 @@
             android:layout_marginTop="30pt"
             android:text="Inicio" />
 
-        <Button
-            android:id="@+id/botonColeccionables"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:layout_marginTop="10pt"
-            android:text="Coleccionables" />
 
         <Button
             android:id="@+id/botonAjustes"
@@ -66,7 +60,9 @@
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_marginTop="10pt"
-            android:text="CERRAR SESIÓN" />
+            android:focusable="true"
+            android:text="CERRAR SESIÓN"
+            android:clickable="true"/>
 
     </LinearLayout>
 

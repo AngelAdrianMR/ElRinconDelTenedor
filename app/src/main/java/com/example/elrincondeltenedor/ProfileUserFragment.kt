@@ -28,12 +28,12 @@ class ProfileUserFragment : Fragment(R.layout.screen_user_profile) {
             findNavController().navigate(R.id.home01Fragment)
         }
 
-        binding.botonColeccionables.setOnClickListener {
-            findNavController().navigate(R.id.collectionFragment)
-        }
-
         binding.botonAjustes.setOnClickListener {
             findNavController().navigate(R.id.settingsFragment)
+        }
+
+        binding.cerrarSesion.setOnClickListener {
+            findNavController().navigate(R.id.loginFragment)
         }
     }
 

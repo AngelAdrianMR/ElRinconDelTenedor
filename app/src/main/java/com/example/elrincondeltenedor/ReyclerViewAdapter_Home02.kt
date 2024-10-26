@@ -6,7 +6,8 @@ import android.widget.Toast
 import androidx.recyclerview.widget.RecyclerView
 import com.example.elrincondeltenedor.databinding.Home02CardviewBinding
 
-class RecyclerViewAdapter_Home02(private val items: List<ItemData>) :
+class RecyclerViewAdapter_Home02(
+    private val items: List<ItemData>):
     RecyclerView.Adapter<ViewHolder_home02>() {
     private lateinit var binding: Home02CardviewBinding
 
@@ -15,19 +16,13 @@ class RecyclerViewAdapter_Home02(private val items: List<ItemData>) :
         return ViewHolder_home02(binding)
     }
 
-
-
     override fun onBindViewHolder(holder: ViewHolder_home02, position: Int) {
         val currentItem = items[position]
 
         holder.bind(currentItem)
 
         holder.itemView.setOnClickListener {
-            Toast.makeText(
-                holder.itemView.context,
-                "Clic en: ${currentItem.text}",
-                Toast.LENGTH_SHORT
-            ).show()
+
         }
     }
     override fun getItemCount(): Int = items.size
