@@ -5,9 +5,8 @@ import android.view.ViewGroup
 import android.widget.Toast
 import androidx.recyclerview.widget.RecyclerView
 import com.example.elrincondeltenedor.databinding.CollectionCardviewBinding
-import com.example.elrincondeltenedor.databinding.CollectionScreenBinding
 
-class RecyclerViewAdapter_Collection(private val items: List<ItemData>) :
+class RecyclerViewAdapter_Collection(private val items: List<ItemData_Collection>) :
     RecyclerView.Adapter<ViewHolder_Collection>() {
     private lateinit var binding: CollectionCardviewBinding
 

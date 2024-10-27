@@ -8,7 +8,7 @@
     <data>
         <variable
             name="item"
-            type="com.example.elrincondeltenedor.ItemData" />
+            type="com.example.elrincondeltenedor.ItemData_Collection" />
     </data>
 
 
@@ -24,14 +24,14 @@
             android:layout_width="match_parent"
             android:layout_height="150dp"
             android:scaleType="centerCrop"
-            android:src="@drawable/casa"
+            android:src="@{item.imageResId}"
             android:contentDescription="@string/imagen_del_restaurante" />
 
         <TextView
             android:id="@+id/nameRestaurant"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:text="@string/nombre_del_restaurante"
+            android:text="@{item.text}"
             android:textSize="18sp"
             android:textStyle="bold"
             android:layout_marginTop="8dp"
@@ -41,7 +41,7 @@
             android:id="@+id/descriptionRestaurant"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:text="@string/descripci_n_breve_del_restaurante"
+            android:text="@{item.description}"
             android:textSize="14sp"
             android:textColor="@android:color/darker_gray"
             android:layout_marginTop="4dp" />

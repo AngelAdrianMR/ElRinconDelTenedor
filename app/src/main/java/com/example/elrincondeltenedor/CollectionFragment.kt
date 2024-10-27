@@ -2,8 +2,6 @@ package com.example.elrincondeltenedor
 
 import android.os.Bundle
 import android.view.LayoutInflater
-import android.view.Menu
-import android.view.MenuInflater
 import android.view.View
 import android.view.ViewGroup
 import androidx.fragment.app.Fragment
@@ -13,6 +11,9 @@ import com.example.elrincondeltenedor.databinding.CollectionScreenBinding
 class CollectionFragment : Fragment() {
     private var _binding: CollectionScreenBinding? = null
     private val binding get() = _binding!!
+
+    // Lista para almacenar los restaurantes
+    private var restaurantList: List<ItemData_Collection> = listOf()
 
     override fun onCreateView(
         inflater: LayoutInflater, container: ViewGroup?,
@@ -25,14 +26,17 @@ class CollectionFragment : Fragment() {
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
 
+        // Obtén los datos pasados
+        restaurantList = arguments?.getParcelableArrayList<ItemData_Collection>("restaurantList") ?: emptyList()
+
         // Configura el RecyclerView
         binding.recyclerViewCollection.layoutManager = LinearLayoutManager(context)
-        val items = listOf(
-            ItemData("1", R.drawable.logo)
-        )
-        binding.recyclerViewCollection.adapter = RecyclerViewAdapter_Collection(items)
+        binding.recyclerViewCollection.adapter = RecyclerViewAdapter_Collection(restaurantList)
 
-        // Habilitar el menú de opciones directamente en el fragmento
+        // Maneja la visibilidad del mensaje vacío
+        binding.textEmpty.visibility = if (restaurantList.isEmpty()) View.VISIBLE else View.GONE
+
+        // Asegúrate de que el menú se actualice si es necesario
         requireActivity().invalidateOptionsMenu()
     }
 
@@ -41,4 +45,13 @@ class CollectionFragment : Fragment() {
         _binding = null
     }
 
+    companion object {
+        fun newInstance(restaurantList: List<ItemData_Collection>): CollectionFragment {
+            val fragment = CollectionFragment()
+            val bundle = Bundle()
+            bundle.putParcelableArrayList("restaurantList", ArrayList(restaurantList))
+            fragment.arguments = bundle
+            return fragment
+        }
+    }
 }

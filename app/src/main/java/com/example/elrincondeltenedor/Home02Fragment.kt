@@ -16,7 +16,6 @@ class Home02Fragment : Fragment() {
     private lateinit var adapter: RecyclerViewAdapter_Home02
     private var dataList: List<ItemData> = listOf()
 
-
     override fun onCreateView(
         inflater: LayoutInflater, container: ViewGroup?,
         savedInstanceState: Bundle?
@@ -34,8 +33,19 @@ class Home02Fragment : Fragment() {
         // Carga los datos
         dataList = loadData()
 
-        // Inicializa el adaptador
-        adapter = RecyclerViewAdapter_Home02(dataList)
+        // Inicializa el adaptador y maneja la navegación
+        adapter = RecyclerViewAdapter_Home02(dataList) { item ->
+            val detailsFragment = DetailsFragment().apply {
+                arguments = Bundle().apply {
+                    putString("itemName", item.text) // Aquí el texto del restaurante
+                    putInt("itemImage", item.imageResId) // Aquí el ID de la imagen
+                }
+            }
+            requireActivity().supportFragmentManager.beginTransaction()
+                .replace(R.id.nav_host_fragment, detailsFragment)
+                .addToBackStack(null)
+                .commit()
+        }
         binding.recyclerViewHome02.adapter = adapter
 
         binding.botonHome01.setOnClickListener {
@@ -44,8 +54,6 @@ class Home02Fragment : Fragment() {
                 .addToBackStack(null)
                 .commit()
         }
-
-
     }
 
     override fun onDestroyView() {
@@ -60,6 +68,4 @@ class Home02Fragment : Fragment() {
             ItemData("Item 3", R.drawable.casa)
         )
     }
-
-
 }

@@ -8,11 +8,12 @@
 
 
     <LinearLayout
-android:layout_width="match_parent"
-android:layout_height="match_parent"
-android:orientation="vertical"
-android:gravity="center_horizontal"
-android:padding="10pt">
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:orientation="vertical"
+        android:gravity="center_horizontal"
+        android:padding="10pt"
+        tools:ignore="UselessParent">
 
 <TextView
     android:layout_width="wrap_content"
@@ -27,7 +28,8 @@ android:padding="10pt">
     android:layout_width="302dp"
     android:layout_height="209dp"
     android:layout_marginTop="10pt"
-    app:srcCompat="@android:drawable/ic_menu_crop" />
+    app:srcCompat="@android:drawable/ic_menu_crop"
+    android:contentDescription="@string/imagen_del_restaurante"/>
 
 <TextView
     android:id="@+id/descripcionRest"

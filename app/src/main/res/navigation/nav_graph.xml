@@ -22,6 +22,9 @@
         <action
             android:id="@+id/action_home01Fragment_to_collectionFragment"
             app:destination="@id/collectionFragment" />
+        <action
+            android:id="@+id/action_home01Fragment_to_detailFragment"
+            app:destination="@id/detailFragment" />
     </fragment>
 
     <fragment
@@ -61,7 +64,6 @@
 
     <fragment
         android:id="@+id/loginFragment"
-        android:name="com.example.elrincondeltenedor.loginFragment"
         android:label="Settings"
         tools:layout="@layout/login_screen" >
         <action
