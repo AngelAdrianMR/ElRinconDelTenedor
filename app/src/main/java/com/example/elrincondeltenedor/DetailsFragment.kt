@@ -5,16 +5,12 @@ import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import androidx.fragment.app.Fragment
-import androidx.navigation.Navigation
-import androidx.navigation.findNavController
 import androidx.navigation.fragment.findNavController
 import com.example.elrincondeltenedor.databinding.RestaurantDetailScreenBinding
 
 class DetailsFragment : Fragment() {
-    private lateinit var _binding: RestaurantDetailScreenBinding
-    private val binding get() = _binding
-
-    private val restaurantList = mutableListOf<ItemData_Collection>() // Lista para almacenar los restaurantes
+    private var _binding: RestaurantDetailScreenBinding? = null
+    private val binding get() = _binding!!
 
     override fun onCreateView(
         inflater: LayoutInflater, container: ViewGroup?,
@@ -26,22 +22,43 @@ class DetailsFragment : Fragment() {
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
+        setHasOptionsMenu(true) // Agrega esto
 
+        // Suponiendo que has recibido datos del Bundle
+        val itemName = arguments?.getString("itemName") ?: "Nombre por defecto"
+        val itemImage = arguments?.getInt("itemImage") ?: R.drawable.casa
+        val itemDescription = "Descripción por defecto" // Cambia esto según tu lógica
 
+        // Asignar datos a la vista
+        binding.nombreRest.text = itemName
+        binding.descripcionRest.text = itemDescription
+        binding.imagenRest.setImageResource(itemImage)
+
+        // Configurar el botón de valoración
         binding.btnGuardar.setOnClickListener {
-            val restaurantName = binding.nombreRest.text.toString()
-            val restaurantDescription = binding.descripcionRest.text.toString()
-            val restaurantImage = R.drawable.casa // Cambia según tu lógica para imágenes
+            // Crear la lista con el restaurante
+            val restaurantList = listOf(
+                ItemData_Collection(itemName, itemDescription, itemImage)
+            )
 
-            // Guarda el restaurante en la lista como ItemData_Collection
-            restaurantList.add(ItemData_Collection(restaurantName, restaurantDescription, restaurantImage))
-
-            Navigation.findNavController(view).navigate(R.id.action_detailFragment_to_collectionFragment)
-
+            // Navegar a CollectionFragment y pasar los datos
+            val collectionFragment = CollectionFragment.newInstance(restaurantList)
+            requireActivity().supportFragmentManager.beginTransaction()
+                .replace(R.id.nav_host_fragment, collectionFragment)
+                .addToBackStack(null)
+                .commit()
         }
 
         binding.btnValorar.setOnClickListener {
-            Navigation.findNavController(view).navigate(R.id.action_detailFragment_to_valoracionesFragment)
+            requireActivity().supportFragmentManager.beginTransaction()
+                .replace(R.id.nav_host_fragment, ValoracionesFragment())
+                .addToBackStack(null)
+                .commit()
         }
+    }
+
+    override fun onDestroyView() {
+        super.onDestroyView()
+        _binding = null
     }
 }

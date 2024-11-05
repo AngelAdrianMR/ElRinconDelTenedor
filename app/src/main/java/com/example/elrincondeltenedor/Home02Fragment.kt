@@ -38,6 +38,7 @@ class Home02Fragment : Fragment() {
             val detailsFragment = DetailsFragment().apply {
                 arguments = Bundle().apply {
                     putString("itemName", item.text) // Aquí el texto del restaurante
+                    putString("itemDescription", item.text)
                     putInt("itemImage", item.imageResId) // Aquí el ID de la imagen
                 }
             }

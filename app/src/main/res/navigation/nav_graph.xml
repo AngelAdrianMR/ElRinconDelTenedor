@@ -75,7 +75,17 @@
         android:id="@+id/valoracionesFragment"
         android:name="com.example.elrincondeltenedor.ValoracionesFragment"
         android:label="Settings"
-        tools:layout="@layout/valoraciones_recyclerview" />
+        tools:layout="@layout/valoraciones_recyclerview" >
+        <action
+            android:id="@+id/action_valoracionesFragment_to_home01Fragment"
+            app:destination="@id/home01Fragment" />
+        <action
+            android:id="@+id/action_valoracionesFragment_to_collectionFragment"
+            app:destination="@id/collectionFragment" />
+        <action
+            android:id="@+id/action_valoracionesFragment_to_profileUserFragment"
+            app:destination="@id/profileUserFragment" />
+    </fragment>
 
     <fragment
         android:id="@+id/detailFragment"

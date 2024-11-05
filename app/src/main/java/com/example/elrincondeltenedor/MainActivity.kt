@@ -30,6 +30,7 @@ class MainActivity : AppCompatActivity() {
         binding = ActivityMainBinding.inflate(layoutInflater)
         setContentView(binding.root)
 
+        // Configura el menú flotante
         configureFloatingMenu()
     }
 
@@ -42,12 +43,13 @@ class MainActivity : AppCompatActivity() {
 
     private fun showPopupMenu(view: View) {
         val popupMenu = PopupMenu(this, view)
-
         popupMenu.menuInflater.inflate(R.menu.menu_options, popupMenu.menu)
 
+        // Obtiene el NavController desde el NavHostFragment
         val navHostFragment = supportFragmentManager.findFragmentById(R.id.nav_host_fragment) as NavHostFragment
         val navController = navHostFragment.navController
 
+        // Configura el listener del menú
         popupMenu.setOnMenuItemClickListener { menuItem: MenuItem ->
             when (menuItem.itemId) {
                 R.id.action_collection -> {
@@ -68,11 +70,10 @@ class MainActivity : AppCompatActivity() {
                 }
                 else -> false
             }
-
         }
 
+        // Muestra el menú
         popupMenu.show()
-
     }
 
     override fun onSupportNavigateUp(): Boolean {

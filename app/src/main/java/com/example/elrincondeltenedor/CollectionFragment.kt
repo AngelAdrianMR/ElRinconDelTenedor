@@ -12,8 +12,8 @@ class CollectionFragment : Fragment() {
     private var _binding: CollectionScreenBinding? = null
     private val binding get() = _binding!!
 
-    // Lista para almacenar los restaurantes
-    private var restaurantList: List<ItemData_Collection> = listOf()
+    // Lista mutable para almacenar los restaurantes
+    private var restaurantList: MutableList<ItemData_Collection> = mutableListOf()
 
     override fun onCreateView(
         inflater: LayoutInflater, container: ViewGroup?,
@@ -26,8 +26,11 @@ class CollectionFragment : Fragment() {
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
 
-        // Obtén los datos pasados
-        restaurantList = arguments?.getParcelableArrayList<ItemData_Collection>("restaurantList") ?: emptyList()
+        // Si hay datos en los argumentos, agrega esos restaurantes
+        val newRestaurants = arguments?.getParcelableArrayList<ItemData_Collection>("restaurantList")
+        if (newRestaurants != null) {
+            restaurantList.addAll(newRestaurants)
+        }
 
         // Configura el RecyclerView
         binding.recyclerViewCollection.layoutManager = LinearLayoutManager(context)

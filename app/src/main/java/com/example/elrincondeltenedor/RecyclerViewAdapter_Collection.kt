@@ -8,6 +8,7 @@ import com.example.elrincondeltenedor.databinding.CollectionCardviewBinding
 
 class RecyclerViewAdapter_Collection(private val items: List<ItemData_Collection>) :
     RecyclerView.Adapter<ViewHolder_Collection>() {
+
     private lateinit var binding: CollectionCardviewBinding
 
     override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): ViewHolder_Collection {
@@ -15,11 +16,8 @@ class RecyclerViewAdapter_Collection(private val items: List<ItemData_Collection
         return ViewHolder_Collection(binding)
     }
 
-
-
     override fun onBindViewHolder(holder: ViewHolder_Collection, position: Int) {
         val currentItem = items[position]
-
         holder.bind(currentItem)
 
         holder.itemView.setOnClickListener {
@@ -30,5 +28,6 @@ class RecyclerViewAdapter_Collection(private val items: List<ItemData_Collection
             ).show()
         }
     }
+
     override fun getItemCount(): Int = items.size
 }
