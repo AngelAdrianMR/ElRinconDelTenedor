@@ -2,8 +2,6 @@ package com.example.elrincondeltenedor
 
 import android.os.Bundle
 import android.view.LayoutInflater
-import android.view.Menu
-import android.view.MenuInflater
 import android.view.View
 import android.view.ViewGroup
 import androidx.fragment.app.Fragment
@@ -29,7 +27,7 @@ class ValoracionesFragment : Fragment() {
         // Configurar el RecyclerView
         binding.recyclerViewRestaurant.layoutManager = LinearLayoutManager(context)
         val items = listOf(
-            ItemData("Usuario 1", R.drawable.logo),
+            ItemData_Valoraciones("Usuario 1","valoracion", R.drawable.logo.toString()),
             // Agrega más elementos según sea necesario
         )
 
