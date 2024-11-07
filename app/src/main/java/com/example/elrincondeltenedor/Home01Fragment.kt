@@ -52,6 +52,19 @@ class Home01Fragment : Fragment(R.layout.home_screen_01), OnMapReadyCallback {
             .contentDescription("Aquí estoy yo")
         )
 
+        val rest1 = LatLng(36.808160660081406, -2.571446901538569)
+        googleMap.addMarker(MarkerOptions()
+            .position(rest1)
+            .title("Las patronas")
+            .contentDescription("restaurante mexicano")
+        )
+
+        val rest2 = LatLng(36.81007926121316, -2.5805133927490167)
+        googleMap.addMarker(MarkerOptions()
+            .position(rest2)
+            .title("MundoLoco")
+            .contentDescription("que loco")
+        )
         googleMap.moveCamera(CameraUpdateFactory.newLatLngZoom(latlng,15f))
     }
 }
