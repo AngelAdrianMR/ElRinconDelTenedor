@@ -3,8 +3,8 @@ package com.example.elrincondeltenedor
 
     data class ItemData(
         val name: String,
-        val imageResId: String,
-        val text: String
-
+        val imageResId: Int,
+        val description: String,
+        val valoraciones: MutableList<ItemData_Valoraciones> = mutableListOf()
     ) : Serializable
 

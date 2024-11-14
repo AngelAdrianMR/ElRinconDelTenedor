@@ -18,11 +18,11 @@ class RecyclerViewAdapter_Home02(
 
     override fun onBindViewHolder(holder: ViewHolder_home02, position: Int) {
         val currentItem = items[position]
-        holder.bind(currentItem)  // Enlazar los datos al ViewHolder
+        holder.bind(currentItem)
 
         // Configura el listener de clic en el item
         holder.itemView.setOnClickListener {
-            onItemClick(currentItem)  // Llama al listener cuando se hace clic
+            onItemClick(currentItem)
         }
     }
 

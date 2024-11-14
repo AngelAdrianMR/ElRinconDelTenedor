@@ -5,12 +5,15 @@ import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import androidx.fragment.app.Fragment
+import androidx.lifecycle.ViewModelProvider
 import androidx.navigation.fragment.findNavController
 import com.example.elrincondeltenedor.databinding.RestaurantDetailScreenBinding
 
 class DetailsFragment : Fragment() {
     private var _binding: RestaurantDetailScreenBinding? = null
     private val binding get() = _binding!!
+
+    private lateinit var restaurantViewModel: ViewModel
 
     override fun onCreateView(
         inflater: LayoutInflater, container: ViewGroup?,
@@ -22,38 +25,37 @@ class DetailsFragment : Fragment() {
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
-        setHasOptionsMenu(true) // Agrega esto
 
-        // Suponiendo que has recibido datos del Bundle
-        val itemName = arguments?.getString("itemName") ?: "Nombre por defecto"
-        val itemImage = arguments?.getInt("itemImage") ?: R.drawable.casa
-        val itemDescription = "Descripción por defecto" // Cambia esto según tu lógica
+        // Obtener el ViewModel
+        restaurantViewModel = ViewModelProvider(requireActivity()).get(ViewModel::class.java)
 
-        // Asignar datos a la vista
-        binding.nombreRest.text = itemName
-        binding.descripcionRest.text = itemDescription
-        binding.imagenRest.setImageResource(itemImage)
+        // Recibe el restaurante de los argumentos
+        val restaurantData = arguments?.getSerializable("restaurant_data") as? ItemData
+        restaurantData?.let {
+            // Asigna los datos de ItemData a las vistas
+            binding.nombreRest.text = it.name
+            binding.descripcionRest.text = it.description
+            binding.imagenRest.setImageResource(it.imageResId)
+        }
 
-        // Configurar el botón de valoración
         binding.btnGuardar.setOnClickListener {
-            // Crear la lista con el restaurante
-            val restaurantList = listOf(
-                ItemData_Collection(itemName, itemDescription, itemImage)
-            )
+            restaurantData?.let { data ->
+                restaurantViewModel.addRestaurant(data) // Guarda el restaurante en el ViewModel
 
-            // Navegar a CollectionFragment y pasar los datos
-            val collectionFragment = CollectionFragment.newInstance(restaurantList)
-            requireActivity().supportFragmentManager.beginTransaction()
-                .replace(R.id.nav_host_fragment, collectionFragment)
-                .addToBackStack(null)
-                .commit()
+                val bundle = Bundle().apply {
+                    putSerializable("restaurant_data", data) // Pasa el restaurante con sus valoraciones
+                }
+                findNavController().navigate(R.id.action_detailFragment_to_collectionFragment, bundle)
+            }
         }
 
         binding.btnValorar.setOnClickListener {
-            requireActivity().supportFragmentManager.beginTransaction()
-                .replace(R.id.nav_host_fragment, ValoracionesFragment())
-                .addToBackStack(null)
-                .commit()
+            restaurantData?.let { data ->
+                val bundle = Bundle().apply {
+                    putSerializable("restaurant_data", data) // Pasa el restaurante con sus valoraciones
+                }
+                findNavController().navigate(R.id.action_detailFragment_to_valoracionesFragment, bundle)
+            }
         }
     }
 

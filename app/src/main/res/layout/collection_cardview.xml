@@ -7,7 +7,7 @@
     <data>
         <variable
             name="item"
-            type="com.example.elrincondeltenedor.ItemData_Collection" />
+            type="com.example.elrincondeltenedor.ItemData" />
     </data>
 
     <LinearLayout
@@ -21,13 +21,14 @@
             android:layout_width="match_parent"
             android:layout_height="150dp"
             android:scaleType="centerCrop"
+            android:src="@{item.imageResId}"
             android:contentDescription="@string/imagen_del_restaurante" />
 
         <TextView
             android:id="@+id/nameRestaurant"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:text="@{item.text}"
+            android:text="@{item.name}"
             android:textSize="18sp"
             android:textStyle="bold"
             android:layout_marginTop="8dp"

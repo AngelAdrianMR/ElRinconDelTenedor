@@ -24,10 +24,6 @@ class Home02Fragment : Fragment() {
         savedInstanceState: Bundle?
     ): View {
         _binding = ScreenHome02Binding.inflate(inflater, container, false)
-
-        // Carga los datos del restaurante al crear la vista
-        loadRestaurant()
-
         return binding.root
     }
 
@@ -37,12 +33,18 @@ class Home02Fragment : Fragment() {
         // Inicializa el RecyclerView y configura el layout manager
         binding.recyclerViewHome02.layoutManager = LinearLayoutManager(requireContext())
 
+        // Carga los datos del restaurante de forma asincrónica
+        lifecycleScope.launch {
+            loadRestaurant()
+        }
+
         // Configura el botón de navegación a Home01Fragment
         binding.botonHome01.setOnClickListener {
             requireActivity().supportFragmentManager.beginTransaction()
                 .replace(R.id.nav_host_fragment, Home01Fragment())
                 .addToBackStack(null)
                 .commit()
+
         }
     }
 
@@ -51,28 +53,16 @@ class Home02Fragment : Fragment() {
         _binding = null
     }
 
-    private fun loadRestaurant() {
-        lifecycleScope.launch {
-            try {
-                // Llamada a la API para obtener los restaurantes
-                val response = RetrofitInstance.api.getRestaurant()
+    // Carga asincrónica de datos y configuración del RecyclerView
+    private suspend fun loadRestaurant() {
+        val items = listOf(
+            ItemData("Cele", R.drawable.casa, "Las mejores tapas"),
+            ItemData("La Gata", R.drawable.casa, "Las mejores tapas Veganas"),
+            ItemData("JMII", R.drawable.casa, "Estas no son tan buenas")
+        )
 
-                // Verificar si la respuesta es exitosa
-                if (response.isSuccessful) {
-                    response.body()?.let { itemResponse ->
-                        // Configura el RecyclerView con la colección obtenida de la API
-                        setupRecyclerView(itemResponse.restaurant)
-                    }
-
-                } else {
-                    // Si la respuesta no es exitosa, mostrar el error
-                    Log.e("API Error", "Error: ${response.code()} - ${response.message()}")
-                }
-            } catch (e: Exception) {
-                // Si ocurre una excepción en la solicitud, se captura aquí
-                Log.e("Network Error", "Exception: $e")
-            }
-        }
+        // Configura el RecyclerView con los datos cargados
+        setupRecyclerView(items)
     }
 
     private fun setupRecyclerView(restaurants: List<ItemData>) {

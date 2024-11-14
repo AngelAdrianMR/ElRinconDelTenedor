@@ -11,12 +11,12 @@ class ViewHolder_home02(
     fun bind(item: ItemData) {
         // Asignar los datos a los elementos de la CardView
         binding.nameRestaurant.text = item.name
-        binding.descriptionRestaurant.text = item.text
+        binding.descriptionRestaurant.text = item.description
 
-        // Cargar la imagen con Picasso desde la URL
+        // Cargar la imagen con Picasso
         Picasso.get()
-            .load(item.imageResId)  // Aquí pasas la URL de la imagen
-            .into(binding.imageRestaurant)     // Se asigna a la vista de imagen
+            .load(item.imageResId)
+            .into(binding.imageRestaurant)
 
         binding.executePendingBindings() // Para asegurarse de que la vista se actualiza inmediatamente
     }

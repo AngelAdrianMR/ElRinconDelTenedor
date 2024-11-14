@@ -5,15 +5,18 @@ import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import androidx.fragment.app.Fragment
+import androidx.fragment.app.activityViewModels
+import androidx.lifecycle.ViewModelProvider
 import androidx.recyclerview.widget.LinearLayoutManager
 import com.example.elrincondeltenedor.databinding.CollectionScreenBinding
 
 class CollectionFragment : Fragment() {
+
     private var _binding: CollectionScreenBinding? = null
     private val binding get() = _binding!!
 
-    // Lista mutable para almacenar los restaurantes
-    private var restaurantList: MutableList<ItemData_Collection> = mutableListOf()
+    private var restaurantList: MutableList<ItemData> = mutableListOf()
+    private lateinit var restaurantViewModel: ViewModel
 
     override fun onCreateView(
         inflater: LayoutInflater, container: ViewGroup?,
@@ -26,35 +29,32 @@ class CollectionFragment : Fragment() {
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
 
-        // Si hay datos en los argumentos, agrega esos restaurantes
-        val newRestaurants = arguments?.getParcelableArrayList<ItemData_Collection>("restaurantList")
-        if (newRestaurants != null) {
-            restaurantList.addAll(newRestaurants)
+        // Inicializa el ViewModel
+        restaurantViewModel = ViewModelProvider(requireActivity()).get(ViewModel::class.java)
+
+        // Recibe los datos del restaurante desde los argumentos
+        val newRestaurant = arguments?.getSerializable("restaurant_data") as? ItemData
+        newRestaurant?.let {
+            // Verifica si el restaurante ya existe en el ViewModel antes de agregarlo
+            if (restaurantViewModel.getRestaurantByName(it.name) == null) {
+                restaurantViewModel.addRestaurant(it) // Si no existe, lo agregamos
+            }
         }
+
+        // Cargar la lista de restaurantes desde el ViewModel
+        restaurantList.clear()
+        restaurantList.addAll(restaurantViewModel.getAllRestaurants())
 
         // Configura el RecyclerView
         binding.recyclerViewCollection.layoutManager = LinearLayoutManager(context)
         binding.recyclerViewCollection.adapter = RecyclerViewAdapter_Collection(restaurantList)
 
-        // Maneja la visibilidad del mensaje vacío
+        // Controla la visibilidad del mensaje vacío
         binding.textEmpty.visibility = if (restaurantList.isEmpty()) View.VISIBLE else View.GONE
-
-        // Asegúrate de que el menú se actualice si es necesario
-        requireActivity().invalidateOptionsMenu()
     }
 
     override fun onDestroyView() {
         super.onDestroyView()
         _binding = null
-    }
-
-    companion object {
-        fun newInstance(restaurantList: List<ItemData_Collection>): CollectionFragment {
-            val fragment = CollectionFragment()
-            val bundle = Bundle()
-            bundle.putParcelableArrayList("restaurantList", ArrayList(restaurantList))
-            fragment.arguments = bundle
-            return fragment
-        }
     }
 }
