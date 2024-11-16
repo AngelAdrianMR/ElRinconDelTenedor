@@ -24,13 +24,6 @@ class ProfileUserFragment : Fragment(R.layout.screen_user_profile) {
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
 
-        binding.botonHome.setOnClickListener {
-            findNavController().navigate(R.id.home01Fragment)
-        }
-
-        binding.botonAjustes.setOnClickListener {
-            findNavController().navigate(R.id.settingsFragment)
-        }
 
         binding.cerrarSesion.setOnClickListener {
             findNavController().navigate(R.id.loginFragment)

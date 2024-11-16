@@ -71,6 +71,10 @@ class MainActivity : AppCompatActivity() {
                     navController.navigate(R.id.home01Fragment)
                     true
                 }
+                R.id.action_setting -> {
+                    navController.navigate(R.id.settingsFragment)
+                    true
+                }
                 R.id.action_logout -> {
                     navController.navigate(R.id.loginFragment)
                     true
