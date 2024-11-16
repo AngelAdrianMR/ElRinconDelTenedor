@@ -1,23 +1,17 @@
 package com.example.elrincondeltenedor
 
-import android.content.Intent
 import android.os.Bundle
-import android.view.Menu
 import android.view.MenuItem
 import android.view.View
 import android.widget.ImageView
 import android.widget.PopupMenu
 import androidx.activity.enableEdgeToEdge
 import androidx.appcompat.app.AppCompatActivity
-import androidx.navigation.findNavController
+import androidx.appcompat.widget.Toolbar
 import androidx.navigation.fragment.NavHostFragment
-import androidx.navigation.fragment.findNavController
 import androidx.navigation.ui.AppBarConfiguration
-import androidx.navigation.ui.NavigationUI
+import androidx.navigation.ui.setupActionBarWithNavController
 import com.example.elrincondeltenedor.databinding.ActivityMainBinding
-import com.example.elrincondeltenedor.databinding.CreateAccountBinding
-import com.example.elrincondeltenedor.databinding.SettingScreenBinding
-import com.example.elrincondeltenedor.databinding.ToolbarGeneralBinding
 
 class MainActivity : AppCompatActivity() {
 
@@ -29,6 +23,19 @@ class MainActivity : AppCompatActivity() {
 
         binding = ActivityMainBinding.inflate(layoutInflater)
         setContentView(binding.root)
+
+
+        // Configura la Toolbar como soporte para ActionBar
+        val toolbar = findViewById<Toolbar>(R.id.toolBar)
+        setSupportActionBar(toolbar)
+
+        // Vincula el NavController con la Toolbar
+        val navHostFragment = supportFragmentManager.findFragmentById(R.id.nav_host_fragment) as NavHostFragment
+        val navController = navHostFragment.navController
+        val appBarConfiguration = AppBarConfiguration(navController.graph)
+
+        // Configura la navegación con la Toolbar
+        setupActionBarWithNavController(navController, appBarConfiguration)
 
         // Configura el menú flotante
         configureFloatingMenu()
