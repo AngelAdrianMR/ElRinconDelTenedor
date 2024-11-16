@@ -8,19 +8,6 @@
     android:orientation="vertical"
     tools:ignore="UselessParent">
 
-    <EditText
-        android:layout_width="300dp"
-        android:layout_height="48dp"
-        android:layout_gravity="center"
-        android:inputType="textShortMessage"
-        android:hint="@string/buscador"
-        android:textSize="16sp"
-        android:background="@drawable/round_edit_text"
-        android:padding="8dp"
-        android:layout_marginTop="25dp"
-        android:layout_marginBottom="25dp"
-        android:autofillHints="name"/>
-
     <androidx.recyclerview.widget.RecyclerView
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
@@ -32,7 +19,7 @@
     <Button
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:text="Home_01"
+        android:text="@string/home_01"
         android:layout_gravity="center"
         android:id="@+id/boton_Home_01"
         android:layout_marginTop="25dp"/>

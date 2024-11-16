@@ -1,69 +1,62 @@
-<?xml version="1.0" encoding="utf-8"?>
 <RelativeLayout
-    xmlns:app="http://schemas.android.com/apk/res-auto"
-    xmlns:tools="http://schemas.android.com/tools"
     xmlns:android="http://schemas.android.com/apk/res/android"
-    android:layout_height="match_parent"
+    xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
-    android:id="@+id/settings">
-
+    android:layout_height="match_parent"
+    tools:context=".SettingFragment">
 
     <TextView
         android:id="@+id/conf"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_centerHorizontal="true"
-        android:layout_marginTop="20pt"
+        android:layout_marginTop="20dp"
         android:textSize="40sp"
-        android:text="⚙Configuración" />
+        android:text="@string/configuracion" />
 
-    <TextView
-        android:id="@+id/notificaciones"
+    <CheckBox
+        android:id="@+id/checkBoxNotificaciones"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_below="@+id/conf"
+        android:layout_below="@id/conf"
         android:layout_centerHorizontal="true"
-        android:layout_marginTop="30pt"
-        android:textSize="30sp"
-        android:text="Notificaciones" />
+        android:layout_marginTop="70dp"
+        android:text="@string/notificaciones"
+        android:textSize="30sp" />
 
-    <com.google.android.material.chip.Chip
-        android:id="@+id/chip"
+    <CheckBox
+        android:id="@+id/checkBoxUbicacion"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_alignBottom="@id/notificaciones"
-        android:layout_marginLeft="10pt"/>
-
-    <com.google.android.material.chip.Chip
-        android:id="@+id/chip2"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_alignBottom="@id/ubicacion"
-        android:layout_marginLeft="10pt" />
-
-    <TextView
-        android:id="@+id/ubicacion"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_below="@+id/notificaciones"
+        android:layout_below="@id/checkBoxNotificaciones"
         android:layout_centerHorizontal="true"
-        android:layout_marginTop="30pt"
-        android:textSize="30sp"
-        android:text="Ubicación"/>
+        android:layout_marginTop="30dp"
+        android:text="@string/ubicacion"
+        android:textSize="30sp"/>
 
     <TextView
         android:id="@+id/idioma"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
+        android:layout_below="@id/checkBoxUbicacion"
         android:layout_centerHorizontal="true"
-        android:layout_below="@id/ubicacion"
-        android:layout_marginTop="30pt"
+        android:layout_marginTop="30dp"
         android:textSize="30sp"
-        android:text="Idioma" />
+        android:text="@string/idioma" />
 
     <Spinner
         android:id="@+id/spinner"
         android:layout_width="match_parent"
-        android:layout_height="50dp"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="10dp"
         android:layout_below="@id/idioma" />
+
+    <Button
+        android:id="@+id/btnSave"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_below="@id/spinner"
+        android:text="@string/guardar"
+        android:layout_centerHorizontal="true"
+        android:layout_marginTop="50dp" />
 </RelativeLayout>

@@ -22,4 +22,5 @@ class SharedPreferencesManager(context: Context) {
     fun getUserPassword(): String? {
         return sharedPreferences.getString("correo_usuario", "correousuario@gmail.com")
     }
+
 }

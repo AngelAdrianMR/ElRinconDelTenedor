@@ -18,10 +18,13 @@ import com.example.elrincondeltenedor.databinding.ActivityMainBinding
 import com.example.elrincondeltenedor.databinding.CreateAccountBinding
 import com.example.elrincondeltenedor.databinding.SettingScreenBinding
 import com.example.elrincondeltenedor.databinding.ToolbarGeneralBinding
+import java.util.Locale
 
 class MainActivity : AppCompatActivity() {
 
     private lateinit var binding: ActivityMainBinding
+    private lateinit var sharedPreferencesHelper: SharedPreferencesManager
+
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
@@ -32,7 +35,10 @@ class MainActivity : AppCompatActivity() {
 
         // Configura el menú flotante
         configureFloatingMenu()
+
+
     }
+
 
     private fun configureFloatingMenu() {
         val fabMenu = findViewById<ImageView>(R.id.imageMenu)

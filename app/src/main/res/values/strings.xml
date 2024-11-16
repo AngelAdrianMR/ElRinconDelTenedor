@@ -1,4 +1,8 @@
 <resources>
+    <string-array name="languages">
+        <item>English</item>
+        <item>Español</item>
+    </string-array>
     <string name="app_name">ElRinconDelTenedor</string>
     <string name="imageuser">imagen de usuario\n</string>
     <string name="foto_usuario">Foto usuario</string>
@@ -31,4 +35,21 @@
     <string name="nombre_del_restaurantee">Nombre del restaurante</string>
     <string name="guardar_en_coleccionables">Guardar en coleccionables</string>
     <string name="valorar">Valorar</string>
+    <string name="colecciones">Colecciones</string>
+    <string name="valoraci_n">Valoración</string>
+    <string name="valoracion">Valoracion</string>
+    <string name="home_01">Home_01</string>
+    <string name="nombre_usuario">Nombre Usuario</string>
+    <string name="inicio">Inicio</string>
+    <string name="ajustes">Ajustes</string>
+    <string name="cambiar_foto_de_perfil">Cambiar foto de perfil</string>
+    <string name="cerrar_sesion">CERRAR SESIÓN</string>
+    <string name="configuracion">⚙Configuración</string>
+    <string name="notificaciones">Notificaciones</string>
+    <string name="ubicacion">Ubicación</string>
+    <string name="idioma"> Seleccionar Idioma</string>
+    <string name="el_restaurante_no_tiene_valoraciones">El restaurante no tiene valoraciones.</string>
+    <string name="valorame">Valorame:</string>
+    <string name="escribe_aqui_tu_valoracion">Escribe aqui tu valoración...</string>
+    <string name="guardar">Guardar</string>
 </resources>

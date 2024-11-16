@@ -24,7 +24,7 @@
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_marginTop="10pt"
-            android:text="Nombre Usuario" />
+            android:text="@string/nombre_usuario" />
 
         <TextView
             android:id="@+id/correoUsuario"
@@ -38,7 +38,7 @@
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:layout_marginTop="30pt"
-            android:text="Inicio" />
+            android:text="@string/inicio" />
 
 
         <Button
@@ -46,14 +46,14 @@
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:layout_marginTop="10pt"
-            android:text="Ajustes" />
+            android:text="@string/ajustes" />
 
         <TextView
             android:id="@+id/cambiarFoto"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_marginTop="20pt"
-            android:text="Cambiar foto de perfil" />
+            android:text="@string/cambiar_foto_de_perfil" />
 
         <TextView
             android:id="@+id/cerrarSesion"
@@ -61,7 +61,7 @@
             android:layout_height="wrap_content"
             android:layout_marginTop="10pt"
             android:focusable="true"
-            android:text="CERRAR SESIÓN"
+            android:text="@string/cerrar_sesion"
             android:clickable="true"/>
 
     </LinearLayout>
