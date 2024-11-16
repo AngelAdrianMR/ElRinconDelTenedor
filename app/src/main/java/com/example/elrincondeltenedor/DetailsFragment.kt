@@ -45,7 +45,6 @@ class DetailsFragment : Fragment() {
                 val bundle = Bundle().apply {
                     putSerializable("restaurant_data", data) // Pasa el restaurante con sus valoraciones
                 }
-                findNavController().navigate(R.id.action_detailFragment_to_collectionFragment, bundle)
             }
         }
 
