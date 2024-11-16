@@ -43,16 +43,15 @@ class DetailsFragment : Fragment() {
                 restaurantViewModel.addRestaurant(data) // Guarda el restaurante en el ViewModel
 
                 val bundle = Bundle().apply {
-                    putSerializable("restaurant_data", data) // Pasa el restaurante con sus valoraciones
+                    putSerializable("restaurant_data", data)
                 }
-                findNavController().navigate(R.id.action_detailFragment_to_collectionFragment, bundle)
             }
         }
 
         binding.btnValorar.setOnClickListener {
             restaurantData?.let { data ->
                 val bundle = Bundle().apply {
-                    putSerializable("restaurant_data", data) // Pasa el restaurante con sus valoraciones
+                    putSerializable("restaurant_data", data)
                 }
                 findNavController().navigate(R.id.action_detailFragment_to_valoracionesFragment, bundle)
             }
