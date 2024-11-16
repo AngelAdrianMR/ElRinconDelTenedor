@@ -1,5 +1,7 @@
 package com.example.elrincondeltenedor
 
+import android.content.Context
+import android.content.SharedPreferences
 import android.os.Bundle
 import android.view.MenuItem
 import android.view.View
@@ -12,6 +14,7 @@ import androidx.navigation.fragment.NavHostFragment
 import androidx.navigation.ui.AppBarConfiguration
 import androidx.navigation.ui.setupActionBarWithNavController
 import com.example.elrincondeltenedor.databinding.ActivityMainBinding
+import java.util.Locale
 
 class MainActivity : AppCompatActivity() {
 
@@ -36,6 +39,9 @@ class MainActivity : AppCompatActivity() {
 
         // Configura la navegación con la Toolbar
         setupActionBarWithNavController(navController, appBarConfiguration)
+
+        // Configurar el idioma inicial
+        setInitialLanguage()
 
         // Configura el menú flotante
         configureFloatingMenu()
@@ -85,6 +91,19 @@ class MainActivity : AppCompatActivity() {
 
         // Muestra el menú
         popupMenu.show()
+    }
+
+    private fun setInitialLanguage() {
+        // Obtener las preferencias compartidas
+        val sharedPreferences: SharedPreferences = getSharedPreferences("AppPreferences", Context.MODE_PRIVATE)
+        val savedLanguage = sharedPreferences.getString("language", "en") ?: "en"
+
+        // Configurar el idioma
+        val locale = Locale(savedLanguage)
+        Locale.setDefault(locale)
+        val config = resources.configuration
+        config.setLocale(locale)
+        resources.updateConfiguration(config, resources.displayMetrics)
     }
 
     override fun onSupportNavigateUp(): Boolean {

@@ -6,26 +6,26 @@
 
     <item
         android:id="@+id/action_collection"
-        android:title="Collection"
+        android:title="@string/collection"
         app:showAsAction="never"/>
 
     <item
         android:id="@+id/action_profile"
-        android:title="Perfil"
+        android:title="@string/perfil"
         app:showAsAction="never" />
 
     <item
         android:id="@+id/action_home01"
-        android:title="Home01"
+        android:title="@string/home01"
         app:showAsAction="never" />
 
     <item
         android:id="@+id/action_setting"
-        android:title="Ajustes"
+        android:title="@string/ajustes"
         app:showAsAction="never"/>
 
     <item
         android:id="@+id/action_logout"
-        android:title="Cerrar Sesión"
+        android:title="@string/cerrar_sesion"
         app:showAsAction="never" />
 </menu>

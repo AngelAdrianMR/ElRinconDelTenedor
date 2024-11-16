@@ -53,4 +53,8 @@
     <string name="valorame">Rate me:</string>
     <string name="escribe_aqui_tu_valoracion">Write your review here...</string>
     <string name="guardar">Save</string>
+    <string name="idioma_cambiado">Language changed</string>
+    <string name="collection">Collection</string>
+    <string name="perfil">Profile</string>
+    <string name="home01">Home01</string>
 </resources>

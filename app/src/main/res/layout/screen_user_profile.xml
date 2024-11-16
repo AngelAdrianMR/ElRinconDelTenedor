@@ -17,7 +17,8 @@
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_marginTop="20pt"
-            tools:srcCompat="@tools:sample/avatars" />
+            tools:srcCompat="@tools:sample/avatars"
+            android:contentDescription="@string/imageuser"/>
 
         <TextView
             android:id="@+id/nombreUsuario"
@@ -31,22 +32,9 @@
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_marginTop="5pt"
-            android:text="correousuario@gmail.com" />
-
-        <Button
-            android:id="@+id/botonHome"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:layout_marginTop="30pt"
-            android:text="@string/inicio" />
+            android:text="@string/correousuario_gmail_com" />
 
 
-        <Button
-            android:id="@+id/botonAjustes"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:layout_marginTop="10pt"
-            android:text="@string/ajustes" />
 
         <TextView
             android:id="@+id/cambiarFoto"
