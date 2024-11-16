@@ -1,7 +1,10 @@
 package com.example.elrincondeltenedor
 
+import android.Manifest
 import android.content.Context
 import android.content.SharedPreferences
+import android.content.pm.PackageManager
+import android.os.Build
 import android.os.Bundle
 import android.view.MenuItem
 import android.view.View
@@ -10,15 +13,21 @@ import android.widget.PopupMenu
 import androidx.activity.enableEdgeToEdge
 import androidx.appcompat.app.AppCompatActivity
 import androidx.appcompat.widget.Toolbar
+import androidx.core.app.ActivityCompat
+import androidx.core.content.ContextCompat
+import androidx.lifecycle.lifecycleScope
 import androidx.navigation.fragment.NavHostFragment
 import androidx.navigation.ui.AppBarConfiguration
 import androidx.navigation.ui.setupActionBarWithNavController
 import com.example.elrincondeltenedor.databinding.ActivityMainBinding
+import kotlinx.coroutines.delay
+import kotlinx.coroutines.launch
 import java.util.Locale
 
 class MainActivity : AppCompatActivity() {
 
     private lateinit var binding: ActivityMainBinding
+    private lateinit var notificationHelper: NotificationHelper
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
@@ -42,6 +51,13 @@ class MainActivity : AppCompatActivity() {
 
         // Configurar el idioma inicial
         setInitialLanguage()
+
+        // Inicializa NotificationHelper
+        notificationHelper = NotificationHelper(this)
+        notificationHelper.createNotificationChannel()
+
+        checkNotificationPermission()
+        initializeNotificacion()
 
         // Configura el menú flotante
         configureFloatingMenu()
@@ -104,6 +120,25 @@ class MainActivity : AppCompatActivity() {
         val config = resources.configuration
         config.setLocale(locale)
         resources.updateConfiguration(config, resources.displayMetrics)
+    }
+
+    private fun initializeNotificacion() {
+        // Crear y mostrar la notificación después de 5 segundos
+        NotificationHelper(this).apply {
+            createNotificationChannel()
+            lifecycleScope.launch {
+                delay(10000)
+                showNewRestaurantNotification("Nuevo restaurante!", "A abierto un nuevo restaurante en tu zona.")
+            }
+        }
+    }
+
+    private fun checkNotificationPermission() {
+        if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.TIRAMISU) {
+            if (ContextCompat.checkSelfPermission(this, Manifest.permission.POST_NOTIFICATIONS) != PackageManager.PERMISSION_GRANTED) {
+                ActivityCompat.requestPermissions(this, arrayOf(Manifest.permission.POST_NOTIFICATIONS), 1)
+            }
+        }
     }
 
     override fun onSupportNavigateUp(): Boolean {
