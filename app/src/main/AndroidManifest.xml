@@ -18,6 +18,10 @@
         android:supportsRtl="true"
         android:theme="@style/Theme.ElRinconDelTenedor"
         tools:targetApi="tiramisu">
+        <meta-data
+            android:name="com.google.android.geo.API_KEY"
+            android:value="AIzaSyAcISW5w2s642Oe8r0-e9ftryfKh9T4_qY"
+            />
         <activity
             android:name=".CreateAccountActivity"
             android:exported="true">
