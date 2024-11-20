@@ -52,7 +52,6 @@
         android:layout_below="@id/tituloPsw"
         android:layout_centerHorizontal="true"
         android:layout_marginStart="20pt"
-        android:textSize="30sp"
         android:text="@string/introduce_la_contrsenia"
         android:layout_marginTop="10pt"/>
 

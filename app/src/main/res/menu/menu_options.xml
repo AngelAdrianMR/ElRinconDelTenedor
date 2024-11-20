@@ -16,7 +16,7 @@
 
     <item
         android:id="@+id/action_home01"
-        android:title="@string/home01"
+        android:title="@string/mapa"
         app:showAsAction="never" />
 
     <item

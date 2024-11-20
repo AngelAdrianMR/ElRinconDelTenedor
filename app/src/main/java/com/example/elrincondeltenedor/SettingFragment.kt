@@ -1,5 +1,6 @@
 package com.example.elrincondeltenedor
 
+import android.annotation.SuppressLint
 import android.content.Context
 import android.content.SharedPreferences
 import android.os.Bundle
@@ -11,6 +12,7 @@ import android.widget.ArrayAdapter
 import android.widget.CheckBox
 import android.widget.Toast
 import androidx.fragment.app.Fragment
+import androidx.navigation.fragment.findNavController
 import com.example.elrincondeltenedor.databinding.SettingScreenBinding
 import java.util.*
 
@@ -39,6 +41,10 @@ class SettingFragment : Fragment() {
         // Configurar el Spinner de idioma
         setupLanguageSpinner()
 
+        binding.btnSave.setOnClickListener {
+            findNavController().navigate(R.id.settingsFragment)
+        }
+
         return binding.root
     }
 
@@ -51,6 +57,7 @@ class SettingFragment : Fragment() {
         checkBox.setOnCheckedChangeListener { _, isChecked ->
             sharedPreferences.edit().putBoolean(key, isChecked).apply()
             showToast("${checkBox.text} ${if (isChecked) "activado" else "desactivado"}")
+
         }
     }
 
@@ -67,7 +74,6 @@ class SettingFragment : Fragment() {
             binding.spinner.setSelection(selectedIndex)
         }
 
-        // Cambiar idioma al seleccionar uno nuevo
         binding.spinner.onItemSelectedListener = object : AdapterView.OnItemSelectedListener {
             override fun onItemSelected(parent: AdapterView<*>?, view: View?, position: Int, id: Long) {
                 val selectedLanguage = languageCodes[position]
@@ -79,6 +85,7 @@ class SettingFragment : Fragment() {
             }
         }
     }
+
 
     private fun changeLanguage(languageCode: String) {
         // Guardar el idioma seleccionado en SharedPreferences

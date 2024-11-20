@@ -5,8 +5,8 @@ import android.view.ViewGroup
 import androidx.recyclerview.widget.RecyclerView
 import com.example.elrincondeltenedor.databinding.ItemCardviewValoracionesBinding
 
-class RecyclerViewAdapter_Valoraciones(private val items: List<ItemData_Valoraciones>) :
-    RecyclerView.Adapter<RecyclerViewAdapter_Valoraciones.ViewHolder_Valoraciones>() {
+class RecyclerViewAdapter_Valoraciones(private var items: MutableList<ItemData_Valoraciones>) :
+    RecyclerView.Adapter<ViewHolder_Valoraciones>() {
 
     override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): ViewHolder_Valoraciones {
         val binding = ItemCardviewValoracionesBinding.inflate(LayoutInflater.from(parent.context), parent, false)
@@ -20,11 +20,16 @@ class RecyclerViewAdapter_Valoraciones(private val items: List<ItemData_Valoraci
 
     override fun getItemCount(): Int = items.size
 
-    inner class ViewHolder_Valoraciones(private val binding: ItemCardviewValoracionesBinding) :
-        RecyclerView.ViewHolder(binding.root) {
+    // Método para agregar una nueva valoración
+    fun addItem(newItem: ItemData_Valoraciones) {
+        items.add(newItem)
+        notifyItemInserted(items.size - 1) // Notifica al adaptador que se ha agregado un nuevo item
+    }
 
-        fun bind(item: ItemData_Valoraciones) {
-            binding.item = item
-            binding.executePendingBindings()        }
+    // Método para actualizar el adaptador con nuevas valoraciones
+    fun updateItems(newItems: List<ItemData_Valoraciones>) {
+        items.clear()
+        items.addAll(newItems)
+        notifyDataSetChanged()  // Notifica que la lista ha cambiado
     }
 }

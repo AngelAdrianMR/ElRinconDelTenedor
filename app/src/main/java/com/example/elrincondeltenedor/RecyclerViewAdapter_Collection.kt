@@ -5,8 +5,10 @@ import android.view.ViewGroup
 import androidx.recyclerview.widget.RecyclerView
 import com.example.elrincondeltenedor.databinding.CollectionCardviewBinding
 
-class RecyclerViewAdapter_Collection(private val items: List<ItemData>) :
-    RecyclerView.Adapter<RecyclerViewAdapter_Collection.ViewHolder_Collection>() {
+class RecyclerViewAdapter_Collection(
+    private val restaurantList: MutableList<ItemData>,
+    private val onRestaurantClick: (ItemData) -> Unit  // Función para manejar el clic
+) : RecyclerView.Adapter<ViewHolder_Collection>() {
 
     override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): ViewHolder_Collection {
         val binding = CollectionCardviewBinding.inflate(LayoutInflater.from(parent.context), parent, false)
@@ -14,18 +16,10 @@ class RecyclerViewAdapter_Collection(private val items: List<ItemData>) :
     }
 
     override fun onBindViewHolder(holder: ViewHolder_Collection, position: Int) {
-        val currentItem = items[position]
-        holder.bind(currentItem)
+        val restaurant = restaurantList[position]
+        // Pasamos el restaurante y la función de clic
+        holder.bind(restaurant, onRestaurantClick)
     }
 
-    override fun getItemCount(): Int = items.size
-
-    inner class ViewHolder_Collection(private val binding: CollectionCardviewBinding) :
-        RecyclerView.ViewHolder(binding.root) {
-
-        fun bind(item: ItemData) {
-            binding.item = item
-            binding.executePendingBindings()
-        }
-    }
+    override fun getItemCount(): Int = restaurantList.size
 }

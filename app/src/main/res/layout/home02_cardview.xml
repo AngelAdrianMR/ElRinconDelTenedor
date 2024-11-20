@@ -42,15 +42,15 @@
                     android:id="@+id/descriptionRestaurant"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    android:text="@string/valoraci_n"
+                    android:text="@string/descripci_n_breve_del_restaurante"
                     android:textSize="14sp"
                     android:textColor="@android:color/darker_gray"
                     android:layout_marginTop="4dp" />
 
             </LinearLayout>
                 <ImageView
-                    android:layout_width="55sp"
-                    android:layout_height="55sp"
+                    android:layout_width="80dp"
+                    android:layout_height="80dp"
                     android:id="@+id/imageRestaurant"
                     android:contentDescription="@string/imagen_del_restaurante"
                     android:layout_gravity="center"

@@ -1,10 +1,10 @@
 package com.example.elrincondeltenedor
 
 import android.os.Bundle
-import android.text.TextUtils
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
+import android.widget.Toast
 import androidx.fragment.app.Fragment
 import androidx.lifecycle.ViewModelProvider
 import androidx.recyclerview.widget.LinearLayoutManager
@@ -24,6 +24,36 @@ class ValoracionesFragment : Fragment() {
         savedInstanceState: Bundle?
     ): View {
         _binding = ValoracionesRecyclerviewBinding.inflate(inflater, container, false)
+
+        // Inicializamos el RecyclerView con una lista vacía de valoraciones
+        valoracionesAdapter = RecyclerViewAdapter_Valoraciones(mutableListOf())
+        binding.recyclerViewRestaurant.layoutManager = LinearLayoutManager(context)
+        binding.recyclerViewRestaurant.adapter = valoracionesAdapter
+
+        // Configura el botón de "valórame"
+        binding.btnValorame.setOnClickListener {
+            val valoracion = binding.editTextValoracion.text.toString().trim()
+            if (valoracion.isNotEmpty()) {
+                // Crear una nueva valoración
+                val nuevaValoracion = ItemData_Valoraciones("Usuario", valoracion)
+
+                // Agregar la valoración al ViewModel
+                restaurantViewModel.addValoracionToRestaurant(currentRestaurant.name, nuevaValoracion)
+
+                // Actualizar el RecyclerView con las valoraciones
+                actualizarValoraciones()
+
+                // Limpiar el campo de texto
+                binding.editTextValoracion.text.clear()
+
+                // Ocultar el mensaje de "no hay valoraciones"
+                binding.textEmpty.visibility = View.GONE
+            } else {
+                // Si el campo de texto está vacío, mostrar un mensaje de error
+                Toast.makeText(context, "Por favor, escribe una valoración.", Toast.LENGTH_SHORT).show()
+            }
+        }
+
         return binding.root
     }
 
@@ -33,40 +63,24 @@ class ValoracionesFragment : Fragment() {
         // Obtener el ViewModel
         restaurantViewModel = ViewModelProvider(requireActivity()).get(ViewModel::class.java)
 
-        // Recibe el restaurante de los argumentos
+        // Recibir el restaurante desde los argumentos
         currentRestaurant = arguments?.getSerializable("restaurant_data") as? ItemData
             ?: return
 
-        // Verifica si el restaurante existe en el ViewModel
-        currentRestaurant = restaurantViewModel.getRestaurantByName(currentRestaurant.name) ?: return
+        // Inicializar el RecyclerView con las valoraciones actuales
+        actualizarValoraciones()
+    }
 
-        // Configura el RecyclerView con las valoraciones del restaurante
-        binding.recyclerViewRestaurant.layoutManager = LinearLayoutManager(context)
-        valoracionesAdapter = RecyclerViewAdapter_Valoraciones(currentRestaurant.valoraciones)
-        binding.recyclerViewRestaurant.adapter = valoracionesAdapter
+    // Función para actualizar el RecyclerView con las valoraciones
+    private fun actualizarValoraciones() {
+        // Obtener las valoraciones del restaurante desde el ViewModel
+        val valoraciones = restaurantViewModel.getValoracionesForRestaurant(currentRestaurant.name)
 
-        // Verifica si ya hay valoraciones y muestra un mensaje si no hay
-        binding.textEmpty.visibility = if (currentRestaurant.valoraciones.isEmpty()) View.VISIBLE else View.GONE
+        // Actualizar el adaptador con las valoraciones obtenidas
+        valoracionesAdapter.updateItems(valoraciones)
 
-        // Configura el botón de valoración
-        binding.btnValorar.setOnClickListener {
-            val valoracion = binding.editTextValoracion.text.toString().trim()
-
-            if (valoracion.isNotEmpty()) {
-                // Añade la nueva valoración a la lista de valoraciones del restaurante
-                val nuevaValoracion = ItemData_Valoraciones("Usuario", valoracion)
-                currentRestaurant.valoraciones.add(nuevaValoracion)
-
-                // Actualiza el RecyclerView
-                valoracionesAdapter.notifyDataSetChanged()
-
-                // Limpia el campo de texto
-                binding.editTextValoracion.text.clear()
-
-                // Verifica si hay valoraciones y oculta el mensaje de "no tiene valoraciones"
-                binding.textEmpty.visibility = if (currentRestaurant.valoraciones.isEmpty()) View.VISIBLE else View.GONE
-            }
-        }
+        // Si no hay valoraciones, mostrar el mensaje de "no hay valoraciones"
+        binding.textEmpty.visibility = if (valoraciones.isEmpty()) View.VISIBLE else View.GONE
     }
 
     override fun onDestroyView() {
@@ -74,5 +88,3 @@ class ValoracionesFragment : Fragment() {
         _binding = null
     }
 }
-
-

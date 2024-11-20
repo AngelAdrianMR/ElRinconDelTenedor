@@ -57,4 +57,33 @@
     <string name="collection">Collection</string>
     <string name="perfil">Profile</string>
     <string name="home01">Home01</string>
+    <string name="mapa">Map</string>
+    <string name="restaurantes_por_zona">Restaurants by area.</string>
+    <string name="perfil_de_usuario">User profile</string>
+    <string name="configuraci_n">Settings</string>
+    <string name="login">Login</string>
+    <string name="valoraciones">Reviews</string>
+    <string name="detalles_del_restaurante">Restaurant Details</string>
+    <string name="descripcion01">Selected tapas restaurant renovated by the sea</string>
+    <string name="descripcion02">The best tapas and dishes for vegans, also offering a traditional menu.</string>
+    <string name="descripcion03">Family restaurant since 1982, with exquisite Galician products.</string>
+    <string name="descripcion04">Relaxed restaurant specializing in seafood and desserts made with local ingredients.</string>
+    <string name="descripcion05">A high-end restaurant in the city center.</string>
+    <string name="descripcion06">All types of oriental food with constant menu changes.</string>
+    <string name="descripcion07">Family restaurant specializing in Italian food.</string>
+    <string name="descripcion08">Classic restaurant specializing in Dutch cuisine.</string>
+    <string name="descripcion09">Fish, seafood, and rice dishes in an elegant glazed dining room and terrace overlooking the sea.</string>
+    <string name="descripcion10">Tapas, platters of cold cuts, and grilled fish in a rustic whitewashed restaurant with a tree-lined terrace.</string>
+    <string name="descripcion11">Warm lighting and vintage homey decorations in a chain of traditional Italian cuisine restaurants.</string>
+    <string name="valoracion01">Excellent food and atmosphere.</string>
+    <string name="valoracion02">A very cozy and tasty place.</string>
+    <string name="valoracion03">A very beautiful place and incredible food.</string>
+    <string name="valoracion04">I love the vegan tapas.</string>
+    <string name="valoracion05">Galician food is authentic and delicious.</string>
+    <string name="valoracion06">An excellent choice for traditional food.</string>
+    <string name="valoracion07">I love the fresh fish, very well prepared.</string>
+    <string name="valoracion08">The ambiance is perfect for a beach day.</string>
+    <string name="valoracion09">The grilled meat is the best.</string>
+    <string name="valoracion10">An asador with very good cuts of meat.</string>
+
 </resources>

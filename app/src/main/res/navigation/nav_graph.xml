@@ -8,7 +8,7 @@
     <fragment
         android:id="@+id/home01Fragment"
         android:name="com.example.elrincondeltenedor.Home01Fragment"
-        android:label="Home 01"
+        android:label="@string/mapa"
         tools:layout="@layout/home_screen_01" >
         <action
             android:id="@+id/action_home01Fragment_to_home02Fragment"
@@ -30,7 +30,7 @@
     <fragment
         android:id="@+id/home02Fragment"
         android:name="com.example.elrincondeltenedor.Home02Fragment"
-        android:label="Home 02"
+        android:label="@string/restaurantes_por_zona"
         tools:layout="@layout/screen_home_02" >
         <action
             android:id="@+id/action_home02Fragment_to_home01Fragment"
@@ -49,7 +49,7 @@
     <fragment
         android:id="@+id/profileUserFragment"
         android:name="com.example.elrincondeltenedor.ProfileUserFragment"
-        android:label="Profile User"
+        android:label="@string/perfil_de_usuario"
         tools:layout="@layout/screen_user_profile" >
         <action
             android:id="@+id/action_profileUserFragment_to_loginFragment"
@@ -59,12 +59,12 @@
     <fragment
         android:id="@+id/settingsFragment"
         android:name="com.example.elrincondeltenedor.SettingFragment"
-        android:label="Settings"
+        android:label="@string/configuraci_n"
         tools:layout="@layout/setting_screen" />
 
     <fragment
         android:id="@+id/loginFragment"
-        android:label="Settings"
+        android:label="@string/login"
         tools:layout="@layout/login_screen" >
         <action
             android:id="@+id/action_loginFragment_to_home01Fragment"
@@ -74,7 +74,7 @@
     <fragment
         android:id="@+id/valoracionesFragment"
         android:name="com.example.elrincondeltenedor.ValoracionesFragment"
-        android:label="Settings"
+        android:label="@string/valoraciones"
         tools:layout="@layout/valoraciones_recyclerview" >
         <action
             android:id="@+id/action_valoracionesFragment_to_home01Fragment"
@@ -90,7 +90,7 @@
     <fragment
         android:id="@+id/detailFragment"
         android:name="com.example.elrincondeltenedor.DetailsFragment"
-        android:label="Settings"
+        android:label="@string/detalles_del_restaurante"
         tools:layout="@layout/restaurant_detail_screen" >
         <action
             android:id="@+id/action_detailFragment_to_collectionFragment"
@@ -103,7 +103,7 @@
     <fragment
         android:id="@+id/collectionFragment"
         android:name="com.example.elrincondeltenedor.CollectionFragment"
-        android:label="Collection"
+        android:label="@string/collection"
         tools:layout="@layout/collection_screen" >
         <action
             android:id="@+id/action_collectionFragment_to_profileUserFragment"
@@ -111,6 +111,9 @@
         <action
             android:id="@+id/action_collectionFragment_to_settingsFragment"
             app:destination="@id/settingsFragment" />
+        <action
+            android:id="@+id/action_collectionFragment_to_detailFragment"
+            app:destination="@id/detailFragment" />
     </fragment>
 
 

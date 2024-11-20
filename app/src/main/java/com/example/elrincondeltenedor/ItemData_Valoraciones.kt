@@ -4,5 +4,5 @@ package com.example.elrincondeltenedor
     data class ItemData_Valoraciones(
         val usuario: String,
         val valoracion: String
-    )
+    ) : Serializable
 
