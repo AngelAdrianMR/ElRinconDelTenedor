@@ -32,7 +32,7 @@
             android:id="@+id/TituloCreacionCuenta"
             app:layout_constraintTop_toBottomOf="@+id/logo"
             app:layout_constraintBottom_toTopOf="@+id/EmailCreacionCuenta"
-            android:text="@string/sing_in"
+            android:text="@string/crear_cuenta"
             android:paddingBottom="20sp"
             android:textSize="30sp"
             android:layout_marginBottom="15dp"/>
@@ -94,7 +94,7 @@
             android:id="@+id/botonCrearCuenta"
             app:layout_constraintTop_toBottomOf="@id/IntroduccionPassword"
             app:layout_constraintBottom_toTopOf="@id/OpcionesCreacionCuenta"
-            android:text="@string/sing_in"
+            android:text="@string/crear_cuenta"
             android:layout_marginBottom="15dp"/>
 
         <TextView
@@ -155,7 +155,7 @@
             app:layout_constraintTop_toBottomOf="@+id/botonCrearCuentaTwitter"
             app:layout_constraintBottom_toBottomOf="parent"
             app:layout_constraintEnd_toEndOf="parent"
-            android:text="@string/singup"
+            android:text="@string/login"
             android:autoLink="web"
             android:focusable="true"
             android:clickable="true"

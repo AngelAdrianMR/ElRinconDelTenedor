@@ -20,6 +20,9 @@ import androidx.navigation.fragment.NavHostFragment
 import androidx.navigation.ui.AppBarConfiguration
 import androidx.navigation.ui.setupActionBarWithNavController
 import com.example.elrincondeltenedor.databinding.ActivityMainBinding
+import com.google.firebase.auth.FirebaseAuth
+import com.google.firebase.auth.ktx.auth
+import com.google.firebase.ktx.Firebase
 import kotlinx.coroutines.delay
 import kotlinx.coroutines.launch
 import java.util.Locale
@@ -28,6 +31,7 @@ class MainActivity : AppCompatActivity() {
 
     private lateinit var binding: ActivityMainBinding
     private lateinit var notificationHelper: NotificationHelper
+    private lateinit var auth: FirebaseAuth
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
@@ -59,9 +63,13 @@ class MainActivity : AppCompatActivity() {
         checkNotificationPermission()
         initializeNotificacion()
 
+        // Initialize Firebase Auth
+        auth = Firebase.auth
+
         // Configura el menú flotante
         configureFloatingMenu()
     }
+
 
     private fun configureFloatingMenu() {
         val fabMenu = findViewById<ImageView>(R.id.imageMenu)

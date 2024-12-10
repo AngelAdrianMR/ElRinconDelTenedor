@@ -1,0 +1,29 @@
+{
+  "project_info": {
+    "project_number": "111890945313",
+    "project_id": "elrincondeltenedor",
+    "storage_bucket": "elrincondeltenedor.firebasestorage.app"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:111890945313:android:e51735f19a94fdc6f8da60",
+        "android_client_info": {
+          "package_name": "com.example.elrincondeltenedor"
+        }
+      },
+      "oauth_client": [],
+      "api_key": [
+        {
+          "current_key": "AIzaSyA964nYV8TxdJEBKVMg1GV3DZ0oB-P5Gig"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": []
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}
