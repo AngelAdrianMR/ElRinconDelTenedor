@@ -2,6 +2,7 @@ package com.example.elrincondeltenedor
 
 import android.Manifest
 import android.content.Context
+import android.content.Intent
 import android.content.SharedPreferences
 import android.content.pm.PackageManager
 import android.os.Build
@@ -106,7 +107,7 @@ class MainActivity : AppCompatActivity() {
                     true
                 }
                 R.id.action_logout -> {
-                    navController.navigate(R.id.loginFragment)
+                    logoutUser()
                     true
                 }
                 else -> false
@@ -154,4 +155,15 @@ class MainActivity : AppCompatActivity() {
         val navController = navHostFragment.navController
         return navController.navigateUp() || super.onSupportNavigateUp()
     }
+
+    private fun logoutUser() {
+        // Llama al método signOut de Firebase Auth
+        Firebase.auth.signOut()
+
+        // Redirige al usuario a la pantalla de inicio de sesión
+        val intent = Intent(this, LoginActivity::class.java)
+        startActivity(intent)
+        finish() // Cierra la actividad actual para evitar que el usuario vuelva con el botón atrás
+    }
+
 }
