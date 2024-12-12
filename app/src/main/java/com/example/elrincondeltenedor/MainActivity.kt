@@ -66,7 +66,7 @@ class MainActivity : AppCompatActivity() {
 
         // Initialize Firebase Auth
         auth = Firebase.auth
-
+        getCurrentUser()
         // Configura el menú flotante
         configureFloatingMenu()
     }
@@ -165,5 +165,22 @@ class MainActivity : AppCompatActivity() {
         startActivity(intent)
         finish() // Cierra la actividad actual para evitar que el usuario vuelva con el botón atrás
     }
+
+    private fun getCurrentUser() {
+        val user = Firebase.auth.currentUser
+        user?.let {
+            // Name, email address, and profile photo Url
+            val name = it.displayName
+            val email = it.email
+            val photoUrl = it.photoUrl
+
+
+            // The user's ID, unique to the Firebase project. Do NOT use this value to
+            // authenticate with your backend server, if you have one. Use
+            // FirebaseUser.getIdToken() instead.
+            val uid = it.uid
+        }
+    }
+
 
 }
