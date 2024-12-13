@@ -33,7 +33,7 @@
         android:layout_centerHorizontal="true"
         android:layout_marginStart="20pt"
         android:layout_marginTop="10pt"
-        android:text="@string/introduce_tu_correo_electronico"/>
+        android:hint="@string/introduce_tu_correo_electronico"/>
 
     <TextView
         android:id="@+id/tituloPsw"
@@ -52,7 +52,7 @@
         android:layout_below="@id/tituloPsw"
         android:layout_centerHorizontal="true"
         android:layout_marginStart="20pt"
-        android:text="@string/introduce_la_contrsenia"
+        android:hint="@string/introduce_la_contrsenia"
         android:layout_marginTop="10pt"/>
 
     <Button

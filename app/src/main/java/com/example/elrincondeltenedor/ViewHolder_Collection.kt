@@ -4,9 +4,11 @@ import androidx.recyclerview.widget.RecyclerView
 import com.example.elrincondeltenedor.databinding.CollectionCardviewBinding
 import com.squareup.picasso.Picasso
 
-class ViewHolder_Collection(private val binding: CollectionCardviewBinding) : RecyclerView.ViewHolder(binding.root) {
+class ViewHolder_Collection(
+    private val binding: CollectionCardviewBinding
+) : RecyclerView.ViewHolder(binding.root) {
 
-    fun bind(item: ItemData, onClick: (ItemData) -> Unit) {
+    fun bind(item: ItemData_Collection, onClick: (ItemData_Collection) -> Unit) {
         binding.item = item
         binding.executePendingBindings()
 

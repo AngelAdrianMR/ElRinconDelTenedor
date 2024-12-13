@@ -55,7 +55,7 @@ class Home02Fragment : Fragment() {
         val db = FirebaseFirestore.getInstance()
 
         // Obtener todos los restaurantes desde Firestore
-        val restaurantCollection = db.collection("restaurants") // Asegúrate de que la colección de Firestore se llama "restaurants"
+        val restaurantCollection = db.collection("restaurantes")
         val snapshot = restaurantCollection.get().await()
 
         val restaurants = snapshot.documents.mapNotNull { document ->
