@@ -5,20 +5,23 @@ import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import androidx.fragment.app.Fragment
-import androidx.fragment.app.findFragment
-import androidx.fragment.app.activityViewModels
 import androidx.lifecycle.ViewModelProvider
-import androidx.navigation.fragment.findNavController
+import androidx.navigation.fragment.NavHostFragment.Companion.findNavController
 import androidx.recyclerview.widget.LinearLayoutManager
 import com.example.elrincondeltenedor.databinding.CollectionScreenBinding
+import com.google.firebase.firestore.FirebaseFirestore
+import com.google.firebase.firestore.ListenerRegistration
+import com.google.firebase.firestore.ktx.firestore
+import com.google.firebase.ktx.Firebase
 
 class CollectionFragment : Fragment() {
 
     private var _binding: CollectionScreenBinding? = null
     private val binding get() = _binding!!
 
-    private var restaurantList: MutableList<ItemData> = mutableListOf()
-    private lateinit var restaurantViewModel: ViewModel
+    private lateinit var firestore: FirebaseFirestore
+    private lateinit var restaurantAdapter: RecyclerViewAdapter_Collection
+    private var listenerRegistration: ListenerRegistration? = null
 
     override fun onCreateView(
         inflater: LayoutInflater, container: ViewGroup?,
@@ -31,39 +34,73 @@ class CollectionFragment : Fragment() {
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
 
-        // Inicializa el ViewModel
-        restaurantViewModel = ViewModelProvider(requireActivity()).get(ViewModel::class.java)
-
-        // Recibe los datos del restaurante desde los argumentos (si los hay)
-        val newRestaurant = arguments?.getSerializable("restaurant_data") as? ItemData
-        newRestaurant?.let {
-            // Verifica si el restaurante ya existe en el ViewModel antes de agregarlo
-            if (restaurantViewModel.getRestaurantByName(it.name) == null) {
-                restaurantViewModel.addRestaurant(it) // Si no existe, lo agregamos
-            }
-        }
-
-        // Cargar la lista de restaurantes desde el ViewModel
-        restaurantList.clear()
-        restaurantList.addAll(restaurantViewModel.getAllRestaurants())
+        // Inicializa Firestore
+        firestore = Firebase.firestore
 
         // Configura el RecyclerView
         binding.recyclerViewCollection.layoutManager = LinearLayoutManager(context)
-        binding.recyclerViewCollection.adapter = RecyclerViewAdapter_Collection(restaurantList) { restaurant ->
-            // Este bloque se ejecutará cuando se haga clic en un restaurante
+        restaurantAdapter = RecyclerViewAdapter_Collection(mutableListOf()) { restaurant ->
+            // Navega al DetailsFragment con los datos del restaurante seleccionado
             val bundle = Bundle()
-            bundle.putSerializable("restaurant_data", restaurant)  // Pasa los datos del restaurante
-
-            // Navega al DetailsFragment con los datos del restaurante
-            findNavController().navigate(R.id.action_collectionFragment_to_detailFragment, bundle)
+            bundle.putParcelable("restaurant_data", restaurant)
+            findNavController(detailFragment)
         }
+        binding.recyclerViewCollection.adapter = restaurantAdapter
 
-        // Controla la visibilidad del mensaje vacío
-        binding.textEmpty.visibility = if (restaurantList.isEmpty()) View.VISIBLE else View.GONE
+        // Observa los cambios en Firestore
+        listenToRestaurantUpdates()
+
+        // Verifica si se pasan datos de un nuevo restaurante
+        val newRestaurant = arguments?.getParcelable<ItemData_Collection>("restaurant_data")
+        newRestaurant?.let {
+            addRestaurantToFirestore(it) // Agrega el nuevo restaurante
+        }
+    }
+
+    /**
+     * Agrega un restaurante a Firestore.
+     */
+    private fun addRestaurantToFirestore(restaurant: ItemData_Collection) {
+        val restaurantData = hashMapOf(
+            "text" to restaurant.text,
+            "description" to restaurant.description,
+            "imageResId" to restaurant.imageResId
+        )
+        firestore.collection("restaurants")
+            .add(restaurantData)
+            .addOnSuccessListener {
+                // Éxito al agregar
+            }
+            .addOnFailureListener { e ->
+                // Manejo del error
+                e.printStackTrace()
+            }
+    }
+
+    /**
+     * Escucha las actualizaciones de Firestore y actualiza el RecyclerView.
+     */
+    private fun listenToRestaurantUpdates() {
+        listenerRegistration = firestore.collection("restaurants")
+            .addSnapshotListener { snapshot, error ->
+                if (error != null || snapshot == null) {
+                    error?.printStackTrace()
+                    return@addSnapshotListener
+                }
+                // Convierte los datos de Firestore a objetos ItemData_Collection
+                val restaurantList = snapshot.documents.mapNotNull { doc ->
+                    doc.toObject(ItemData_Collection::class.java)
+                }
+                restaurantAdapter.updateData(restaurantList)
+
+                // Controla la visibilidad del mensaje de lista vacía
+                binding.textEmpty.visibility = if (restaurantList.isEmpty()) View.VISIBLE else View.GONE
+            }
     }
 
     override fun onDestroyView() {
         super.onDestroyView()
         _binding = null
+        listenerRegistration?.remove() // Detiene la escucha de Firestore
     }
 }

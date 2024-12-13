@@ -9,6 +9,7 @@ import androidx.fragment.app.Fragment
 import androidx.lifecycle.ViewModelProvider
 import androidx.navigation.fragment.findNavController
 import com.example.elrincondeltenedor.databinding.RestaurantDetailScreenBinding
+import com.google.firebase.firestore.FirebaseFirestore
 
 class DetailsFragment : Fragment() {
 
@@ -16,6 +17,7 @@ class DetailsFragment : Fragment() {
     private val binding get() = _binding!!
 
     private lateinit var restaurantViewModel: ViewModel
+    private val db = FirebaseFirestore.getInstance() // Instancia de Firestore
 
     override fun onCreateView(
         inflater: LayoutInflater, container: ViewGroup?,
@@ -31,35 +33,51 @@ class DetailsFragment : Fragment() {
         // Obtener el ViewModel
         restaurantViewModel = ViewModelProvider(requireActivity()).get(ViewModel::class.java)
 
-        // Recibe el restaurante de los argumentos
-        val restaurantData = arguments?.getSerializable("restaurant_data") as? ItemData
-        restaurantData?.let {
-            // Asigna los datos de ItemData a las vistas
-            binding.nombreRest.text = it.name
-            binding.descripcionRest.text = it.description
-            binding.imagenRest.setImageResource(it.imageResId)
+        // Obtener el ID del restaurante desde los argumentos
+        val restaurantId = arguments?.getString("restaurant_id")
+
+        // Si hay un ID de restaurante, cargar los datos de Firestore
+        restaurantId?.let { id ->
+            loadRestaurantData(id)
         }
 
         // Botón Guardar: Guarda el restaurante en el ViewModel
         binding.btnGuardar.setOnClickListener {
-            restaurantData?.let { data ->
-                restaurantViewModel.addRestaurant(data) // Guarda el restaurante en el ViewModel
-                Toast.makeText(context, "Restaurante guardado", Toast.LENGTH_SHORT).show()
-
-                // Opcional: Puedes hacer algo adicional si es necesario después de guardar el restaurante
-            }
+            // Aquí puedes agregar lógica para guardar el restaurante en tu ViewModel si es necesario
+            Toast.makeText(context, "Restaurante guardado", Toast.LENGTH_SHORT).show()
         }
 
         // Botón Valorar: Navega al ValoracionesFragment
         binding.btnValorar.setOnClickListener {
-            restaurantData?.let { data ->
-                val bundle = Bundle().apply {
-                    putSerializable("restaurant_data", data)
-                }
-                // Navega al fragmento de valoraciones con los datos del restaurante
-                findNavController().navigate(R.id.action_detailFragment_to_valoracionesFragment, bundle)
+            val bundle = Bundle().apply {
+                putString("restaurant_id", restaurantId)
             }
+            findNavController().navigate(R.id.action_detailFragment_to_valoracionesFragment, bundle)
         }
+    }
+
+    // Método para cargar los datos del restaurante desde Firestore
+    private fun loadRestaurantData(restaurantId: String) {
+        db.collection("restaurantes").document(restaurantId)
+            .get()
+            .addOnSuccessListener { document ->
+                if (document != null && document.exists()) {
+                    val name = document.getString("name") ?: "Nombre no disponible"
+                    val description = document.getString("description") ?: "Descripción no disponible"
+                    val imageResId = document.getString("imageResId")?.toInt() ?: R.drawable.casa // Puedes usar un valor predeterminado
+                    // Puedes añadir la lógica para las valoraciones aquí
+
+                    // Asignar los datos a las vistas
+                    binding.nombreRest.text = name
+                    binding.descripcionRest.text = description
+                    binding.imagenRest.setImageResource(imageResId)
+                } else {
+                    Toast.makeText(context, "Restaurante no encontrado", Toast.LENGTH_SHORT).show()
+                }
+            }
+            .addOnFailureListener { exception ->
+                Toast.makeText(context, "Error al cargar los datos: ${exception.message}", Toast.LENGTH_SHORT).show()
+            }
     }
 
     override fun onDestroyView() {
