@@ -104,35 +104,12 @@
             app:layout_constraintEnd_toEndOf="parent"
             android:id="@+id/OpcionesCreacionCuenta"
             app:layout_constraintTop_toBottomOf="@+id/botonCrearCuenta"
-            app:layout_constraintBottom_toTopOf="@id/botonCrearCuentaTwitter"
+            app:layout_constraintBottom_toTopOf="@id/ForgotPassword"
             android:text="@string/o_inicia_sesi_n_a_trav_s_de"
             android:textColor="@color/grey"
             android:textSize="11sp"
             android:layout_marginBottom="15dp"/>
 
-        <Button
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            app:layout_constraintStart_toStartOf="parent"
-            android:id="@+id/botonCrearCuentaTwitter"
-            app:layout_constraintTop_toBottomOf="@id/OpcionesCreacionCuenta"
-            app:layout_constraintBottom_toTopOf="@id/ForgotPassword"
-            app:layout_constraintEnd_toStartOf="@+id/botonCrearCuentaGoogle"
-            android:text="@string/twitter"
-            android:backgroundTint="@color/bluecian"
-            android:layout_marginBottom="15dp"/>
-
-        <Button
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            app:layout_constraintEnd_toEndOf="parent"
-            android:id="@+id/botonCrearCuentaGoogle"
-            app:layout_constraintTop_toBottomOf="@id/OpcionesCreacionCuenta"
-            app:layout_constraintBottom_toTopOf="@id/SingUp"
-            app:layout_constraintStart_toEndOf="@+id/botonCrearCuentaTwitter"
-            android:text="@string/google"
-            android:backgroundTint="@color/red"
-            />
 
         <TextView
             android:layout_width="wrap_content"

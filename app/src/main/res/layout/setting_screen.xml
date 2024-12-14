@@ -6,20 +6,12 @@
     android:layout_height="match_parent"
     tools:context=".SettingFragment">
 
-    <TextView
-        android:id="@+id/conf"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_centerHorizontal="true"
-        android:layout_marginTop="20dp"
-        android:textSize="40sp"
-        android:text="@string/configuracion" />
+
 
     <CheckBox
         android:id="@+id/checkBoxNotificaciones"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_below="@id/conf"
         android:layout_centerHorizontal="true"
         android:layout_marginTop="70dp"
         android:text="@string/notificaciones"
