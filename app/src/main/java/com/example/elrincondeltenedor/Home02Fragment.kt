@@ -32,15 +32,15 @@ class Home02Fragment : Fragment() {
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
 
-        // Inicializa el RecyclerView y configura el layout manager
+        // Configuración del RecyclerView
         binding.recyclerViewHome02.layoutManager = LinearLayoutManager(requireContext())
 
-        // Carga los datos desde Firestore de forma asincrónica
+        // Cargar datos desde Firestore
         lifecycleScope.launch {
             loadRestaurant()
         }
 
-        // Configura el botón de navegación a Home01Fragment
+        // Navegación al Home01Fragment
         binding.botonHome01.setOnClickListener {
             findNavController().navigate(R.id.action_home02Fragment_to_home01Fragment)
         }
@@ -54,36 +54,43 @@ class Home02Fragment : Fragment() {
     private suspend fun loadRestaurant() {
         val db = FirebaseFirestore.getInstance()
 
-        // Obtener todos los restaurantes desde Firestore
-        val restaurantCollection = db.collection("restaurantes")
-        val snapshot = restaurantCollection.get().await()
+        try {
+            val restaurantCollection = db.collection("restaurantes")
+            val snapshot = restaurantCollection.get().await()
 
-        val restaurants = snapshot.documents.mapNotNull { document ->
-            val name = document.getString("name") ?: return@mapNotNull null
-            val description = document.getString("description") ?: ""
-            val imageResId = R.drawable.casa // Coloca una imagen por defecto mientras se recupera la URL de la imagen
-            ItemData(
-                name,
-                imageResId,
-                description
-            )
+            val restaurants = snapshot.documents.mapNotNull { document ->
+                val name = document.getString("name")
+                val description = document.getString("description") ?: ""
+                val imageUrl = document.getString("imageResId")
+
+                if (name != null) {
+                    Log.d("Firestore", "Loaded: $name, $description, $imageUrl")
+                    ItemData(name, imageUrl ?: "", description)
+                } else {
+                    Log.e("Firestore", "Missing required fields in document: ${document.id}")
+                    null
+                }
+            }
+
+            // Configurar el RecyclerView con los datos obtenidos
+            setupRecyclerView(restaurants)
+
+        } catch (e: Exception) {
+            Log.e("Firestore", "Error loading restaurants: ${e.message}", e)
         }
-
-        setupRecyclerView(restaurants)
     }
+
 
     private fun setupRecyclerView(restaurants: List<ItemData>) {
         if (restaurants.isNotEmpty()) {
             adapter = RecyclerViewAdapter_Home02(restaurants, ::onRestaurantClicked)
             binding.recyclerViewHome02.adapter = adapter
         } else {
-            // Si no hay datos, muestra un mensaje
             Log.e("RecyclerView", "No data available for the restaurant list.")
         }
     }
 
     private fun onRestaurantClicked(itemData: ItemData) {
-        // Crea el Bundle y pasa el ItemData a detailFragment
         val bundle = Bundle().apply {
             putSerializable("restaurant_data", itemData)
         }

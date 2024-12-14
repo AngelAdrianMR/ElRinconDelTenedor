@@ -1,16 +1,20 @@
 package com.example.elrincondeltenedor
 
+import android.annotation.SuppressLint
 import android.view.LayoutInflater
 import android.view.ViewGroup
 import androidx.recyclerview.widget.RecyclerView
 import com.example.elrincondeltenedor.databinding.CollectionCardviewBinding
+import com.squareup.picasso.Picasso
 
 class RecyclerViewAdapter_Collection(
-    private var items: MutableList<ItemData_Collection>, // Usamos ItemData_Collection
-    private val onItemClicked: (ItemData_Collection) -> Unit // Usamos ItemData_Collection
+    private var items: MutableList<ItemData>,
+    private val onItemClicked: (ItemData) -> Unit
 ) : RecyclerView.Adapter<ViewHolder_Collection>() {
 
-    fun updateData(newItems: List<ItemData_Collection>) { // Usamos ItemData_Collection
+    // Actualiza los datos del adaptador
+    @SuppressLint("NotifyDataSetChanged")
+    fun updateData(newItems: List<ItemData>) {
         items.clear()
         items.addAll(newItems)
         notifyDataSetChanged()
@@ -29,4 +33,6 @@ class RecyclerViewAdapter_Collection(
     }
 
     override fun getItemCount(): Int = items.size
+
+
 }

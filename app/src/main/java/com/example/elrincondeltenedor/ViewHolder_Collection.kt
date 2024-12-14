@@ -8,18 +8,23 @@ class ViewHolder_Collection(
     private val binding: CollectionCardviewBinding
 ) : RecyclerView.ViewHolder(binding.root) {
 
-    fun bind(item: ItemData_Collection, onClick: (ItemData_Collection) -> Unit) {
-        binding.item = item
-        binding.executePendingBindings()
+    fun bind(item: ItemData, onClick: (ItemData) -> Unit) {
+        // Asignar valores a las vistas
+        binding.nameRestaurant.text = item.name
+        binding.descriptionRestaurant.text = item.description
 
-        // Cargar la imagen con Picasso
+        // Cargar la imagen desde un enlace con Picasso
         Picasso.get()
-            .load(item.imageResId)
+            .load(item.imageResId.toString()) // Convierte el Int a String si es un enlace
+            .placeholder(R.drawable.casa) // Imagen de respaldo mientras se carga
+            .error(R.drawable.casa) // Imagen local si ocurre un error
             .into(binding.imageRestaurant)
 
         // Agregar un listener de clic
         itemView.setOnClickListener {
-            onClick(item)  // Llama al callback cuando se hace clic en el restaurante
+            onClick(item) // Llama al callback cuando se hace clic en el restaurante
         }
     }
 }
+
+

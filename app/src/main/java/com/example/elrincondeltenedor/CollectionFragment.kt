@@ -1,6 +1,7 @@
 package com.example.elrincondeltenedor
 
 import android.os.Bundle
+import android.util.Log
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
@@ -39,44 +40,22 @@ class CollectionFragment : Fragment() {
         // Configura el RecyclerView
         setupRecyclerView()
 
-        // Observa los cambios en Firestore
-        listenToCollectionUpdates()
-
-        // Verifica si se pasan datos de una nueva colección
-        val newCollection = arguments?.getParcelable<ItemData_Collection>("restaurant_data")
-        newCollection?.let {
-            addCollectionToFirestore(it) // Agrega la nueva colección
-        }
+        // Escucha cambios en la colección "restaurantes_favoritos"
+        listenToFavoritesUpdates()
     }
 
     private fun setupRecyclerView() {
         binding.recyclerViewCollection.layoutManager = LinearLayoutManager(context)
-        collectionAdapter = RecyclerViewAdapter_Collection(mutableListOf()) { collection ->
+        collectionAdapter = RecyclerViewAdapter_Collection(mutableListOf()) { item ->
             val bundle = Bundle()
-            bundle.putParcelable("restaurant_data", collection) // Asegúrate de usar el tipo correcto
+            bundle.putSerializable("restaurant_data", item)
             findNavController().navigate(R.id.action_collectionFragment_to_detailFragment, bundle)
         }
         binding.recyclerViewCollection.adapter = collectionAdapter
     }
 
-    private fun addCollectionToFirestore(collection: ItemData_Collection) {
-        val collectionData = hashMapOf(
-            "text" to collection.text,
-            "description" to collection.description,
-            "imageResId" to collection.imageResId
-        )
-        firestore.collection("collections")
-            .add(collectionData)
-            .addOnSuccessListener {
-                // Éxito al agregar
-            }
-            .addOnFailureListener { e ->
-                e.printStackTrace() // Manejo del error
-            }
-    }
-
-    private fun listenToCollectionUpdates() {
-        listenerRegistration = firestore.collection("collections")
+    private fun listenToFavoritesUpdates() {
+        listenerRegistration = firestore.collection("restaurantes_favoritos")
             .addSnapshotListener { snapshot, error ->
                 if (error != null) {
                     error.printStackTrace()
@@ -84,22 +63,31 @@ class CollectionFragment : Fragment() {
                 }
 
                 if (snapshot != null && !snapshot.isEmpty) {
-                    val collectionList = snapshot.documents.mapNotNull { doc ->
+                    val favoritesList = snapshot.documents.mapNotNull { doc ->
                         try {
-                            doc.toObject(ItemData_Collection::class.java)
+                            val name = doc.getString("name") ?: return@mapNotNull null
+                            val description = doc.getString("description") ?: ""
+                            val imageResId = doc.getString("imageResId") ?: "" // Leer el enlace
+
+                            ItemData(name, imageResId, description)
                         } catch (e: Exception) {
-                            e.printStackTrace()
+                            Log.e("MappingError", "Error al mapear el documento: ${doc.id}", e)
                             null
                         }
                     }
-                    collectionAdapter.updateData(collectionList) // Usamos collectionList
+
+                    collectionAdapter.updateData(favoritesList)
+
                     binding.textEmpty.visibility =
-                        if (collectionList.isEmpty()) View.VISIBLE else View.GONE
+                        if (favoritesList.isEmpty()) View.VISIBLE else View.GONE
                 } else {
                     binding.textEmpty.visibility = View.VISIBLE
+                    Log.d("CollectionFragment", "No hay datos en Firestore.")
                 }
             }
     }
+
+
 
     override fun onDestroyView() {
         super.onDestroyView()

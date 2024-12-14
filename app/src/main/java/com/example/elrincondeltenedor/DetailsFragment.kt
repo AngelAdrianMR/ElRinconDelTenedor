@@ -6,16 +6,15 @@ import android.view.View
 import android.view.ViewGroup
 import android.widget.Toast
 import androidx.fragment.app.Fragment
-import androidx.lifecycle.ViewModelProvider
 import androidx.navigation.fragment.findNavController
 import com.example.elrincondeltenedor.databinding.RestaurantDetailScreenBinding
+import com.google.firebase.firestore.FirebaseFirestore
+import com.squareup.picasso.Picasso
 
 class DetailsFragment : Fragment() {
 
     private var _binding: RestaurantDetailScreenBinding? = null
     private val binding get() = _binding!!
-
-    private lateinit var restaurantViewModel: ViewModel
 
     override fun onCreateView(
         inflater: LayoutInflater, container: ViewGroup?,
@@ -28,11 +27,8 @@ class DetailsFragment : Fragment() {
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
 
-        // Obtener el ViewModel
-        restaurantViewModel = ViewModelProvider(requireActivity()).get(ViewModel::class.java)
-
         // Obtener los datos del restaurante desde los argumentos
-        val restaurantData = arguments?.getParcelable<ItemData_Collection>("restaurant_data")
+        val restaurantData = arguments?.getSerializable("restaurant_data") as? ItemData
 
         if (restaurantData != null) {
             bindRestaurantData(restaurantData)
@@ -40,28 +36,70 @@ class DetailsFragment : Fragment() {
             Toast.makeText(context, "Datos del restaurante no disponibles", Toast.LENGTH_SHORT).show()
         }
 
-        // Botón Guardar
+
         binding.btnGuardar.setOnClickListener {
-            Toast.makeText(context, "Restaurante guardado", Toast.LENGTH_SHORT).show()
+            restaurantData?.let { data ->
+                saveRestaurantToFavorites(data)
+            }
         }
 
-        // Botón Valorar
         binding.btnValorar.setOnClickListener {
             val bundle = Bundle().apply {
-                putParcelable("restaurant_data", restaurantData)
+                putSerializable("restaurant_data", restaurantData)
             }
             findNavController().navigate(R.id.action_detailFragment_to_valoracionesFragment, bundle)
         }
     }
 
-    /**
-     * Método para asignar los datos del restaurante a las vistas
-     */
-    private fun bindRestaurantData(restaurant: ItemData_Collection) {
-        binding.nombreRest.text = restaurant.text
-        binding.descripcionRest.text = restaurant.description
-        binding.imagenRest.setImageResource(restaurant.imageResId)
+    private fun saveRestaurantToFavorites(restaurant: ItemData) {
+        val db = FirebaseFirestore.getInstance()
+
+        // Verificar si el restaurante ya está en favoritos
+        val restaurantCollection = db.collection("restaurantes_favoritos")
+        val query = restaurantCollection.whereEqualTo("name", restaurant.name)
+
+        query.get()
+            .addOnSuccessListener { snapshot ->
+                if (!snapshot.isEmpty) {
+                    // Si el restaurante ya está en favoritos
+                    Toast.makeText(context, "Este restaurante ya está en favoritos", Toast.LENGTH_SHORT).show()
+                } else {
+                    // Si no está en favoritos, agregarlo
+                    val favoriteData = hashMapOf(
+                        "name" to restaurant.name,
+                        "description" to restaurant.description,
+                        "imageResId" to restaurant.imageResId
+                    )
+
+                    restaurantCollection.add(favoriteData)
+                        .addOnSuccessListener {
+                            Toast.makeText(context, "Restaurante guardado en favoritos", Toast.LENGTH_SHORT).show()
+                        }
+                        .addOnFailureListener { e ->
+                            e.printStackTrace()
+                            Toast.makeText(context, "Error al guardar restaurante", Toast.LENGTH_SHORT).show()
+                        }
+                }
+            }
+            .addOnFailureListener { e ->
+                e.printStackTrace()
+                Toast.makeText(context, "Error al verificar si el restaurante está en favoritos", Toast.LENGTH_SHORT).show()
+            }
     }
+
+
+    private fun bindRestaurantData(restaurant: ItemData) {
+        binding.nombreRest.text = restaurant.name
+        binding.descripcionRest.text = restaurant.description
+
+        // Cargar la imagen usando Picasso
+        Picasso.get()
+            .load(restaurant.imageResId) // URL de la imagen desde Firestore
+            .placeholder(R.drawable.ic_launcher_background) // Imagen temporal mientras carga
+            .error(R.drawable.casa) // Imagen de respaldo en caso de error
+            .into(binding.imagenRest)
+    }
+
 
     override fun onDestroyView() {
         super.onDestroyView()
