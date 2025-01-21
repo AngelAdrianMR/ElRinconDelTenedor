@@ -11,71 +11,6 @@
         android:layout_marginTop="0dp"
         android:layout_marginBottom="0dp"/>
 
-    <!-- Capa overlay para la guía interactiva -->
-    <FrameLayout
-        android:id="@+id/overlay"
-        android:layout_width="match_parent"
-        android:layout_height="match_parent"
-        android:background="#AA000000"
-        android:gravity="center"
-        android:visibility="gone"
-        android:clickable="true"
-        android:focusable="true">
-
-        <LinearLayout
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:orientation="vertical"
-            android:gravity="center">
-
-            <!-- Texto de la guía -->
-            <TextView
-                android:id="@+id/guideText"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:text="Bienvenido a la Guía Interactiva"
-                android:textColor="#FFFFFF"
-                android:textSize="20sp"
-                android:gravity="center"
-                android:layout_marginBottom="20dp"/>
-
-            <!-- Botón de comenzar guía -->
-            <Button
-                android:id="@+id/startGuideButton"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:text="Comenzar Guía"
-                android:layout_marginTop="40dp"
-                android:layout_centerHorizontal="true"
-                android:focusable="true"
-                android:clickable="true" />
-
-            <!-- Botón para saltar la guía -->
-            <Button
-                android:id="@+id/skipGuideButton"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:text="Saltar Guía"
-                android:layout_marginTop="20dp"
-                android:layout_centerHorizontal="true"
-                android:focusable="true"
-                android:clickable="true" />
-
-            <!-- Botón para pasar al siguiente paso en la guía -->
-            <Button
-                android:id="@+id/nextButton"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:text="Siguiente"
-                android:layout_marginTop="20dp"
-                android:layout_centerHorizontal="true"
-                android:visibility="gone"
-                android:focusable="true"
-                android:clickable="true"/>
-
-        </LinearLayout>
-    </FrameLayout>
-
     <!-- Botón para ir a la siguiente pantalla -->
     <Button
         android:id="@+id/botonHome02"
@@ -87,4 +22,43 @@
         android:focusable="true"
         android:clickable="true"/>
 
+    <!-- Overlay de la guía -->
+    <FrameLayout
+        android:id="@+id/overlay"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:layout_alignParentTop="true"
+        android:background="@android:color/white"
+        android:visibility="gone">
+
+        <!-- Fondo semitransparente -->
+        <View
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:background="@android:color/transparent"
+            android:alpha="0.7"/>
+
+        <!-- Mensaje de la guía -->
+        <TextView
+            android:id="@+id/guideText"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="Bienvenido a la pantalla de mapa"
+            android:textSize="18sp"
+            android:textColor="@android:color/black"
+            android:layout_centerInParent="true"/>
+
+        <!-- Botón para finalizar la guía -->
+        <Button
+            android:id="@+id/finishGuideButton"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="Finalizar Guía"
+            android:layout_centerHorizontal="true"
+            android:layout_below="@id/guideText"
+            android:layout_marginTop="20dp"
+            android:focusable="true"
+            android:clickable="true"/>
+
+    </FrameLayout>
 </RelativeLayout>

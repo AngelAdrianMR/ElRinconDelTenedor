@@ -17,6 +17,7 @@ import androidx.appcompat.widget.Toolbar
 import androidx.core.app.ActivityCompat
 import androidx.core.content.ContextCompat
 import androidx.lifecycle.lifecycleScope
+import androidx.navigation.NavController
 import androidx.navigation.fragment.NavHostFragment
 import androidx.navigation.ui.AppBarConfiguration
 import androidx.navigation.ui.setupActionBarWithNavController
@@ -33,7 +34,8 @@ class MainActivity : AppCompatActivity() {
     private lateinit var binding: ActivityMainBinding
     private lateinit var notificationHelper: NotificationHelper
     private lateinit var auth: FirebaseAuth
-
+    private var guideStep = 0
+    private val selectedMenuItems = mutableSetOf<Int>() // Para rastrear las opciones del menú seleccionadas
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
@@ -42,38 +44,116 @@ class MainActivity : AppCompatActivity() {
         binding = ActivityMainBinding.inflate(layoutInflater)
         setContentView(binding.root)
 
-        // Configura la Toolbar como soporte para ActionBar
+        // Configurar la Toolbar como soporte para ActionBar
         val toolbar = findViewById<Toolbar>(R.id.toolBar)
         setSupportActionBar(toolbar)
 
-        // Vincula el NavController con la Toolbar
+        // Configurar la navegación
         val navHostFragment = supportFragmentManager.findFragmentById(R.id.nav_host_fragment) as NavHostFragment
         val navController = navHostFragment.navController
         val appBarConfiguration = AppBarConfiguration(navController.graph)
-
-        // Configura la navegación con la Toolbar
         setupActionBarWithNavController(navController, appBarConfiguration)
 
         // Configurar el idioma inicial
         setInitialLanguage()
 
-        // Inicializa NotificationHelper
+        // Configurar notificaciones
         notificationHelper = NotificationHelper(this)
         notificationHelper.createNotificationChannel()
-
         checkNotificationPermission()
-        initializeNotificacion()
+        initializeNotification()
 
-        // Initialize Firebase Auth
+        // Inicializar Firebase Auth
         auth = Firebase.auth
-        getCurrentUser()
 
-        // Configura el menú flotante
+        // Configurar menú flotante
         configureFloatingMenu()
 
+        // Configurar la guía si es la primera vez que se abre la app
+        configureGuide()
     }
 
+    private fun configureGuide() {
+        val sharedPreferences = getSharedPreferences("app_preferences", Context.MODE_PRIVATE)
 
+        // Mostrar la guía si es la primera vez que se abre la app
+        if (sharedPreferences.getBoolean("is_first_launch", true)) {
+            showGuide()
+            sharedPreferences.edit().putBoolean("is_first_launch", false).apply() // Marcar que ya se ha lanzado la app
+        }
+    }
+
+    private fun showGuide() {
+        binding.overlay.visibility = View.VISIBLE
+        binding.guideText.visibility = View.VISIBLE
+        binding.startGuideButton.visibility = View.VISIBLE
+        binding.skipGuideButton.visibility = View.VISIBLE
+
+
+        binding.startGuideButton.setOnClickListener {
+            binding.startGuideButton.visibility = View.GONE
+            binding.skipGuideButton.visibility = View.VISIBLE
+            binding.nextButton.visibility = View.VISIBLE
+            updateGuideStep() // Actualiza el paso de la guía
+        }
+
+        binding.skipGuideButton.setOnClickListener {
+            endGuide() // Cierra la guía
+        }
+
+        binding.nextButton.setOnClickListener {
+            handleGuideStep() // Maneja los pasos siguientes
+        }
+    }
+
+    private fun updateGuideStep() {
+        when (guideStep) {
+            0 -> {
+                binding.guideText.text = "Este es el botón de la lista de restaurantes."
+                highlightButton(findViewById(R.id.botonHome02))
+            }
+            1 -> {
+                binding.guideText.text = "Este es el botón del menú principal."
+                highlightButton(findViewById(R.id.imageMenu))
+            }
+            2 -> {
+                binding.guideText.text = "Ahora puedes usar el menú para explorar más opciones."
+                unlockMenuButton()  // Desbloquear el botón del menú
+            }
+            3 -> {
+                binding.guideText.text = "Estas son las opciones del menú."
+            }
+            else -> {
+                endGuide() // Fin de la guía
+            }
+        }
+    }
+
+    private fun handleGuideStep() {
+        guideStep++
+        updateGuideStep()
+    }
+
+    private fun unlockMenuButton() {
+        // Desbloqueamos el botón para que el usuario pueda interactuar con el menú
+        val fabMenu = findViewById<ImageView>(R.id.imageMenu)
+        fabMenu.isEnabled = true
+    }
+
+    private fun endGuide() {
+        binding.overlay.visibility = View.GONE
+        binding.guideText.visibility = View.GONE
+        binding.startGuideButton.visibility = View.GONE
+        binding.skipGuideButton.visibility = View.GONE
+        binding.nextButton.visibility = View.GONE
+    }
+
+    private fun highlightButton(button: View) {
+        button.setBackgroundColor(ContextCompat.getColor(this, R.color.highlight_color))
+        button.postDelayed({
+            button.setBackgroundColor(ContextCompat.getColor(this, R.color.default_color))
+        }, 1500) // Resalta el botón por 1.5 segundos
+    }
 
     private fun configureFloatingMenu() {
         val fabMenu = findViewById<ImageView>(R.id.imageMenu)
@@ -86,47 +166,47 @@ class MainActivity : AppCompatActivity() {
         val popupMenu = PopupMenu(this, view)
         popupMenu.menuInflater.inflate(R.menu.menu_options, popupMenu.menu)
 
-        // Obtiene el NavController desde el NavHostFragment
-        val navHostFragment = supportFragmentManager.findFragmentById(R.id.nav_host_fragment) as NavHostFragment
-        val navController = navHostFragment.navController
-
-        // Configura el listener del menú
+        // Configurar listener del menú
+        val navController = (supportFragmentManager.findFragmentById(R.id.nav_host_fragment) as NavHostFragment).navController
         popupMenu.setOnMenuItemClickListener { menuItem: MenuItem ->
-            when (menuItem.itemId) {
-                R.id.action_collection -> {
-                    navController.navigate(R.id.collectionFragment)
-                    true
-                }
-                R.id.action_profile -> {
-                    navController.navigate(R.id.profileUserFragment)
-                    true
-                }
-                R.id.action_home01 -> {
-                    navController.navigate(R.id.home01Fragment)
-                    true
-                }
-                R.id.action_setting -> {
-                    navController.navigate(R.id.settingsFragment)
-                    true
-                }
-                R.id.action_logout -> {
-                    logoutUser()
-                    true
-                }
-                else -> false
-            }
-        }
+            val sharedPreferences = getSharedPreferences("app_preferences", Context.MODE_PRIVATE)
+            val isFirstTime = sharedPreferences.getBoolean(menuItem.itemId.toString(), true)
 
-        // Muestra el menú
+            // Registrar que ya se ha accedido a esta opción del menú
+            if (isFirstTime) {
+                sharedPreferences.edit().putBoolean(menuItem.itemId.toString(), false).apply()
+            }
+
+            // Navegar a la pantalla correspondiente
+            navigateToScreen(menuItem, navController)
+            true
+        }
         popupMenu.show()
     }
 
+    private fun navigateToScreen(menuItem: MenuItem, navController: NavController) {
+        when (menuItem.itemId) {
+            R.id.action_collection -> {
+                navController.navigate(R.id.collectionFragment)
+            }
+            R.id.action_profile -> {
+                navController.navigate(R.id.profileUserFragment)
+            }
+            R.id.action_home01 -> {
+                navController.navigate(R.id.home01Fragment)
+            }
+            R.id.action_setting -> {
+                navController.navigate(R.id.settingsFragment)
+            }
+            R.id.action_logout -> {
+                logoutUser()
+            }
+        }
+    }
+
     private fun setInitialLanguage() {
-        // Obtener las preferencias compartidas
         val sharedPreferences: SharedPreferences = getSharedPreferences("AppPreferences", Context.MODE_PRIVATE)
         val savedLanguage = sharedPreferences.getString("language", "en") ?: "en"
-
-        // Configurar el idioma
         val locale = Locale(savedLanguage)
         Locale.setDefault(locale)
         val config = resources.configuration
@@ -134,48 +214,30 @@ class MainActivity : AppCompatActivity() {
         resources.updateConfiguration(config, resources.displayMetrics)
     }
 
-    private fun initializeNotificacion() {
-        // Crear y mostrar la notificación después de 5 segundos
-        NotificationHelper(this).apply {
-            createNotificationChannel()
-            lifecycleScope.launch {
-                delay(10000)
-                showNewRestaurantNotification("Nuevo restaurante!", "A abierto un nuevo restaurante en tu zona.")
-            }
+    private fun initializeNotification() {
+        lifecycleScope.launch {
+            delay(10000)
+            notificationHelper.showNewRestaurantNotification("Nuevo restaurante!", "Ha abierto un nuevo restaurante en tu zona.")
         }
     }
 
     private fun checkNotificationPermission() {
-        if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.TIRAMISU) {
-            if (ContextCompat.checkSelfPermission(this, Manifest.permission.POST_NOTIFICATIONS) != PackageManager.PERMISSION_GRANTED) {
-                ActivityCompat.requestPermissions(this, arrayOf(Manifest.permission.POST_NOTIFICATIONS), 1)
-            }
+        if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.TIRAMISU &&
+            ContextCompat.checkSelfPermission(this, Manifest.permission.POST_NOTIFICATIONS) != PackageManager.PERMISSION_GRANTED
+        ) {
+            ActivityCompat.requestPermissions(this, arrayOf(Manifest.permission.POST_NOTIFICATIONS), 1)
         }
-    }
-
-    override fun onSupportNavigateUp(): Boolean {
-        val navHostFragment = supportFragmentManager.findFragmentById(R.id.nav_host_fragment) as NavHostFragment
-        val navController = navHostFragment.navController
-        return navController.navigateUp() || super.onSupportNavigateUp()
     }
 
     private fun logoutUser() {
-        // Llama al método signOut de Firebase Auth
         Firebase.auth.signOut()
-
-        // Redirige al usuario a la pantalla de inicio de sesión
         val intent = Intent(this, LoginActivity::class.java)
         startActivity(intent)
-        finish() // Cierra la actividad actual para evitar que el usuario vuelva con el botón atrás
+        finish()
     }
 
-    private fun getCurrentUser() {
-        val user = Firebase.auth.currentUser
-        user?.let {
-            val name = it.displayName
-            val email = it.email
-            val photoUrl = it.photoUrl
-            val uid = it.uid
-        }
+    override fun onSupportNavigateUp(): Boolean {
+        val navController = (supportFragmentManager.findFragmentById(R.id.nav_host_fragment) as NavHostFragment).navController
+        return navController.navigateUp() || super.onSupportNavigateUp()
     }
 }

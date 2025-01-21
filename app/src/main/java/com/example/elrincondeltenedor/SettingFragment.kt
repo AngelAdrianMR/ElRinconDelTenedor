@@ -41,8 +41,19 @@ class SettingFragment : Fragment() {
         // Configurar el Spinner de idioma
         setupLanguageSpinner()
 
+        // Botón de guardar
         binding.btnSave.setOnClickListener {
             findNavController().navigate(R.id.settingsFragment)
+        }
+
+        // Verificar si es la primera vez que se accede a esta pantalla
+        val savedIsFirstTime = sharedPreferences.getBoolean("isFirstTimeSettings", true)
+
+        if (savedIsFirstTime) {
+            // Mostrar la guía
+            showGuide()
+            // Marcar que ya no es la primera vez
+            sharedPreferences.edit().putBoolean("isFirstTimeSettings", false).apply()
         }
 
         return binding.root
@@ -57,7 +68,6 @@ class SettingFragment : Fragment() {
         checkBox.setOnCheckedChangeListener { _, isChecked ->
             sharedPreferences.edit().putBoolean(key, isChecked).apply()
             showToast("${checkBox.text} ${if (isChecked) "activado" else "desactivado"}")
-
         }
     }
 
@@ -86,7 +96,6 @@ class SettingFragment : Fragment() {
         }
     }
 
-
     private fun changeLanguage(languageCode: String) {
         // Guardar el idioma seleccionado en SharedPreferences
         sharedPreferences.edit().putString("language", languageCode).apply()
@@ -102,7 +111,16 @@ class SettingFragment : Fragment() {
         showToast(getString(R.string.idioma_cambiado))
     }
 
+    private fun showGuide() {
+        // Mostrar el overlay y el mensaje de la guía
+        binding.overlay.visibility = View.VISIBLE
+        binding.guideText.text = "Esta es la pantalla de Ajustes"
 
+        binding.finishGuideButton.setOnClickListener {
+            // Ocultar el overlay cuando el usuario haga clic en el botón "Finalizar guía"
+            binding.overlay.visibility = View.GONE
+        }
+    }
 
     private fun showToast(message: String) {
         Toast.makeText(requireContext(), message, Toast.LENGTH_SHORT).show()

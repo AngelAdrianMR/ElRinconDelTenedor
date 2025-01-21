@@ -6,4 +6,8 @@
     <color name="bluecian">#00FFFF</color>
     <color name="red">#FF0000</color>
     <color name="grey">#808080</color>
+    <color name="highlight_color">#FF5733</color>  <!-- Resaltado del botón de lista de restaurantes -->
+    <color name="menu_highlight_color">#FFC300</color>  <!-- Resaltado del botón del menú -->
+    <color name="default_color">#FFFFFF</color>  <!-- Color predeterminado del botón -->
+
 </resources>

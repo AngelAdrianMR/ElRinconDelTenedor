@@ -1,7 +1,9 @@
 package com.example.elrincondeltenedor
 
 import android.app.Activity
+import android.content.Context
 import android.content.Intent
+import android.content.SharedPreferences
 import android.net.Uri
 import android.os.Bundle
 import android.provider.MediaStore
@@ -30,6 +32,8 @@ class ProfileUserFragment : Fragment(R.layout.screen_user_profile) {
 
     private var username: String = "Usuario desconocido" // Nombre por defecto
 
+    private lateinit var sharedPreferences: SharedPreferences
+
     override fun onCreateView(
         inflater: LayoutInflater, container: ViewGroup?,
         savedInstanceState: Bundle?
@@ -40,6 +44,19 @@ class ProfileUserFragment : Fragment(R.layout.screen_user_profile) {
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
+
+        // Inicializar SharedPreferences
+        sharedPreferences = requireContext().getSharedPreferences("AppPreferences", Context.MODE_PRIVATE)
+
+        // Verificar si es la primera vez que se accede a esta pantalla
+        val savedIsFirstTime = sharedPreferences.getBoolean("isFirstTimeProfile", true)
+
+        if (savedIsFirstTime) {
+            // Mostrar la guía
+            showGuide()
+            // Marcar que ya no es la primera vez
+            sharedPreferences.edit().putBoolean("isFirstTimeProfile", false).apply()
+        }
 
         // Obtener el nombre de usuario desde Firebase
         val user = auth.currentUser
@@ -132,6 +149,18 @@ class ProfileUserFragment : Fragment(R.layout.screen_user_profile) {
             } else {
                 Toast.makeText(context, "No se seleccionó ninguna imagen.", Toast.LENGTH_SHORT).show()
             }
+        }
+    }
+
+    // Función para mostrar la guía en el overlay
+    private fun showGuide() {
+        // Mostrar el overlay y el mensaje de la guía
+        binding.overlay.visibility = View.VISIBLE
+        binding.guideText.text = "Bienvenido al perfil de usuario"
+
+        binding.finishGuideButton.setOnClickListener {
+            // Ocultar el overlay cuando el usuario haga clic en el botón "Finalizar guía"
+            binding.overlay.visibility = View.GONE
         }
     }
 

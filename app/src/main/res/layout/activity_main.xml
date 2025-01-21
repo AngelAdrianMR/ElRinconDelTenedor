@@ -6,13 +6,70 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent">
 
+    <!-- Capa overlay para la guía interactiva -->
+    <FrameLayout
+        android:id="@+id/overlay"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:background="#AA000000"
+        android:visibility="gone"
+        android:clickable="true"
+        android:focusable="true"
+        android:elevation="2000dp">
+
+        <LinearLayout
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:orientation="vertical"
+            android:gravity="center">
+
+            <!-- Texto de la guía -->
+            <TextView
+                android:id="@+id/guideText"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="Bienvenido a la Guía Interactiva"
+                android:textColor="#FFFFFF"
+                android:textSize="20sp"
+                android:gravity="center"
+                android:layout_marginBottom="20dp"
+                android:background="@drawable/rounded_background"/>
+
+            <!-- Botón de comenzar guía -->
+            <Button
+                android:id="@+id/startGuideButton"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="Comenzar Guía"
+                android:layout_marginTop="40dp"/>
+
+            <!-- Botón para saltar la guía -->
+            <Button
+                android:id="@+id/skipGuideButton"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="Saltar Guía"
+                android:layout_marginTop="20dp"/>
+
+            <!-- Botón para pasar al siguiente paso en la guía -->
+            <Button
+                android:id="@+id/nextButton"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="Siguiente"
+                android:layout_marginTop="20dp"
+                android:visibility="gone"/>
+        </LinearLayout>
+    </FrameLayout>
+
+    <!-- Toolbar -->
     <include
         layout="@layout/toolbar_general"
         android:id="@+id/toolBar"
         android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:fitsSystemWindows="true" />
+        android:layout_height="wrap_content"/>
 
+    <!-- Contenedor de Fragmentos -->
     <androidx.fragment.app.FragmentContainerView
         android:id="@+id/nav_host_fragment"
         android:name="androidx.navigation.fragment.NavHostFragment"
@@ -21,5 +78,5 @@
         app:layout_constraintTop_toBottomOf="@id/toolBar"
         app:layout_constraintBottom_toBottomOf="parent"
         app:navGraph="@navigation/nav_graph"
-        app:defaultNavHost="true" />
+        app:defaultNavHost="true"/>
 </androidx.constraintlayout.widget.ConstraintLayout>

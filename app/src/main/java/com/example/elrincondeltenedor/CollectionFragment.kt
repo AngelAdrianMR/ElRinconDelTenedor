@@ -1,10 +1,12 @@
 package com.example.elrincondeltenedor
 
+import android.content.Context
 import android.os.Bundle
-import android.util.Log
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
+import android.widget.Button
+import android.widget.TextView
 import androidx.fragment.app.Fragment
 import androidx.navigation.fragment.findNavController
 import androidx.recyclerview.widget.LinearLayoutManager
@@ -22,6 +24,8 @@ class CollectionFragment : Fragment() {
     private lateinit var firestore: FirebaseFirestore
     private lateinit var collectionAdapter: RecyclerViewAdapter_Collection
     private var listenerRegistration: ListenerRegistration? = null
+
+    private var isFirstTime = true  // Variable para verificar si es la primera vez
 
     override fun onCreateView(
         inflater: LayoutInflater, container: ViewGroup?,
@@ -42,6 +46,16 @@ class CollectionFragment : Fragment() {
 
         // Escucha cambios en la colección "restaurantes_favoritos"
         listenToFavoritesUpdates()
+
+        // Verificar si es la primera vez que se accede a esta pantalla
+        val sharedPreferences = requireActivity().getSharedPreferences("app_preferences", Context.MODE_PRIVATE)
+        isFirstTime = sharedPreferences.getBoolean("R.id.action_collection", true)
+
+        if (isFirstTime) {
+            showGuide(view, "Esta es la pantalla de Colección")
+            // Marcar que ya no es la primera vez
+            sharedPreferences.edit().putBoolean("R.id.action_collection", false).apply()
+        }
     }
 
     private fun setupRecyclerView() {
@@ -71,7 +85,7 @@ class CollectionFragment : Fragment() {
 
                             ItemData(name, imageResId, description)
                         } catch (e: Exception) {
-                            Log.e("MappingError", "Error al mapear el documento: ${doc.id}", e)
+                            e.printStackTrace()
                             null
                         }
                     }
@@ -82,12 +96,23 @@ class CollectionFragment : Fragment() {
                         if (favoritesList.isEmpty()) View.VISIBLE else View.GONE
                 } else {
                     binding.textEmpty.visibility = View.VISIBLE
-                    Log.d("CollectionFragment", "No hay datos en Firestore.")
                 }
             }
     }
 
+    private fun showGuide(view: View, guideMessage: String) {
+        // Mostrar el overlay y el mensaje de la guía
+        val overlay = view.findViewById<View>(R.id.overlay)
+        val guideText = view.findViewById<TextView>(R.id.guideText)
+        val finishButton = view.findViewById<Button>(R.id.finishGuideButton)
 
+        overlay.visibility = View.VISIBLE
+        guideText.text = guideMessage
+
+        finishButton.setOnClickListener {
+            overlay.visibility = View.GONE
+        }
+    }
 
     override fun onDestroyView() {
         super.onDestroyView()
