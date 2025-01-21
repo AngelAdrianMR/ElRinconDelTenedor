@@ -34,13 +34,13 @@ class MainActivity : AppCompatActivity() {
     private lateinit var notificationHelper: NotificationHelper
     private lateinit var auth: FirebaseAuth
 
+
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         enableEdgeToEdge()
 
         binding = ActivityMainBinding.inflate(layoutInflater)
         setContentView(binding.root)
-
 
         // Configura la Toolbar como soporte para ActionBar
         val toolbar = findViewById<Toolbar>(R.id.toolBar)
@@ -67,9 +67,12 @@ class MainActivity : AppCompatActivity() {
         // Initialize Firebase Auth
         auth = Firebase.auth
         getCurrentUser()
+
         // Configura el menú flotante
         configureFloatingMenu()
+
     }
+
 
 
     private fun configureFloatingMenu() {
@@ -169,18 +172,10 @@ class MainActivity : AppCompatActivity() {
     private fun getCurrentUser() {
         val user = Firebase.auth.currentUser
         user?.let {
-            // Name, email address, and profile photo Url
             val name = it.displayName
             val email = it.email
             val photoUrl = it.photoUrl
-
-
-            // The user's ID, unique to the Firebase project. Do NOT use this value to
-            // authenticate with your backend server, if you have one. Use
-            // FirebaseUser.getIdToken() instead.
             val uid = it.uid
         }
     }
-
-
 }

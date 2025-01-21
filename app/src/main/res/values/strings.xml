@@ -87,4 +87,8 @@
     <string name="valoracion09">La carne a la brasa es lo mejor.</string>
     <string name="valoracion10">Un asador con muy buenos cortes de carne.</string>
     <string name="crear_cuenta">Crear cuenta</string>
+    <string name="guia_activa">Volver a la pantalla principal</string>
+    <string name="guia_activa0">Este botón te llevará a la lista de restaurantes</string>
+
+
 </resources>
