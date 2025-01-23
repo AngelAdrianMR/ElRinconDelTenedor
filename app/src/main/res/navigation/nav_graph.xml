@@ -12,19 +12,29 @@
         tools:layout="@layout/home_screen_01" >
         <action
             android:id="@+id/action_home01Fragment_to_home02Fragment"
-            app:destination="@id/home02Fragment" />
+            app:destination="@id/home02Fragment"
+            app:enterAnim="@anim/nav_default_enter_anim"
+            app:exitAnim="@anim/nav_default_exit_anim"/>
         <action
             android:id="@+id/action_home01Fragment_to_profileUserFragment"
-            app:destination="@id/profileUserFragment" />
+            app:destination="@id/profileUserFragment"
+            app:enterAnim="@anim/nav_default_enter_anim"
+            app:exitAnim="@anim/nav_default_exit_anim"/>
         <action
             android:id="@+id/action_home01Fragment_to_settingsFragment"
-            app:destination="@id/settingsFragment" />
+            app:destination="@id/settingsFragment"
+            app:enterAnim="@anim/nav_default_enter_anim"
+            app:exitAnim="@anim/nav_default_exit_anim"/>
         <action
             android:id="@+id/action_home01Fragment_to_collectionFragment"
-            app:destination="@id/collectionFragment" />
+            app:destination="@id/collectionFragment"
+            app:enterAnim="@anim/nav_default_enter_anim"
+            app:exitAnim="@anim/nav_default_exit_anim"/>
         <action
             android:id="@+id/action_home01Fragment_to_detailFragment"
-            app:destination="@id/detailFragment" />
+            app:destination="@id/detailFragment"
+            app:enterAnim="@anim/nav_default_enter_anim"
+            app:exitAnim="@anim/nav_default_exit_anim"/>
     </fragment>
 
     <fragment
@@ -34,16 +44,24 @@
         tools:layout="@layout/screen_home_02" >
         <action
             android:id="@+id/action_home02Fragment_to_home01Fragment"
-            app:destination="@id/home01Fragment" />
+            app:destination="@id/home01Fragment"
+            app:enterAnim="@anim/nav_default_enter_anim"
+            app:exitAnim="@anim/nav_default_exit_anim"/>
         <action
             android:id="@+id/action_home02Fragment_to_profileUserFragment"
-            app:destination="@id/profileUserFragment" />
+            app:destination="@id/profileUserFragment"
+            app:enterAnim="@anim/nav_default_enter_anim"
+            app:exitAnim="@anim/nav_default_exit_anim"/>
         <action
             android:id="@+id/action_home02Fragment_to_collectionFragment"
-            app:destination="@id/collectionFragment" />
+            app:destination="@id/collectionFragment"
+            app:enterAnim="@anim/nav_default_enter_anim"
+            app:exitAnim="@anim/nav_default_exit_anim"/>
         <action
             android:id="@+id/action_home02Fragment_to_settingsFragment"
-            app:destination="@id/settingsFragment" />
+            app:destination="@id/settingsFragment"
+            app:enterAnim="@anim/nav_default_enter_anim"
+            app:exitAnim="@anim/nav_default_exit_anim"/>
     </fragment>
 
     <fragment
@@ -53,7 +71,9 @@
         tools:layout="@layout/screen_user_profile" >
         <action
             android:id="@+id/action_profileUserFragment_to_loginFragment"
-            app:destination="@id/loginFragment" />
+            app:destination="@id/loginFragment"
+            app:enterAnim="@anim/nav_default_enter_anim"
+            app:exitAnim="@anim/nav_default_exit_anim"/>
     </fragment>
 
     <fragment
@@ -68,7 +88,9 @@
         tools:layout="@layout/login_screen" >
         <action
             android:id="@+id/action_loginFragment_to_home01Fragment"
-            app:destination="@id/home01Fragment" />
+            app:destination="@id/home01Fragment"
+            app:enterAnim="@anim/nav_default_enter_anim"
+            app:exitAnim="@anim/nav_default_exit_anim"/>
     </fragment>
 
     <fragment
@@ -78,13 +100,19 @@
         tools:layout="@layout/valoraciones_recyclerview" >
         <action
             android:id="@+id/action_valoracionesFragment_to_home01Fragment"
-            app:destination="@id/home01Fragment" />
+            app:destination="@id/home01Fragment"
+            app:enterAnim="@anim/nav_default_enter_anim"
+            app:exitAnim="@anim/nav_default_exit_anim"/>
         <action
             android:id="@+id/action_valoracionesFragment_to_collectionFragment"
-            app:destination="@id/collectionFragment" />
+            app:destination="@id/collectionFragment"
+            app:enterAnim="@anim/nav_default_enter_anim"
+            app:exitAnim="@anim/nav_default_exit_anim"/>
         <action
             android:id="@+id/action_valoracionesFragment_to_profileUserFragment"
-            app:destination="@id/profileUserFragment" />
+            app:destination="@id/profileUserFragment"
+            app:enterAnim="@anim/nav_default_enter_anim"
+            app:exitAnim="@anim/nav_default_exit_anim"/>
     </fragment>
 
     <fragment
@@ -94,10 +122,14 @@
         tools:layout="@layout/restaurant_detail_screen" >
         <action
             android:id="@+id/action_detailFragment_to_collectionFragment"
-            app:destination="@id/collectionFragment" />
+            app:destination="@id/collectionFragment"
+            app:enterAnim="@anim/nav_default_enter_anim"
+            app:exitAnim="@anim/nav_default_exit_anim"/>
         <action
             android:id="@+id/action_detailFragment_to_valoracionesFragment"
-            app:destination="@id/valoracionesFragment" />
+            app:destination="@id/valoracionesFragment"
+            app:enterAnim="@anim/nav_default_enter_anim"
+            app:exitAnim="@anim/nav_default_exit_anim"/>
     </fragment>
 
     <fragment
@@ -107,13 +139,19 @@
         tools:layout="@layout/collection_screen" >
         <action
             android:id="@+id/action_collectionFragment_to_profileUserFragment"
-            app:destination="@id/profileUserFragment" />
+            app:destination="@id/profileUserFragment"
+            app:enterAnim="@anim/nav_default_enter_anim"
+            app:exitAnim="@anim/nav_default_exit_anim"/>
         <action
             android:id="@+id/action_collectionFragment_to_settingsFragment"
-            app:destination="@id/settingsFragment" />
+            app:destination="@id/settingsFragment"
+            app:enterAnim="@anim/nav_default_enter_anim"
+            app:exitAnim="@anim/nav_default_exit_anim"/>
         <action
             android:id="@+id/action_collectionFragment_to_detailFragment"
-            app:destination="@id/detailFragment" />
+            app:destination="@id/detailFragment"
+            app:enterAnim="@anim/nav_default_enter_anim"
+            app:exitAnim="@anim/nav_default_exit_anim"/>
     </fragment>
 
 

@@ -5,10 +5,12 @@ import android.content.Context
 import android.content.Intent
 import android.content.SharedPreferences
 import android.content.pm.PackageManager
+import android.media.MediaPlayer
 import android.os.Build
 import android.os.Bundle
 import android.view.MenuItem
 import android.view.View
+import android.widget.Button
 import android.widget.ImageView
 import android.widget.PopupMenu
 import androidx.activity.enableEdgeToEdge
@@ -43,6 +45,15 @@ class MainActivity : AppCompatActivity() {
 
         binding = ActivityMainBinding.inflate(layoutInflater)
         setContentView(binding.root)
+
+
+            // Sonido de fondo
+        val mediaPlayer = MediaPlayer.create(this, R.raw.retro11s)
+        mediaPlayer.start()
+        mediaPlayer.setOnCompletionListener {
+            mediaPlayer.release()
+        }
+
 
         // Configurar la Toolbar como soporte para ActionBar
         val toolbar = findViewById<Toolbar>(R.id.toolBar)
@@ -190,7 +201,7 @@ class MainActivity : AppCompatActivity() {
                 navController.navigate(R.id.collectionFragment)
             }
             R.id.action_profile -> {
-                navController.navigate(R.id.profileUserFragment)
+                navController.navigate(R.id.action_home01Fragment_to_profileUserFragment)
             }
             R.id.action_home01 -> {
                 navController.navigate(R.id.home01Fragment)

@@ -1,5 +1,7 @@
 package com.example.elrincondeltenedor
 
+import android.animation.AnimatorSet
+import android.animation.ObjectAnimator
 import android.app.Activity
 import android.content.Context
 import android.content.Intent
@@ -10,6 +12,7 @@ import android.provider.MediaStore
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
+import android.widget.Button
 import android.widget.EditText
 import android.widget.Toast
 import androidx.fragment.app.Fragment
@@ -58,6 +61,7 @@ class ProfileUserFragment : Fragment(R.layout.screen_user_profile) {
             sharedPreferences.edit().putBoolean("isFirstTimeProfile", false).apply()
         }
 
+
         // Obtener el nombre de usuario desde Firebase
         val user = auth.currentUser
         username = user?.displayName ?: "Usuario desconocido"
@@ -78,6 +82,9 @@ class ProfileUserFragment : Fragment(R.layout.screen_user_profile) {
             showUsernameChangeDialog()
         }
     }
+
+
+
 
     // Mostrar un cuadro de diálogo para cambiar el nombre de usuario
     private fun showUsernameChangeDialog() {

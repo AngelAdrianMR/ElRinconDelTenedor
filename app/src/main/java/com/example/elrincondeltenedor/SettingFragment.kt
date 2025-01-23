@@ -31,6 +31,10 @@ class SettingFragment : Fragment() {
     ): View {
         _binding = SettingScreenBinding.inflate(inflater, container, false)
 
+        // inicia el video
+        binding.videoView.setVideoPath("android.resource://com.example.elrincondeltenedor/${R.raw.video}")
+        binding.videoView.start()
+
         // Inicializar SharedPreferences
         sharedPreferences = requireContext().getSharedPreferences("AppPreferences", Context.MODE_PRIVATE)
 

@@ -9,5 +9,6 @@
     <color name="highlight_color">#FF5733</color>  <!-- Resaltado del botón de lista de restaurantes -->
     <color name="menu_highlight_color">#FFC300</color>  <!-- Resaltado del botón del menú -->
     <color name="default_color">#FFFFFF</color>  <!-- Color predeterminado del botón -->
+    <color name="orange_trasnparent">#D0FF9800</color>
 
 </resources>
