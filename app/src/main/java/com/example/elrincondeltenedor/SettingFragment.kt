@@ -50,6 +50,14 @@ class SettingFragment : Fragment() {
             findNavController().navigate(R.id.settingsFragment)
         }
 
+        binding.btn.apply {
+            setBackgroundResource(R.drawable.estado_boton)
+            backgroundTintList = null
+            setOnClickListener{
+                isEnabled = false
+            }
+        }
+
         // Verificar si es la primera vez que se accede a esta pantalla
         val savedIsFirstTime = sharedPreferences.getBoolean("isFirstTimeSettings", true)
 

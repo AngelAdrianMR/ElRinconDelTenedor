@@ -56,16 +56,28 @@
         android:layout_centerHorizontal="true"
         android:layout_marginTop="50dp"
         android:focusable="true"
-        android:clickable="true"/>
+        android:clickable="true"
+        android:background="@drawable/estado_boton"/>
 
-    <!-- Overlay para la guía -->
+    <Button
+        android:id="@+id/btn"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_below="@+id/btnSave"
+        android:layout_centerHorizontal="true"
+        android:text="OK"
+        android:focusable="true"
+        android:clickable="true"
+        android:background="@drawable/estado_boton"/>
 
     <VideoView
         android:id="@+id/videoView"
         android:layout_width="match_parent"
         android:layout_height="match_parent"
-        android:layout_marginTop="500dp" />
+        android:layout_marginTop="500dp"
+        android:layout_marginLeft="50dp"/>
 
+    <!-- Overlay para la guía -->
     <FrameLayout
         android:id="@+id/overlay"
         android:layout_width="match_parent"

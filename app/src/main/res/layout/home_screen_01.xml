@@ -20,7 +20,8 @@
         android:layout_centerHorizontal="true"
         android:text="@string/lista_de_restaurantes"
         android:focusable="true"
-        android:clickable="true"/>
+        android:clickable="true"
+        android:background="@drawable/estado_boton"/>
 
     <!-- Overlay de la guía -->
     <FrameLayout
@@ -29,7 +30,8 @@
         android:layout_height="match_parent"
         android:layout_alignParentTop="true"
         android:background="@android:color/white"
-        android:visibility="gone">
+        android:visibility="gone"
+        android:foregroundGravity="center">
 
         <!-- Fondo semitransparente -->
         <View
@@ -44,6 +46,7 @@
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:text="Bienvenido a la pantalla de mapa"
+            android:textAlignment="center"
             android:textSize="18sp"
             android:textColor="@android:color/black"
             android:layout_centerInParent="true"/>

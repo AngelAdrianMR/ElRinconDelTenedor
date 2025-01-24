@@ -22,7 +22,7 @@
         android:layout_height="wrap_content"
         android:text="@string/home_01"
         android:layout_gravity="center"
-        android:id="@+id/boton_Home_01"
+        android:id="@+id/botoAHome01"
         android:layout_marginTop="25dp"/>
 
 </LinearLayout>

@@ -22,9 +22,9 @@
             android:layout_height="wrap_content"
             android:orientation="vertical"
             android:gravity="center"
-            android:layout_marginTop="115dp">
+            android:layout_marginTop="150dp">
 
-            <!-- Texto de la guía -->
+            <!-- Texto de la guia -->
             <TextView
                 android:id="@+id/guideText"
                 android:layout_width="wrap_content"
@@ -32,11 +32,10 @@
                 android:text="Bienvenido a la Guía Interactiva"
                 android:textColor="#FFFFFF"
                 android:textSize="20sp"
-                android:gravity="center"
                 android:layout_marginBottom="20dp"
                 android:background="@drawable/rounded_background"/>
 
-            <!-- Botón de comenzar guía -->
+            <!-- Boton de comenzar guia -->
             <Button
                 android:id="@+id/startGuideButton"
                 android:layout_width="wrap_content"
@@ -44,7 +43,7 @@
                 android:text="Comenzar Guía"
                 android:layout_marginTop="40dp"/>
 
-            <!-- Botón para saltar la guía -->
+            <!-- Boton para saltar la guia -->
             <Button
                 android:id="@+id/skipGuideButton"
                 android:layout_width="wrap_content"
@@ -52,7 +51,7 @@
                 android:text="Saltar Guía"
                 android:layout_marginTop="20dp"/>
 
-            <!-- Botón para pasar al siguiente paso en la guía -->
+            <!-- Boton para pasar al siguiente paso en la guia -->
             <Button
                 android:id="@+id/nextButton"
                 android:layout_width="wrap_content"

@@ -37,7 +37,6 @@ class MainActivity : AppCompatActivity() {
     private lateinit var notificationHelper: NotificationHelper
     private lateinit var auth: FirebaseAuth
     private var guideStep = 0
-    private val selectedMenuItems = mutableSetOf<Int>() // Para rastrear las opciones del menú seleccionadas
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
@@ -105,15 +104,15 @@ class MainActivity : AppCompatActivity() {
             binding.startGuideButton.visibility = View.GONE
             binding.skipGuideButton.visibility = View.VISIBLE
             binding.nextButton.visibility = View.VISIBLE
-            updateGuideStep() // Actualiza el paso de la guía
+            updateGuideStep()
         }
 
         binding.skipGuideButton.setOnClickListener {
-            endGuide() // Cierra la guía
+            endGuide()
         }
 
         binding.nextButton.setOnClickListener {
-            handleGuideStep() // Maneja los pasos siguientes
+            handleGuideStep()
         }
     }
 

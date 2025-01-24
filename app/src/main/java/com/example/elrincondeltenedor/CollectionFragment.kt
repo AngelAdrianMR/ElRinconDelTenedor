@@ -81,7 +81,7 @@ class CollectionFragment : Fragment() {
                         try {
                             val name = doc.getString("name") ?: return@mapNotNull null
                             val description = doc.getString("description") ?: ""
-                            val imageResId = doc.getString("imageResId") ?: "" // Leer el enlace
+                            val imageResId = doc.getString("imageResId") ?: ""
 
                             ItemData(name, imageResId, description)
                         } catch (e: Exception) {
@@ -101,7 +101,7 @@ class CollectionFragment : Fragment() {
     }
 
     private fun showGuide(view: View, guideMessage: String) {
-        // Mostrar el overlay y el mensaje de la guía
+        // Mostrar el overlay y el mensaje de la guia
         val overlay = view.findViewById<View>(R.id.overlay)
         val guideText = view.findViewById<TextView>(R.id.guideText)
         val finishButton = view.findViewById<Button>(R.id.finishGuideButton)

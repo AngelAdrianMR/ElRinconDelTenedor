@@ -1,10 +1,13 @@
 package com.example.elrincondeltenedor
 
+import android.animation.AnimatorSet
+import android.animation.ObjectAnimator
 import android.os.Bundle
 import android.util.Log
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
+import android.widget.Button
 import androidx.fragment.app.Fragment
 import androidx.lifecycle.lifecycleScope
 import androidx.navigation.fragment.findNavController
@@ -40,15 +43,25 @@ class Home02Fragment : Fragment() {
             loadRestaurant()
         }
 
-        // Navegación al Home01Fragment
-        binding.botonHome01.setOnClickListener {
-            findNavController().navigate(R.id.action_home02Fragment_to_home01Fragment)
-        }
+        // Animacion del boton
+        binding.botoAHome01.setOnClickListener {
+            val boton = view.findViewById<Button>(R.id.botoAHome01)
+            animateButtonPulse(boton)        }
     }
 
     override fun onDestroyView() {
         super.onDestroyView()
         _binding = null
+    }
+
+    private fun animateButtonPulse(button: View) {
+        val scaleX = ObjectAnimator.ofFloat(button, "scaleX", 1f, 1.2f, 1f)
+        val scaleY = ObjectAnimator.ofFloat(button, "scaleY", 1f, 1.2f, 1f)
+
+        val animatorSet = AnimatorSet()
+        animatorSet.playTogether(scaleX, scaleY)
+        animatorSet.duration = 500
+        animatorSet.start()
     }
 
     private suspend fun loadRestaurant() {

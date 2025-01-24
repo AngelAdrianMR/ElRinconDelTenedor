@@ -9,21 +9,22 @@
     android:clickable="true"
     android:focusable="true">
 
-<TextView
-android:id="@+id/guideText"
-android:layout_width="wrap_content"
-android:layout_height="wrap_content"
-android:text="Bienvenido a la guía"
-android:textColor="#FFFFFF"
-android:textSize="20sp"
-android:gravity="center"
-android:layout_marginBottom="20dp"/>
+        <TextView
+        android:id="@+id/guideText"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="Bienvenido a la guía"
+        android:textColor="#FFFFFF"
+        android:textSize="20sp"
+        android:gravity="center"
+        android:layout_marginBottom="20dp"/>
 
-<Button
-android:id="@+id/nextButton"
-android:layout_width="wrap_content"
-android:layout_height="wrap_content"
-android:text="Siguiente"
-android:layout_marginTop="20dp"
-android:layout_centerHorizontal="true"/>
+        <Button
+        android:id="@+id/nextButton"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="Siguiente"
+        android:layout_marginTop="20dp"
+        android:layout_centerHorizontal="true"/>
+
     </LinearLayout>
