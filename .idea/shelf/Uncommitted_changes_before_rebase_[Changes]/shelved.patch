@@ -1,0 +1,466 @@
+Index: app/src/main/res/layout/activity_main.xml
+IDEA additional info:
+Subsystem: com.intellij.openapi.diff.impl.patch.BaseRevisionTextPatchEP
+<+><?xml version=\"1.0\" encoding=\"utf-8\"?>\r\n<androidx.constraintlayout.widget.ConstraintLayout\r\n    xmlns:android=\"http://schemas.android.com/apk/res/android\"\r\n    xmlns:app=\"http://schemas.android.com/apk/res-auto\"\r\n    xmlns:tools=\"http://schemas.android.com/tools\"\r\n    android:layout_width=\"match_parent\"\r\n    android:layout_height=\"match_parent\">\r\n\r\n    <!-- Capa overlay para la guía interactiva -->\r\n    <FrameLayout\r\n        android:id=\"@+id/overlay\"\r\n        android:layout_width=\"match_parent\"\r\n        android:layout_height=\"match_parent\"\r\n        android:background=\"#AA000000\"\r\n        android:visibility=\"gone\"\r\n        android:clickable=\"true\"\r\n        android:focusable=\"true\"\r\n        android:elevation=\"2000dp\">\r\n\r\n        <LinearLayout\r\n            android:layout_width=\"wrap_content\"\r\n            android:layout_height=\"wrap_content\"\r\n            android:orientation=\"vertical\"\r\n            android:gravity=\"center\"\r\n            android:layout_marginTop=\"115dp\">\r\n\r\n            <!-- Texto de la guía -->\r\n            <TextView\r\n                android:id=\"@+id/guideText\"\r\n                android:layout_width=\"wrap_content\"\r\n                android:layout_height=\"wrap_content\"\r\n                android:text=\"Bienvenido a la Guía Interactiva\"\r\n                android:textColor=\"#FFFFFF\"\r\n                android:textSize=\"20sp\"\r\n                android:gravity=\"center\"\r\n                android:layout_marginBottom=\"20dp\"\r\n                android:background=\"@drawable/rounded_background\"/>\r\n\r\n            <!-- Botón de comenzar guía -->\r\n            <Button\r\n                android:id=\"@+id/startGuideButton\"\r\n                android:layout_width=\"wrap_content\"\r\n                android:layout_height=\"wrap_content\"\r\n                android:text=\"Comenzar Guía\"\r\n                android:layout_marginTop=\"40dp\"/>\r\n\r\n            <!-- Botón para saltar la guía -->\r\n            <Button\r\n                android:id=\"@+id/skipGuideButton\"\r\n                android:layout_width=\"wrap_content\"\r\n                android:layout_height=\"wrap_content\"\r\n                android:text=\"Saltar Guía\"\r\n                android:layout_marginTop=\"20dp\"/>\r\n\r\n            <!-- Botón para pasar al siguiente paso en la guía -->\r\n            <Button\r\n                android:id=\"@+id/nextButton\"\r\n                android:layout_width=\"wrap_content\"\r\n                android:layout_height=\"wrap_content\"\r\n                android:text=\"Siguiente\"\r\n                android:layout_marginTop=\"20dp\"\r\n                android:visibility=\"gone\"/>\r\n        </LinearLayout>\r\n    </FrameLayout>\r\n\r\n    <!-- Toolbar -->\r\n    <include\r\n        layout=\"@layout/toolbar_general\"\r\n        android:id=\"@+id/toolBar\"\r\n        android:layout_width=\"match_parent\"\r\n        android:layout_height=\"wrap_content\"/>\r\n\r\n    <!-- Contenedor de Fragmentos -->\r\n    <androidx.fragment.app.FragmentContainerView\r\n        android:id=\"@+id/nav_host_fragment\"\r\n        android:name=\"androidx.navigation.fragment.NavHostFragment\"\r\n        android:layout_width=\"match_parent\"\r\n        android:layout_height=\"0dp\"\r\n        app:layout_constraintTop_toBottomOf=\"@id/toolBar\"\r\n        app:layout_constraintBottom_toBottomOf=\"parent\"\r\n        app:navGraph=\"@navigation/nav_graph\"\r\n        app:defaultNavHost=\"true\"/>\r\n</androidx.constraintlayout.widget.ConstraintLayout>\r\n
+Subsystem: com.intellij.openapi.diff.impl.patch.CharsetEP
+<+>UTF-8
+===================================================================
+diff --git a/app/src/main/res/layout/activity_main.xml b/app/src/main/res/layout/activity_main.xml
+--- a/app/src/main/res/layout/activity_main.xml	(revision 7464c643722a3b2ba91a6f3639b2b0ceb40b3bc4)
++++ b/app/src/main/res/layout/activity_main.xml	(date 1737713107561)
+@@ -22,9 +22,9 @@
+             android:layout_height="wrap_content"
+             android:orientation="vertical"
+             android:gravity="center"
+-            android:layout_marginTop="115dp">
++            android:layout_marginTop="150dp">
+ 
+-            <!-- Texto de la guía -->
++            <!-- Texto de la guia -->
+             <TextView
+                 android:id="@+id/guideText"
+                 android:layout_width="wrap_content"
+@@ -32,11 +32,10 @@
+                 android:text="Bienvenido a la Guía Interactiva"
+                 android:textColor="#FFFFFF"
+                 android:textSize="20sp"
+-                android:gravity="center"
+                 android:layout_marginBottom="20dp"
+                 android:background="@drawable/rounded_background"/>
+ 
+-            <!-- Botón de comenzar guía -->
++            <!-- Boton de comenzar guia -->
+             <Button
+                 android:id="@+id/startGuideButton"
+                 android:layout_width="wrap_content"
+@@ -44,7 +43,7 @@
+                 android:text="Comenzar Guía"
+                 android:layout_marginTop="40dp"/>
+ 
+-            <!-- Botón para saltar la guía -->
++            <!-- Boton para saltar la guia -->
+             <Button
+                 android:id="@+id/skipGuideButton"
+                 android:layout_width="wrap_content"
+@@ -52,7 +51,7 @@
+                 android:text="Saltar Guía"
+                 android:layout_marginTop="20dp"/>
+ 
+-            <!-- Botón para pasar al siguiente paso en la guía -->
++            <!-- Boton para pasar al siguiente paso en la guia -->
+             <Button
+                 android:id="@+id/nextButton"
+                 android:layout_width="wrap_content"
+Index: app/src/main/res/layout/home_screen_01.xml
+IDEA additional info:
+Subsystem: com.intellij.openapi.diff.impl.patch.BaseRevisionTextPatchEP
+<+><RelativeLayout xmlns:android=\"http://schemas.android.com/apk/res/android\"\r\n    android:layout_width=\"match_parent\"\r\n    android:layout_height=\"match_parent\">\r\n\r\n    <!-- Mapa de Google -->\r\n    <com.google.android.gms.maps.MapView\r\n        android:id=\"@+id/mapView\"\r\n        android:layout_width=\"match_parent\"\r\n        android:layout_height=\"376dp\"\r\n        android:layout_alignParentTop=\"true\"\r\n        android:layout_marginTop=\"0dp\"\r\n        android:layout_marginBottom=\"0dp\"/>\r\n\r\n    <!-- Botón para ir a la siguiente pantalla -->\r\n    <Button\r\n        android:id=\"@+id/botonHome02\"\r\n        android:layout_width=\"wrap_content\"\r\n        android:layout_height=\"wrap_content\"\r\n        android:layout_marginTop=\"550dp\"\r\n        android:layout_centerHorizontal=\"true\"\r\n        android:text=\"@string/lista_de_restaurantes\"\r\n        android:focusable=\"true\"\r\n        android:clickable=\"true\"/>\r\n\r\n    <!-- Overlay de la guía -->\r\n    <FrameLayout\r\n        android:id=\"@+id/overlay\"\r\n        android:layout_width=\"match_parent\"\r\n        android:layout_height=\"match_parent\"\r\n        android:layout_alignParentTop=\"true\"\r\n        android:background=\"@android:color/white\"\r\n        android:visibility=\"gone\">\r\n\r\n        <!-- Fondo semitransparente -->\r\n        <View\r\n            android:layout_width=\"match_parent\"\r\n            android:layout_height=\"match_parent\"\r\n            android:background=\"@android:color/transparent\"\r\n            android:alpha=\"0.7\"/>\r\n\r\n        <!-- Mensaje de la guía -->\r\n        <TextView\r\n            android:id=\"@+id/guideText\"\r\n            android:layout_width=\"wrap_content\"\r\n            android:layout_height=\"wrap_content\"\r\n            android:text=\"Bienvenido a la pantalla de mapa\"\r\n            android:textSize=\"18sp\"\r\n            android:textColor=\"@android:color/black\"\r\n            android:layout_centerInParent=\"true\"/>\r\n\r\n        <!-- Botón para finalizar la guía -->\r\n        <Button\r\n            android:id=\"@+id/finishGuideButton\"\r\n            android:layout_width=\"wrap_content\"\r\n            android:layout_height=\"wrap_content\"\r\n            android:text=\"Finalizar Guía\"\r\n            android:layout_centerHorizontal=\"true\"\r\n            android:layout_below=\"@id/guideText\"\r\n            android:layout_marginTop=\"20dp\"\r\n            android:focusable=\"true\"\r\n            android:clickable=\"true\"/>\r\n\r\n\r\n\r\n\r\n    </FrameLayout>\r\n</RelativeLayout>\r\n
+Subsystem: com.intellij.openapi.diff.impl.patch.CharsetEP
+<+>UTF-8
+===================================================================
+diff --git a/app/src/main/res/layout/home_screen_01.xml b/app/src/main/res/layout/home_screen_01.xml
+--- a/app/src/main/res/layout/home_screen_01.xml	(revision 7464c643722a3b2ba91a6f3639b2b0ceb40b3bc4)
++++ b/app/src/main/res/layout/home_screen_01.xml	(date 1737714500255)
+@@ -20,7 +20,8 @@
+         android:layout_centerHorizontal="true"
+         android:text="@string/lista_de_restaurantes"
+         android:focusable="true"
+-        android:clickable="true"/>
++        android:clickable="true"
++        android:background="@drawable/estado_boton"/>
+ 
+     <!-- Overlay de la guía -->
+     <FrameLayout
+@@ -29,7 +30,8 @@
+         android:layout_height="match_parent"
+         android:layout_alignParentTop="true"
+         android:background="@android:color/white"
+-        android:visibility="gone">
++        android:visibility="gone"
++        android:foregroundGravity="center">
+ 
+         <!-- Fondo semitransparente -->
+         <View
+@@ -44,6 +46,7 @@
+             android:layout_width="wrap_content"
+             android:layout_height="wrap_content"
+             android:text="Bienvenido a la pantalla de mapa"
++            android:textAlignment="center"
+             android:textSize="18sp"
+             android:textColor="@android:color/black"
+             android:layout_centerInParent="true"/>
+Index: app/src/main/res/drawable/boton_no_presionado.xml
+IDEA additional info:
+Subsystem: com.intellij.openapi.diff.impl.patch.BaseRevisionTextPatchEP
+<+><?xml version=\"1.0\" encoding=\"utf-8\"?>\r\n<shape xmlns:android=\"http://schemas.android.com/apk/res/android\">\r\n    <solid android:color=\"#B0BEC5\"/> <!-- Un color gris para el estado deshabilitado -->\r\n    <corners android:radius=\"8dp\"/>\r\n</shape>\r\n
+Subsystem: com.intellij.openapi.diff.impl.patch.CharsetEP
+<+>UTF-8
+===================================================================
+diff --git a/app/src/main/res/drawable/boton_no_presionado.xml b/app/src/main/res/drawable/boton_no_presionado.xml
+--- a/app/src/main/res/drawable/boton_no_presionado.xml	(revision 7464c643722a3b2ba91a6f3639b2b0ceb40b3bc4)
++++ b/app/src/main/res/drawable/boton_no_presionado.xml	(date 1737711516626)
+@@ -1,5 +1,5 @@
+ <?xml version="1.0" encoding="utf-8"?>
+ <shape xmlns:android="http://schemas.android.com/apk/res/android">
+-    <solid android:color="#B0BEC5"/> <!-- Un color gris para el estado deshabilitado -->
++    <solid android:color="#B0BEC5"/>
+     <corners android:radius="8dp"/>
+ </shape>
+Index: app/src/main/res/layout/screen_home_02.xml
+IDEA additional info:
+Subsystem: com.intellij.openapi.diff.impl.patch.BaseRevisionTextPatchEP
+<+><?xml version=\"1.0\" encoding=\"utf-8\"?>\r\n\r\n<LinearLayout\r\n    xmlns:android=\"http://schemas.android.com/apk/res/android\"\r\n    xmlns:tools=\"http://schemas.android.com/tools\"\r\n    android:layout_width=\"match_parent\"\r\n    android:layout_height=\"match_parent\"\r\n    android:orientation=\"vertical\"\r\n    tools:ignore=\"UselessParent\">\r\n\r\n\r\n    <androidx.recyclerview.widget.RecyclerView\r\n        android:layout_width=\"match_parent\"\r\n        android:layout_height=\"wrap_content\"\r\n        android:id=\"@+id/recyclerViewHome02\">\r\n\r\n\r\n    </androidx.recyclerview.widget.RecyclerView>\r\n\r\n    <Button\r\n        android:layout_width=\"wrap_content\"\r\n        android:layout_height=\"wrap_content\"\r\n        android:text=\"@string/home_01\"\r\n        android:layout_gravity=\"center\"\r\n        android:id=\"@+id/boton_Home_01\"\r\n        android:layout_marginTop=\"25dp\"/>\r\n\r\n</LinearLayout>\r\n\r\n
+Subsystem: com.intellij.openapi.diff.impl.patch.CharsetEP
+<+>UTF-8
+===================================================================
+diff --git a/app/src/main/res/layout/screen_home_02.xml b/app/src/main/res/layout/screen_home_02.xml
+--- a/app/src/main/res/layout/screen_home_02.xml	(revision 7464c643722a3b2ba91a6f3639b2b0ceb40b3bc4)
++++ b/app/src/main/res/layout/screen_home_02.xml	(date 1737713899226)
+@@ -22,7 +22,7 @@
+         android:layout_height="wrap_content"
+         android:text="@string/home_01"
+         android:layout_gravity="center"
+-        android:id="@+id/boton_Home_01"
++        android:id="@+id/botoAHome01"
+         android:layout_marginTop="25dp"/>
+ 
+ </LinearLayout>
+Index: app/src/main/res/layout/setting_screen.xml
+IDEA additional info:
+Subsystem: com.intellij.openapi.diff.impl.patch.BaseRevisionTextPatchEP
+<+><?xml version=\"1.0\" encoding=\"utf-8\"?>\r\n<RelativeLayout\r\n    xmlns:android=\"http://schemas.android.com/apk/res/android\"\r\n    xmlns:tools=\"http://schemas.android.com/tools\"\r\n    android:layout_width=\"match_parent\"\r\n    android:layout_height=\"match_parent\"\r\n    tools:context=\".SettingFragment\">\r\n\r\n    <!-- CheckBox para notificaciones -->\r\n    <CheckBox\r\n        android:id=\"@+id/checkBoxNotificaciones\"\r\n        android:layout_width=\"wrap_content\"\r\n        android:layout_height=\"wrap_content\"\r\n        android:layout_centerHorizontal=\"true\"\r\n        android:layout_marginTop=\"70dp\"\r\n        android:text=\"@string/notificaciones\"\r\n        android:textSize=\"30sp\" />\r\n\r\n    <!-- CheckBox para ubicación -->\r\n    <CheckBox\r\n        android:id=\"@+id/checkBoxUbicacion\"\r\n        android:layout_width=\"wrap_content\"\r\n        android:layout_height=\"wrap_content\"\r\n        android:layout_below=\"@id/checkBoxNotificaciones\"\r\n        android:layout_centerHorizontal=\"true\"\r\n        android:layout_marginTop=\"30dp\"\r\n        android:text=\"@string/ubicacion\"\r\n        android:textSize=\"30sp\"/>\r\n\r\n    <!-- Texto para idioma -->\r\n    <TextView\r\n        android:id=\"@+id/idioma\"\r\n        android:layout_width=\"wrap_content\"\r\n        android:layout_height=\"wrap_content\"\r\n        android:layout_below=\"@id/checkBoxUbicacion\"\r\n        android:layout_centerHorizontal=\"true\"\r\n        android:layout_marginTop=\"30dp\"\r\n        android:textSize=\"30sp\"\r\n        android:text=\"@string/idioma\" />\r\n\r\n    <!-- Spinner para seleccionar el idioma -->\r\n    <Spinner\r\n        android:id=\"@+id/spinner\"\r\n        android:layout_width=\"match_parent\"\r\n        android:layout_height=\"wrap_content\"\r\n        android:layout_marginTop=\"10dp\"\r\n        android:layout_below=\"@id/idioma\" />\r\n\r\n    <!-- Botón de guardar -->\r\n    <Button\r\n        android:id=\"@+id/btnSave\"\r\n        android:layout_width=\"wrap_content\"\r\n        android:layout_height=\"wrap_content\"\r\n        android:layout_below=\"@id/spinner\"\r\n        android:text=\"@string/guardar\"\r\n        android:layout_centerHorizontal=\"true\"\r\n        android:layout_marginTop=\"50dp\"\r\n        android:focusable=\"true\"\r\n        android:clickable=\"true\"/>\r\n\r\n    <!-- Overlay para la guía -->\r\n\r\n    <VideoView\r\n        android:id=\"@+id/videoView\"\r\n        android:layout_width=\"match_parent\"\r\n        android:layout_height=\"match_parent\"\r\n        android:layout_marginTop=\"500dp\" />\r\n\r\n    <FrameLayout\r\n        android:id=\"@+id/overlay\"\r\n        android:layout_width=\"match_parent\"\r\n        android:layout_height=\"match_parent\"\r\n        android:layout_alignParentTop=\"true\"\r\n        android:background=\"#AA000000\"\r\n        android:visibility=\"gone\">\r\n\r\n        <!-- Contenedor de la guía -->\r\n        <LinearLayout\r\n            android:layout_width=\"wrap_content\"\r\n            android:layout_height=\"wrap_content\"\r\n            android:orientation=\"vertical\"\r\n            android:gravity=\"center\"\r\n            android:layout_gravity=\"center\">\r\n\r\n            <!-- Texto de la guía -->\r\n            <TextView\r\n                android:id=\"@+id/guideText\"\r\n                android:layout_width=\"wrap_content\"\r\n                android:layout_height=\"wrap_content\"\r\n                android:text=\"Esta es la pantalla de Ajustes\"\r\n                android:textColor=\"#FFFFFF\"\r\n                android:textSize=\"18sp\"\r\n                android:gravity=\"center\"\r\n                android:layout_marginBottom=\"20dp\"/>\r\n\r\n            <!-- Botón para finalizar la guía -->\r\n            <Button\r\n                android:id=\"@+id/finishGuideButton\"\r\n                android:layout_width=\"wrap_content\"\r\n                android:layout_height=\"wrap_content\"\r\n                android:text=\"Finalizar guía\"/>\r\n\r\n        </LinearLayout>\r\n    </FrameLayout>\r\n\r\n</RelativeLayout>\r\n
+Subsystem: com.intellij.openapi.diff.impl.patch.CharsetEP
+<+>UTF-8
+===================================================================
+diff --git a/app/src/main/res/layout/setting_screen.xml b/app/src/main/res/layout/setting_screen.xml
+--- a/app/src/main/res/layout/setting_screen.xml	(revision 7464c643722a3b2ba91a6f3639b2b0ceb40b3bc4)
++++ b/app/src/main/res/layout/setting_screen.xml	(date 1737715729879)
+@@ -56,16 +56,28 @@
+         android:layout_centerHorizontal="true"
+         android:layout_marginTop="50dp"
+         android:focusable="true"
+-        android:clickable="true"/>
++        android:clickable="true"
++        android:background="@drawable/estado_boton"/>
+ 
+-    <!-- Overlay para la guía -->
++    <Button
++        android:id="@+id/btn"
++        android:layout_width="wrap_content"
++        android:layout_height="wrap_content"
++        android:layout_below="@+id/btnSave"
++        android:layout_centerHorizontal="true"
++        android:text="OK"
++        android:focusable="true"
++        android:clickable="true"
++        android:background="@drawable/estado_boton"/>
+ 
+     <VideoView
+         android:id="@+id/videoView"
+         android:layout_width="match_parent"
+         android:layout_height="match_parent"
+-        android:layout_marginTop="500dp" />
++        android:layout_marginTop="500dp"
++        android:layout_marginLeft="50dp"/>
+ 
++    <!-- Overlay para la guía -->
+     <FrameLayout
+         android:id="@+id/overlay"
+         android:layout_width="match_parent"
+Index: app/src/main/java/com/example/elrincondeltenedor/Home02Fragment.kt
+IDEA additional info:
+Subsystem: com.intellij.openapi.diff.impl.patch.BaseRevisionTextPatchEP
+<+>package com.example.elrincondeltenedor\r\n\r\nimport android.os.Bundle\r\nimport android.util.Log\r\nimport android.view.LayoutInflater\r\nimport android.view.View\r\nimport android.view.ViewGroup\r\nimport androidx.fragment.app.Fragment\r\nimport androidx.lifecycle.lifecycleScope\r\nimport androidx.navigation.fragment.findNavController\r\nimport androidx.recyclerview.widget.LinearLayoutManager\r\nimport com.example.elrincondeltenedor.databinding.ScreenHome02Binding\r\nimport com.google.firebase.firestore.FirebaseFirestore\r\nimport kotlinx.coroutines.launch\r\nimport kotlinx.coroutines.tasks.await\r\n\r\nclass Home02Fragment : Fragment() {\r\n\r\n    private var _binding: ScreenHome02Binding? = null\r\n    private val binding get() = _binding!!\r\n\r\n    private lateinit var adapter: RecyclerViewAdapter_Home02\r\n\r\n    override fun onCreateView(\r\n        inflater: LayoutInflater, container: ViewGroup?,\r\n        savedInstanceState: Bundle?\r\n    ): View {\r\n        _binding = ScreenHome02Binding.inflate(inflater, container, false)\r\n        return binding.root\r\n    }\r\n\r\n    override fun onViewCreated(view: View, savedInstanceState: Bundle?) {\r\n        super.onViewCreated(view, savedInstanceState)\r\n\r\n        // Configuración del RecyclerView\r\n        binding.recyclerViewHome02.layoutManager = LinearLayoutManager(requireContext())\r\n\r\n        // Cargar datos desde Firestore\r\n        lifecycleScope.launch {\r\n            loadRestaurant()\r\n        }\r\n\r\n        // Navegación al Home01Fragment\r\n        binding.botonHome01.setOnClickListener {\r\n            findNavController().navigate(R.id.action_home02Fragment_to_home01Fragment)\r\n        }\r\n    }\r\n\r\n    override fun onDestroyView() {\r\n        super.onDestroyView()\r\n        _binding = null\r\n    }\r\n\r\n    private suspend fun loadRestaurant() {\r\n        val db = FirebaseFirestore.getInstance()\r\n\r\n        try {\r\n            val restaurantCollection = db.collection(\"restaurantes\")\r\n            val snapshot = restaurantCollection.get().await()\r\n\r\n            val restaurants = snapshot.documents.mapNotNull { document ->\r\n                val name = document.getString(\"name\")\r\n                val description = document.getString(\"description\") ?: \"\"\r\n                val imageUrl = document.getString(\"imageResId\")\r\n\r\n                if (name != null) {\r\n                    Log.d(\"Firestore\", \"Loaded: $name, $description, $imageUrl\")\r\n                    ItemData(name, imageUrl ?: \"\", description)\r\n                } else {\r\n                    Log.e(\"Firestore\", \"Missing required fields in document: ${document.id}\")\r\n                    null\r\n                }\r\n            }\r\n\r\n            // Configurar el RecyclerView con los datos obtenidos\r\n            setupRecyclerView(restaurants)\r\n\r\n        } catch (e: Exception) {\r\n            Log.e(\"Firestore\", \"Error loading restaurants: ${e.message}\", e)\r\n        }\r\n    }\r\n\r\n\r\n    private fun setupRecyclerView(restaurants: List<ItemData>) {\r\n        if (restaurants.isNotEmpty()) {\r\n            adapter = RecyclerViewAdapter_Home02(restaurants, ::onRestaurantClicked)\r\n            binding.recyclerViewHome02.adapter = adapter\r\n        } else {\r\n            Log.e(\"RecyclerView\", \"No data available for the restaurant list.\")\r\n        }\r\n    }\r\n\r\n    private fun onRestaurantClicked(itemData: ItemData) {\r\n        val bundle = Bundle().apply {\r\n            putSerializable(\"restaurant_data\", itemData)\r\n        }\r\n        findNavController().navigate(R.id.detailFragment, bundle)\r\n    }\r\n}\r\n
+Subsystem: com.intellij.openapi.diff.impl.patch.CharsetEP
+<+>UTF-8
+===================================================================
+diff --git a/app/src/main/java/com/example/elrincondeltenedor/Home02Fragment.kt b/app/src/main/java/com/example/elrincondeltenedor/Home02Fragment.kt
+--- a/app/src/main/java/com/example/elrincondeltenedor/Home02Fragment.kt	(revision 7464c643722a3b2ba91a6f3639b2b0ceb40b3bc4)
++++ b/app/src/main/java/com/example/elrincondeltenedor/Home02Fragment.kt	(date 1737713899211)
+@@ -1,10 +1,13 @@
+ package com.example.elrincondeltenedor
+ 
++import android.animation.AnimatorSet
++import android.animation.ObjectAnimator
+ import android.os.Bundle
+ import android.util.Log
+ import android.view.LayoutInflater
+ import android.view.View
+ import android.view.ViewGroup
++import android.widget.Button
+ import androidx.fragment.app.Fragment
+ import androidx.lifecycle.lifecycleScope
+ import androidx.navigation.fragment.findNavController
+@@ -40,10 +43,10 @@
+             loadRestaurant()
+         }
+ 
+-        // Navegación al Home01Fragment
+-        binding.botonHome01.setOnClickListener {
+-            findNavController().navigate(R.id.action_home02Fragment_to_home01Fragment)
+-        }
++        // Animacion del boton
++        binding.botoAHome01.setOnClickListener {
++            val boton = view.findViewById<Button>(R.id.botoAHome01)
++            animateButtonPulse(boton)        }
+     }
+ 
+     override fun onDestroyView() {
+@@ -51,6 +54,16 @@
+         _binding = null
+     }
+ 
++    private fun animateButtonPulse(button: View) {
++        val scaleX = ObjectAnimator.ofFloat(button, "scaleX", 1f, 1.2f, 1f)
++        val scaleY = ObjectAnimator.ofFloat(button, "scaleY", 1f, 1.2f, 1f)
++
++        val animatorSet = AnimatorSet()
++        animatorSet.playTogether(scaleX, scaleY)
++        animatorSet.duration = 500
++        animatorSet.start()
++    }
++
+     private suspend fun loadRestaurant() {
+         val db = FirebaseFirestore.getInstance()
+ 
+Index: app/src/main/java/com/example/elrincondeltenedor/SettingFragment.kt
+IDEA additional info:
+Subsystem: com.intellij.openapi.diff.impl.patch.BaseRevisionTextPatchEP
+<+>package com.example.elrincondeltenedor\r\n\r\nimport android.annotation.SuppressLint\r\nimport android.content.Context\r\nimport android.content.SharedPreferences\r\nimport android.os.Bundle\r\nimport android.view.LayoutInflater\r\nimport android.view.View\r\nimport android.view.ViewGroup\r\nimport android.widget.AdapterView\r\nimport android.widget.ArrayAdapter\r\nimport android.widget.CheckBox\r\nimport android.widget.Toast\r\nimport androidx.fragment.app.Fragment\r\nimport androidx.navigation.fragment.findNavController\r\nimport com.example.elrincondeltenedor.databinding.SettingScreenBinding\r\nimport java.util.*\r\n\r\nclass SettingFragment : Fragment() {\r\n    private var _binding: SettingScreenBinding? = null\r\n    private val binding get() = _binding!!\r\n    private lateinit var sharedPreferences: SharedPreferences\r\n\r\n    // Lista de idiomas\r\n    private val languageCodes = arrayOf(\"en\", \"es\", \"fr\") // Añade más idiomas si es necesario\r\n    private val languageNames = arrayOf(\"English\", \"Español\")\r\n\r\n    override fun onCreateView(\r\n        inflater: LayoutInflater, container: ViewGroup?,\r\n        savedInstanceState: Bundle?\r\n    ): View {\r\n        _binding = SettingScreenBinding.inflate(inflater, container, false)\r\n\r\n        // inicia el video\r\n        binding.videoView.setVideoPath(\"android.resource://com.example.elrincondeltenedor/${R.raw.video}\")\r\n        binding.videoView.start()\r\n\r\n        // Inicializar SharedPreferences\r\n        sharedPreferences = requireContext().getSharedPreferences(\"AppPreferences\", Context.MODE_PRIVATE)\r\n\r\n        // Configurar CheckBox de notificaciones y ubicación\r\n        setupCheckBox(binding.checkBoxNotificaciones, \"notificaciones\")\r\n        setupCheckBox(binding.checkBoxUbicacion, \"ubicacion\")\r\n\r\n        // Configurar el Spinner de idioma\r\n        setupLanguageSpinner()\r\n\r\n        // Botón de guardar\r\n        binding.btnSave.setOnClickListener {\r\n            findNavController().navigate(R.id.settingsFragment)\r\n        }\r\n\r\n        // Verificar si es la primera vez que se accede a esta pantalla\r\n        val savedIsFirstTime = sharedPreferences.getBoolean(\"isFirstTimeSettings\", true)\r\n\r\n        if (savedIsFirstTime) {\r\n            // Mostrar la guía\r\n            showGuide()\r\n            // Marcar que ya no es la primera vez\r\n            sharedPreferences.edit().putBoolean(\"isFirstTimeSettings\", false).apply()\r\n        }\r\n\r\n        return binding.root\r\n    }\r\n\r\n    private fun setupCheckBox(checkBox: CheckBox, key: String) {\r\n        // Cargar el estado guardado\r\n        val isChecked = sharedPreferences.getBoolean(key, false)\r\n        checkBox.isChecked = isChecked\r\n\r\n        // Guardar el estado al cambiar\r\n        checkBox.setOnCheckedChangeListener { _, isChecked ->\r\n            sharedPreferences.edit().putBoolean(key, isChecked).apply()\r\n            showToast(\"${checkBox.text} ${if (isChecked) \"activado\" else \"desactivado\"}\")\r\n        }\r\n    }\r\n\r\n    private fun setupLanguageSpinner() {\r\n        // Configurar el adaptador del Spinner\r\n        val adapter = ArrayAdapter(requireContext(), android.R.layout.simple_spinner_item, languageNames)\r\n        adapter.setDropDownViewResource(android.R.layout.simple_spinner_dropdown_item)\r\n        binding.spinner.adapter = adapter\r\n\r\n        // Seleccionar el idioma previamente guardado\r\n        val savedLanguage = sharedPreferences.getString(\"language\", \"en\") // Default: English\r\n        val selectedIndex = languageCodes.indexOf(savedLanguage)\r\n        if (selectedIndex >= 0) {\r\n            binding.spinner.setSelection(selectedIndex)\r\n        }\r\n\r\n        binding.spinner.onItemSelectedListener = object : AdapterView.OnItemSelectedListener {\r\n            override fun onItemSelected(parent: AdapterView<*>?, view: View?, position: Int, id: Long) {\r\n                val selectedLanguage = languageCodes[position]\r\n                changeLanguage(selectedLanguage)\r\n            }\r\n\r\n            override fun onNothingSelected(parent: AdapterView<*>?) {\r\n                // No hacer nada\r\n            }\r\n        }\r\n    }\r\n\r\n    private fun changeLanguage(languageCode: String) {\r\n        // Guardar el idioma seleccionado en SharedPreferences\r\n        sharedPreferences.edit().putString(\"language\", languageCode).apply()\r\n\r\n        // Cambiar el idioma\r\n        val locale = Locale(languageCode)\r\n        Locale.setDefault(locale)\r\n        val config = requireContext().resources.configuration\r\n        config.setLocale(locale)\r\n        requireContext().resources.updateConfiguration(config, requireContext().resources.displayMetrics)\r\n\r\n        // Mostrar un mensaje\r\n        showToast(getString(R.string.idioma_cambiado))\r\n    }\r\n\r\n    private fun showGuide() {\r\n        // Mostrar el overlay y el mensaje de la guía\r\n        binding.overlay.visibility = View.VISIBLE\r\n        binding.guideText.text = \"Esta es la pantalla de Ajustes\"\r\n\r\n        binding.finishGuideButton.setOnClickListener {\r\n            // Ocultar el overlay cuando el usuario haga clic en el botón \"Finalizar guía\"\r\n            binding.overlay.visibility = View.GONE\r\n        }\r\n    }\r\n\r\n    private fun showToast(message: String) {\r\n        Toast.makeText(requireContext(), message, Toast.LENGTH_SHORT).show()\r\n    }\r\n\r\n    override fun onDestroyView() {\r\n        super.onDestroyView()\r\n        _binding = null\r\n    }\r\n}\r\n
+Subsystem: com.intellij.openapi.diff.impl.patch.CharsetEP
+<+>UTF-8
+===================================================================
+diff --git a/app/src/main/java/com/example/elrincondeltenedor/SettingFragment.kt b/app/src/main/java/com/example/elrincondeltenedor/SettingFragment.kt
+--- a/app/src/main/java/com/example/elrincondeltenedor/SettingFragment.kt	(revision 7464c643722a3b2ba91a6f3639b2b0ceb40b3bc4)
++++ b/app/src/main/java/com/example/elrincondeltenedor/SettingFragment.kt	(date 1737715958579)
+@@ -50,6 +50,14 @@
+             findNavController().navigate(R.id.settingsFragment)
+         }
+ 
++        binding.btn.apply {
++            setBackgroundResource(R.drawable.estado_boton)
++            backgroundTintList = null
++            setOnClickListener{
++                isEnabled = false
++            }
++        }
++
+         // Verificar si es la primera vez que se accede a esta pantalla
+         val savedIsFirstTime = sharedPreferences.getBoolean("isFirstTimeSettings", true)
+ 
+Index: app/src/main/java/com/example/elrincondeltenedor/Home01Fragment.kt
+IDEA additional info:
+Subsystem: com.intellij.openapi.diff.impl.patch.BaseRevisionTextPatchEP
+<+>package com.example.elrincondeltenedor\r\n\r\nimport android.animation.AnimatorSet\r\nimport android.animation.ObjectAnimator\r\nimport android.content.Context\r\nimport android.os.Bundle\r\nimport android.view.LayoutInflater\r\nimport android.view.View\r\nimport android.view.ViewGroup\r\nimport android.widget.Button\r\nimport androidx.fragment.app.Fragment\r\nimport androidx.navigation.fragment.findNavController\r\nimport com.example.elrincondeltenedor.databinding.HomeScreen01Binding\r\nimport com.google.android.gms.maps.CameraUpdateFactory\r\nimport com.google.android.gms.maps.GoogleMap\r\nimport com.google.android.gms.maps.OnMapReadyCallback\r\nimport com.google.android.gms.maps.model.LatLng\r\nimport com.google.android.gms.maps.model.MarkerOptions\r\n\r\nclass Home01Fragment : Fragment(R.layout.home_screen_01), OnMapReadyCallback {\r\n\r\n    private var _binding: HomeScreen01Binding? = null\r\n    private val binding get() = _binding!!\r\n\r\n    override fun onCreateView(\r\n        inflater: LayoutInflater, container: ViewGroup?,\r\n        savedInstanceState: Bundle?\r\n    ): View {\r\n        _binding = HomeScreen01Binding.inflate(inflater, container, false)\r\n\r\n        // Inicializar el mapa\r\n        binding.mapView.onCreate(savedInstanceState)\r\n        binding.mapView.getMapAsync(this)\r\n\r\n        return binding.root\r\n\r\n    }\r\n\r\n    override fun onViewCreated(view: View, savedInstanceState: Bundle?) {\r\n        super.onViewCreated(view, savedInstanceState)\r\n\r\n        // Recuperamos el estado del menú (si ya está desbloqueado)\r\n        val sharedPreferences = requireContext().getSharedPreferences(\"app_preferences\", Context.MODE_PRIVATE)\r\n\r\n        binding.botonHome02.setOnClickListener{\r\n            val myButton = view.findViewById<Button>(R.id.botonHome02)\r\n            animateButtonPulse(myButton)\r\n        }\r\n    }\r\n\r\n    private fun animateButtonPulse(button: View) {\r\n        val scaleX = ObjectAnimator.ofFloat(button, \"scaleX\", 1f, 1.2f, 1f)\r\n        val scaleY = ObjectAnimator.ofFloat(button, \"scaleY\", 1f, 1.2f, 1f)\r\n\r\n        val animatorSet = AnimatorSet()\r\n        animatorSet.playTogether(scaleX, scaleY)\r\n        animatorSet.duration = 500\r\n        animatorSet.start()\r\n    }\r\n\r\n\r\n\r\n    override fun onDestroyView() {\r\n        super.onDestroyView()\r\n        _binding = null\r\n    }\r\n\r\n    override fun onMapReady(googleMap: GoogleMap) {\r\n        val latlng = LatLng(36.83, -2.45)\r\n        googleMap.addMarker(MarkerOptions().position(latlng).title(\"Marcador\"))\r\n        googleMap.moveCamera(CameraUpdateFactory.newLatLngZoom(latlng, 15f))\r\n    }\r\n\r\n}\r\n
+Subsystem: com.intellij.openapi.diff.impl.patch.CharsetEP
+<+>UTF-8
+===================================================================
+diff --git a/app/src/main/java/com/example/elrincondeltenedor/Home01Fragment.kt b/app/src/main/java/com/example/elrincondeltenedor/Home01Fragment.kt
+--- a/app/src/main/java/com/example/elrincondeltenedor/Home01Fragment.kt	(revision 7464c643722a3b2ba91a6f3639b2b0ceb40b3bc4)
++++ b/app/src/main/java/com/example/elrincondeltenedor/Home01Fragment.kt	(date 1737712951962)
+@@ -39,26 +39,12 @@
+     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
+         super.onViewCreated(view, savedInstanceState)
+ 
+-        // Recuperamos el estado del menú (si ya está desbloqueado)
+-        val sharedPreferences = requireContext().getSharedPreferences("app_preferences", Context.MODE_PRIVATE)
+-
+         binding.botonHome02.setOnClickListener{
+-            val myButton = view.findViewById<Button>(R.id.botonHome02)
+-            animateButtonPulse(myButton)
+-        }
+-    }
+-
+-    private fun animateButtonPulse(button: View) {
+-        val scaleX = ObjectAnimator.ofFloat(button, "scaleX", 1f, 1.2f, 1f)
+-        val scaleY = ObjectAnimator.ofFloat(button, "scaleY", 1f, 1.2f, 1f)
++            val navController = findNavController()
++            navController.navigate(R.id.home02Fragment)
+ 
+-        val animatorSet = AnimatorSet()
+-        animatorSet.playTogether(scaleX, scaleY)
+-        animatorSet.duration = 500
+-        animatorSet.start()
++        }
+     }
+-
+-
+ 
+     override fun onDestroyView() {
+         super.onDestroyView()
+Index: app/src/main/java/com/example/elrincondeltenedor/MainActivity.kt
+IDEA additional info:
+Subsystem: com.intellij.openapi.diff.impl.patch.BaseRevisionTextPatchEP
+<+>package com.example.elrincondeltenedor\r\n\r\nimport android.Manifest\r\nimport android.content.Context\r\nimport android.content.Intent\r\nimport android.content.SharedPreferences\r\nimport android.content.pm.PackageManager\r\nimport android.media.MediaPlayer\r\nimport android.os.Build\r\nimport android.os.Bundle\r\nimport android.view.MenuItem\r\nimport android.view.View\r\nimport android.widget.Button\r\nimport android.widget.ImageView\r\nimport android.widget.PopupMenu\r\nimport androidx.activity.enableEdgeToEdge\r\nimport androidx.appcompat.app.AppCompatActivity\r\nimport androidx.appcompat.widget.Toolbar\r\nimport androidx.core.app.ActivityCompat\r\nimport androidx.core.content.ContextCompat\r\nimport androidx.lifecycle.lifecycleScope\r\nimport androidx.navigation.NavController\r\nimport androidx.navigation.fragment.NavHostFragment\r\nimport androidx.navigation.ui.AppBarConfiguration\r\nimport androidx.navigation.ui.setupActionBarWithNavController\r\nimport com.example.elrincondeltenedor.databinding.ActivityMainBinding\r\nimport com.google.firebase.auth.FirebaseAuth\r\nimport com.google.firebase.auth.ktx.auth\r\nimport com.google.firebase.ktx.Firebase\r\nimport kotlinx.coroutines.delay\r\nimport kotlinx.coroutines.launch\r\nimport java.util.Locale\r\n\r\nclass MainActivity : AppCompatActivity() {\r\n\r\n    private lateinit var binding: ActivityMainBinding\r\n    private lateinit var notificationHelper: NotificationHelper\r\n    private lateinit var auth: FirebaseAuth\r\n    private var guideStep = 0\r\n    private val selectedMenuItems = mutableSetOf<Int>() // Para rastrear las opciones del menú seleccionadas\r\n\r\n    override fun onCreate(savedInstanceState: Bundle?) {\r\n        super.onCreate(savedInstanceState)\r\n        enableEdgeToEdge()\r\n\r\n        binding = ActivityMainBinding.inflate(layoutInflater)\r\n        setContentView(binding.root)\r\n\r\n\r\n            // Sonido de fondo\r\n        val mediaPlayer = MediaPlayer.create(this, R.raw.retro11s)\r\n        mediaPlayer.start()\r\n        mediaPlayer.setOnCompletionListener {\r\n            mediaPlayer.release()\r\n        }\r\n\r\n\r\n        // Configurar la Toolbar como soporte para ActionBar\r\n        val toolbar = findViewById<Toolbar>(R.id.toolBar)\r\n        setSupportActionBar(toolbar)\r\n\r\n        // Configurar la navegación\r\n        val navHostFragment = supportFragmentManager.findFragmentById(R.id.nav_host_fragment) as NavHostFragment\r\n        val navController = navHostFragment.navController\r\n        val appBarConfiguration = AppBarConfiguration(navController.graph)\r\n        setupActionBarWithNavController(navController, appBarConfiguration)\r\n\r\n        // Configurar el idioma inicial\r\n        setInitialLanguage()\r\n\r\n        // Configurar notificaciones\r\n        notificationHelper = NotificationHelper(this)\r\n        notificationHelper.createNotificationChannel()\r\n        checkNotificationPermission()\r\n        initializeNotification()\r\n\r\n        // Inicializar Firebase Auth\r\n        auth = Firebase.auth\r\n\r\n        // Configurar menú flotante\r\n        configureFloatingMenu()\r\n\r\n        // Configurar la guía si es la primera vez que se abre la app\r\n        configureGuide()\r\n    }\r\n\r\n    private fun configureGuide() {\r\n        val sharedPreferences = getSharedPreferences(\"app_preferences\", Context.MODE_PRIVATE)\r\n\r\n        // Mostrar la guía si es la primera vez que se abre la app\r\n        if (sharedPreferences.getBoolean(\"is_first_launch\", true)) {\r\n            showGuide()\r\n            sharedPreferences.edit().putBoolean(\"is_first_launch\", false).apply() // Marcar que ya se ha lanzado la app\r\n        }\r\n    }\r\n\r\n    private fun showGuide() {\r\n        binding.overlay.visibility = View.VISIBLE\r\n        binding.guideText.visibility = View.VISIBLE\r\n        binding.startGuideButton.visibility = View.VISIBLE\r\n        binding.skipGuideButton.visibility = View.VISIBLE\r\n\r\n\r\n        binding.startGuideButton.setOnClickListener {\r\n            binding.startGuideButton.visibility = View.GONE\r\n            binding.skipGuideButton.visibility = View.VISIBLE\r\n            binding.nextButton.visibility = View.VISIBLE\r\n            updateGuideStep() // Actualiza el paso de la guía\r\n        }\r\n\r\n        binding.skipGuideButton.setOnClickListener {\r\n            endGuide() // Cierra la guía\r\n        }\r\n\r\n        binding.nextButton.setOnClickListener {\r\n            handleGuideStep() // Maneja los pasos siguientes\r\n        }\r\n    }\r\n\r\n    private fun updateGuideStep() {\r\n        when (guideStep) {\r\n            0 -> {\r\n                binding.guideText.text = \"Este es el botón de la lista de restaurantes.\"\r\n                highlightButton(findViewById(R.id.botonHome02))\r\n            }\r\n            1 -> {\r\n                binding.guideText.text = \"Este es el botón del menú principal.\"\r\n                highlightButton(findViewById(R.id.imageMenu))\r\n            }\r\n            2 -> {\r\n                binding.guideText.text = \"Ahora puedes usar el menú para explorar más opciones.\"\r\n                unlockMenuButton()  // Desbloquear el botón del menú\r\n            }\r\n            3 -> {\r\n                binding.guideText.text = \"Estas son las opciones del menú.\"\r\n            }\r\n            else -> {\r\n                endGuide() // Fin de la guía\r\n            }\r\n        }\r\n    }\r\n\r\n    private fun handleGuideStep() {\r\n        guideStep++\r\n        updateGuideStep()\r\n    }\r\n\r\n    private fun unlockMenuButton() {\r\n        // Desbloqueamos el botón para que el usuario pueda interactuar con el menú\r\n        val fabMenu = findViewById<ImageView>(R.id.imageMenu)\r\n        fabMenu.isEnabled = true\r\n    }\r\n\r\n    private fun endGuide() {\r\n        binding.overlay.visibility = View.GONE\r\n        binding.guideText.visibility = View.GONE\r\n        binding.startGuideButton.visibility = View.GONE\r\n        binding.skipGuideButton.visibility = View.GONE\r\n        binding.nextButton.visibility = View.GONE\r\n    }\r\n\r\n    private fun highlightButton(button: View) {\r\n        button.setBackgroundColor(ContextCompat.getColor(this, R.color.highlight_color))\r\n        button.postDelayed({\r\n            button.setBackgroundColor(ContextCompat.getColor(this, R.color.default_color))\r\n        }, 1500) // Resalta el botón por 1.5 segundos\r\n    }\r\n\r\n    private fun configureFloatingMenu() {\r\n        val fabMenu = findViewById<ImageView>(R.id.imageMenu)\r\n        fabMenu.setOnClickListener { view ->\r\n            showPopupMenu(view)\r\n        }\r\n    }\r\n\r\n    private fun showPopupMenu(view: View) {\r\n        val popupMenu = PopupMenu(this, view)\r\n        popupMenu.menuInflater.inflate(R.menu.menu_options, popupMenu.menu)\r\n\r\n        // Configurar listener del menú\r\n        val navController = (supportFragmentManager.findFragmentById(R.id.nav_host_fragment) as NavHostFragment).navController\r\n        popupMenu.setOnMenuItemClickListener { menuItem: MenuItem ->\r\n            val sharedPreferences = getSharedPreferences(\"app_preferences\", Context.MODE_PRIVATE)\r\n            val isFirstTime = sharedPreferences.getBoolean(menuItem.itemId.toString(), true)\r\n\r\n            // Registrar que ya se ha accedido a esta opción del menú\r\n            if (isFirstTime) {\r\n                sharedPreferences.edit().putBoolean(menuItem.itemId.toString(), false).apply()\r\n            }\r\n\r\n            // Navegar a la pantalla correspondiente\r\n            navigateToScreen(menuItem, navController)\r\n            true\r\n        }\r\n        popupMenu.show()\r\n    }\r\n\r\n    private fun navigateToScreen(menuItem: MenuItem, navController: NavController) {\r\n        when (menuItem.itemId) {\r\n            R.id.action_collection -> {\r\n                navController.navigate(R.id.collectionFragment)\r\n            }\r\n            R.id.action_profile -> {\r\n                navController.navigate(R.id.action_home01Fragment_to_profileUserFragment)\r\n            }\r\n            R.id.action_home01 -> {\r\n                navController.navigate(R.id.home01Fragment)\r\n            }\r\n            R.id.action_setting -> {\r\n                navController.navigate(R.id.settingsFragment)\r\n            }\r\n            R.id.action_logout -> {\r\n                logoutUser()\r\n            }\r\n        }\r\n    }\r\n\r\n    private fun setInitialLanguage() {\r\n        val sharedPreferences: SharedPreferences = getSharedPreferences(\"AppPreferences\", Context.MODE_PRIVATE)\r\n        val savedLanguage = sharedPreferences.getString(\"language\", \"en\") ?: \"en\"\r\n        val locale = Locale(savedLanguage)\r\n        Locale.setDefault(locale)\r\n        val config = resources.configuration\r\n        config.setLocale(locale)\r\n        resources.updateConfiguration(config, resources.displayMetrics)\r\n    }\r\n\r\n    private fun initializeNotification() {\r\n        lifecycleScope.launch {\r\n            delay(10000)\r\n            notificationHelper.showNewRestaurantNotification(\"Nuevo restaurante!\", \"Ha abierto un nuevo restaurante en tu zona.\")\r\n        }\r\n    }\r\n\r\n    private fun checkNotificationPermission() {\r\n        if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.TIRAMISU &&\r\n            ContextCompat.checkSelfPermission(this, Manifest.permission.POST_NOTIFICATIONS) != PackageManager.PERMISSION_GRANTED\r\n        ) {\r\n            ActivityCompat.requestPermissions(this, arrayOf(Manifest.permission.POST_NOTIFICATIONS), 1)\r\n        }\r\n    }\r\n\r\n    private fun logoutUser() {\r\n        Firebase.auth.signOut()\r\n        val intent = Intent(this, LoginActivity::class.java)\r\n        startActivity(intent)\r\n        finish()\r\n    }\r\n\r\n    override fun onSupportNavigateUp(): Boolean {\r\n        val navController = (supportFragmentManager.findFragmentById(R.id.nav_host_fragment) as NavHostFragment).navController\r\n        return navController.navigateUp() || super.onSupportNavigateUp()\r\n    }\r\n}\r\n
+Subsystem: com.intellij.openapi.diff.impl.patch.CharsetEP
+<+>UTF-8
+===================================================================
+diff --git a/app/src/main/java/com/example/elrincondeltenedor/MainActivity.kt b/app/src/main/java/com/example/elrincondeltenedor/MainActivity.kt
+--- a/app/src/main/java/com/example/elrincondeltenedor/MainActivity.kt	(revision 7464c643722a3b2ba91a6f3639b2b0ceb40b3bc4)
++++ b/app/src/main/java/com/example/elrincondeltenedor/MainActivity.kt	(date 1737711992796)
+@@ -37,7 +37,6 @@
+     private lateinit var notificationHelper: NotificationHelper
+     private lateinit var auth: FirebaseAuth
+     private var guideStep = 0
+-    private val selectedMenuItems = mutableSetOf<Int>() // Para rastrear las opciones del menú seleccionadas
+ 
+     override fun onCreate(savedInstanceState: Bundle?) {
+         super.onCreate(savedInstanceState)
+@@ -105,15 +104,15 @@
+             binding.startGuideButton.visibility = View.GONE
+             binding.skipGuideButton.visibility = View.VISIBLE
+             binding.nextButton.visibility = View.VISIBLE
+-            updateGuideStep() // Actualiza el paso de la guía
++            updateGuideStep()
+         }
+ 
+         binding.skipGuideButton.setOnClickListener {
+-            endGuide() // Cierra la guía
++            endGuide()
+         }
+ 
+         binding.nextButton.setOnClickListener {
+-            handleGuideStep() // Maneja los pasos siguientes
++            handleGuideStep()
+         }
+     }
+ 
+Index: app/build.gradle.kts
+IDEA additional info:
+Subsystem: com.intellij.openapi.diff.impl.patch.BaseRevisionTextPatchEP
+<+>plugins {\r\n    alias(libs.plugins.android.application)\r\n    alias(libs.plugins.kotlin.android)\r\n    id(\"com.google.gms.google-services\")\r\n}\r\n\r\nandroid {\r\n    namespace = \"com.example.elrincondeltenedor\"\r\n    compileSdk = 34\r\n\r\n    defaultConfig {\r\n        applicationId = \"com.example.elrincondeltenedor\"\r\n        minSdk = 24\r\n        targetSdk = 34\r\n        versionCode = 1\r\n        versionName = \"1.0\"\r\n\r\n        testInstrumentationRunner = \"androidx.test.runner.AndroidJUnitRunner\"\r\n    }\r\n\r\n    buildTypes {\r\n        release {\r\n            isMinifyEnabled = false\r\n            proguardFiles(\r\n                getDefaultProguardFile(\"proguard-android-optimize.txt\"),\r\n                \"proguard-rules.pro\"\r\n            )\r\n        }\r\n    }\r\n    compileOptions {\r\n        sourceCompatibility = JavaVersion.VERSION_1_8\r\n        targetCompatibility = JavaVersion.VERSION_1_8\r\n    }\r\n    kotlinOptions {\r\n        jvmTarget = \"1.8\"\r\n    }\r\n\r\n    buildFeatures{\r\n        viewBinding = true\r\n        //noinspection DataBindingWithoutKapt\r\n        dataBinding = true\r\n    }\r\n}\r\n\r\ndependencies {\r\n    // Import the BoM for the Firebase platform\r\n\r\n    // Declare the dependency for the Cloud Firestore library\r\n    // When using the BoM, you don't specify versions in Firebase library dependencies\r\n    implementation(\"com.google.firebase:firebase-firestore\")\r\n    // Import the BoM for the Firebase platform\r\n    implementation(platform(\"com.google.firebase:firebase-bom:33.6.0\"))\r\n\r\n    // Add the dependency for the Firebase Authentication library\r\n    // When using the BoM, you don't specify versions in Firebase library dependencies\r\n    implementation(\"com.google.firebase:firebase-auth\")\r\n    implementation(platform(\"com.google.firebase:firebase-bom:33.7.0\"))\r\n    implementation(\"com.google.android.gms:play-services-maps:19.0.0\")\r\n    implementation (\"com.squareup.picasso:picasso:2.8\")\r\n    implementation(\"com.squareup.retrofit2:retrofit:2.9.0\")\r\n    implementation(\"com.squareup.retrofit2:converter-gson:2.9.0\")\r\n    implementation (\"androidx.databinding:databinding-runtime:8.7.2\")\r\n    implementation (\"androidx.databinding:databinding-common:8.7.2\")\r\n    implementation (libs.core.ktx)\r\n    implementation (libs.androidx.navigation.fragment.ktx)\r\n    implementation (libs.androidx.navigation.ui.ktx)\r\n    implementation(libs.appcompat)\r\n    implementation(libs.androidx.recyclerview)\r\n    implementation(libs.androidx.cardview)\r\n    implementation(libs.androidx.core.ktx)\r\n    implementation(libs.androidx.appcompat)\r\n    implementation(libs.material)\r\n    implementation(libs.androidx.activity)\r\n    implementation(libs.androidx.constraintlayout)\r\n    releaseImplementation(libs.androidx.media3.common.ktx)\r\n    testImplementation(libs.junit)\r\n    androidTestImplementation(libs.androidx.junit)\r\n    androidTestImplementation(libs.androidx.espresso.core)\r\n}
+Subsystem: com.intellij.openapi.diff.impl.patch.CharsetEP
+<+>UTF-8
+===================================================================
+diff --git a/app/build.gradle.kts b/app/build.gradle.kts
+--- a/app/build.gradle.kts	(revision 7464c643722a3b2ba91a6f3639b2b0ceb40b3bc4)
++++ b/app/build.gradle.kts	(date 1737710385384)
+@@ -43,16 +43,8 @@
+ }
+ 
+ dependencies {
+-    // Import the BoM for the Firebase platform
+-
+-    // Declare the dependency for the Cloud Firestore library
+-    // When using the BoM, you don't specify versions in Firebase library dependencies
+     implementation("com.google.firebase:firebase-firestore")
+-    // Import the BoM for the Firebase platform
+     implementation(platform("com.google.firebase:firebase-bom:33.6.0"))
+-
+-    // Add the dependency for the Firebase Authentication library
+-    // When using the BoM, you don't specify versions in Firebase library dependencies
+     implementation("com.google.firebase:firebase-auth")
+     implementation(platform("com.google.firebase:firebase-bom:33.7.0"))
+     implementation("com.google.android.gms:play-services-maps:19.0.0")
+Index: app/src/main/res/drawable/boton_normal.xml
+IDEA additional info:
+Subsystem: com.intellij.openapi.diff.impl.patch.BaseRevisionTextPatchEP
+<+><?xml version=\"1.0\" encoding=\"utf-8\"?>\r\n<shape xmlns:android=\"http://schemas.android.com/apk/res/android\">\r\n    <solid android:color=\"#03A9F4\"/> <!-- Un color azul para el estado normal -->\r\n    <corners android:radius=\"8dp\"/>\r\n</shape>
+Subsystem: com.intellij.openapi.diff.impl.patch.CharsetEP
+<+>UTF-8
+===================================================================
+diff --git a/app/src/main/res/drawable/boton_normal.xml b/app/src/main/res/drawable/boton_normal.xml
+--- a/app/src/main/res/drawable/boton_normal.xml	(revision 7464c643722a3b2ba91a6f3639b2b0ceb40b3bc4)
++++ b/app/src/main/res/drawable/boton_normal.xml	(date 1737711457100)
+@@ -1,5 +1,5 @@
+ <?xml version="1.0" encoding="utf-8"?>
+ <shape xmlns:android="http://schemas.android.com/apk/res/android">
+-    <solid android:color="#03A9F4"/> <!-- Un color azul para el estado normal -->
++    <solid android:color="#03A9F4"/>
+     <corners android:radius="8dp"/>
+ </shape>
+\ No newline at end of file
+Index: app/src/main/res/layout/guide_overlay.xml
+IDEA additional info:
+Subsystem: com.intellij.openapi.diff.impl.patch.BaseRevisionTextPatchEP
+<+><?xml version=\"1.0\" encoding=\"utf-8\"?>\r\n<LinearLayout xmlns:android=\"http://schemas.android.com/apk/res/android\"\r\n    android:layout_width=\"match_parent\"\r\n    android:layout_height=\"match_parent\"\r\n    android:orientation=\"vertical\"\r\n    android:gravity=\"center\"\r\n    android:background=\"@android:color/black\"\r\n    android:alpha=\"0.7\"\r\n    android:clickable=\"true\"\r\n    android:focusable=\"true\">\r\n\r\n<TextView\r\nandroid:id=\"@+id/guideText\"\r\nandroid:layout_width=\"wrap_content\"\r\nandroid:layout_height=\"wrap_content\"\r\nandroid:text=\"Bienvenido a la guía\"\r\nandroid:textColor=\"#FFFFFF\"\r\nandroid:textSize=\"20sp\"\r\nandroid:gravity=\"center\"\r\nandroid:layout_marginBottom=\"20dp\"/>\r\n\r\n<Button\r\nandroid:id=\"@+id/nextButton\"\r\nandroid:layout_width=\"wrap_content\"\r\nandroid:layout_height=\"wrap_content\"\r\nandroid:text=\"Siguiente\"\r\nandroid:layout_marginTop=\"20dp\"\r\nandroid:layout_centerHorizontal=\"true\"/>\r\n    </LinearLayout>\r\n
+Subsystem: com.intellij.openapi.diff.impl.patch.CharsetEP
+<+>UTF-8
+===================================================================
+diff --git a/app/src/main/res/layout/guide_overlay.xml b/app/src/main/res/layout/guide_overlay.xml
+--- a/app/src/main/res/layout/guide_overlay.xml	(revision 7464c643722a3b2ba91a6f3639b2b0ceb40b3bc4)
++++ b/app/src/main/res/layout/guide_overlay.xml	(date 1737714368014)
+@@ -9,21 +9,22 @@
+     android:clickable="true"
+     android:focusable="true">
+ 
+-<TextView
+-android:id="@+id/guideText"
+-android:layout_width="wrap_content"
+-android:layout_height="wrap_content"
+-android:text="Bienvenido a la guía"
+-android:textColor="#FFFFFF"
+-android:textSize="20sp"
+-android:gravity="center"
+-android:layout_marginBottom="20dp"/>
++        <TextView
++        android:id="@+id/guideText"
++        android:layout_width="wrap_content"
++        android:layout_height="wrap_content"
++        android:text="Bienvenido a la guía"
++        android:textColor="#FFFFFF"
++        android:textSize="20sp"
++        android:gravity="center"
++        android:layout_marginBottom="20dp"/>
+ 
+-<Button
+-android:id="@+id/nextButton"
+-android:layout_width="wrap_content"
+-android:layout_height="wrap_content"
+-android:text="Siguiente"
+-android:layout_marginTop="20dp"
+-android:layout_centerHorizontal="true"/>
++        <Button
++        android:id="@+id/nextButton"
++        android:layout_width="wrap_content"
++        android:layout_height="wrap_content"
++        android:text="Siguiente"
++        android:layout_marginTop="20dp"
++        android:layout_centerHorizontal="true"/>
++
+     </LinearLayout>
+Index: app/src/main/res/drawable/boton_presionado.xml
+IDEA additional info:
+Subsystem: com.intellij.openapi.diff.impl.patch.BaseRevisionTextPatchEP
+<+><?xml version=\"1.0\" encoding=\"utf-8\"?>\r\n<shape xmlns:android=\"http://schemas.android.com/apk/res/android\">\r\n    <solid android:color=\"#FF5722\"/> <!-- Un color naranja cuando el botón está presionado -->\r\n    <corners android:radius=\"8dp\"/>\r\n</shape>\r\n
+Subsystem: com.intellij.openapi.diff.impl.patch.CharsetEP
+<+>UTF-8
+===================================================================
+diff --git a/app/src/main/res/drawable/boton_presionado.xml b/app/src/main/res/drawable/boton_presionado.xml
+--- a/app/src/main/res/drawable/boton_presionado.xml	(revision 7464c643722a3b2ba91a6f3639b2b0ceb40b3bc4)
++++ b/app/src/main/res/drawable/boton_presionado.xml	(date 1737711516610)
+@@ -1,5 +1,5 @@
+ <?xml version="1.0" encoding="utf-8"?>
+ <shape xmlns:android="http://schemas.android.com/apk/res/android">
+-    <solid android:color="#FF5722"/> <!-- Un color naranja cuando el botón está presionado -->
++    <solid android:color="#FF5722"/>
+     <corners android:radius="8dp"/>
+ </shape>
+Index: app/src/main/java/com/example/elrincondeltenedor/CollectionFragment.kt
+IDEA additional info:
+Subsystem: com.intellij.openapi.diff.impl.patch.BaseRevisionTextPatchEP
+<+>package com.example.elrincondeltenedor\r\n\r\nimport android.content.Context\r\nimport android.os.Bundle\r\nimport android.view.LayoutInflater\r\nimport android.view.View\r\nimport android.view.ViewGroup\r\nimport android.widget.Button\r\nimport android.widget.TextView\r\nimport androidx.fragment.app.Fragment\r\nimport androidx.navigation.fragment.findNavController\r\nimport androidx.recyclerview.widget.LinearLayoutManager\r\nimport com.example.elrincondeltenedor.databinding.CollectionScreenBinding\r\nimport com.google.firebase.firestore.FirebaseFirestore\r\nimport com.google.firebase.firestore.ListenerRegistration\r\nimport com.google.firebase.firestore.ktx.firestore\r\nimport com.google.firebase.ktx.Firebase\r\n\r\nclass CollectionFragment : Fragment() {\r\n\r\n    private var _binding: CollectionScreenBinding? = null\r\n    private val binding get() = _binding!!\r\n\r\n    private lateinit var firestore: FirebaseFirestore\r\n    private lateinit var collectionAdapter: RecyclerViewAdapter_Collection\r\n    private var listenerRegistration: ListenerRegistration? = null\r\n\r\n    private var isFirstTime = true  // Variable para verificar si es la primera vez\r\n\r\n    override fun onCreateView(\r\n        inflater: LayoutInflater, container: ViewGroup?,\r\n        savedInstanceState: Bundle?\r\n    ): View {\r\n        _binding = CollectionScreenBinding.inflate(inflater, container, false)\r\n        return binding.root\r\n    }\r\n\r\n    override fun onViewCreated(view: View, savedInstanceState: Bundle?) {\r\n        super.onViewCreated(view, savedInstanceState)\r\n\r\n        // Inicializa Firestore\r\n        firestore = Firebase.firestore\r\n\r\n        // Configura el RecyclerView\r\n        setupRecyclerView()\r\n\r\n        // Escucha cambios en la colección \"restaurantes_favoritos\"\r\n        listenToFavoritesUpdates()\r\n\r\n        // Verificar si es la primera vez que se accede a esta pantalla\r\n        val sharedPreferences = requireActivity().getSharedPreferences(\"app_preferences\", Context.MODE_PRIVATE)\r\n        isFirstTime = sharedPreferences.getBoolean(\"R.id.action_collection\", true)\r\n\r\n        if (isFirstTime) {\r\n            showGuide(view, \"Esta es la pantalla de Colección\")\r\n            // Marcar que ya no es la primera vez\r\n            sharedPreferences.edit().putBoolean(\"R.id.action_collection\", false).apply()\r\n        }\r\n    }\r\n\r\n    private fun setupRecyclerView() {\r\n        binding.recyclerViewCollection.layoutManager = LinearLayoutManager(context)\r\n        collectionAdapter = RecyclerViewAdapter_Collection(mutableListOf()) { item ->\r\n            val bundle = Bundle()\r\n            bundle.putSerializable(\"restaurant_data\", item)\r\n            findNavController().navigate(R.id.action_collectionFragment_to_detailFragment, bundle)\r\n        }\r\n        binding.recyclerViewCollection.adapter = collectionAdapter\r\n    }\r\n\r\n    private fun listenToFavoritesUpdates() {\r\n        listenerRegistration = firestore.collection(\"restaurantes_favoritos\")\r\n            .addSnapshotListener { snapshot, error ->\r\n                if (error != null) {\r\n                    error.printStackTrace()\r\n                    return@addSnapshotListener\r\n                }\r\n\r\n                if (snapshot != null && !snapshot.isEmpty) {\r\n                    val favoritesList = snapshot.documents.mapNotNull { doc ->\r\n                        try {\r\n                            val name = doc.getString(\"name\") ?: return@mapNotNull null\r\n                            val description = doc.getString(\"description\") ?: \"\"\r\n                            val imageResId = doc.getString(\"imageResId\") ?: \"\" // Leer el enlace\r\n\r\n                            ItemData(name, imageResId, description)\r\n                        } catch (e: Exception) {\r\n                            e.printStackTrace()\r\n                            null\r\n                        }\r\n                    }\r\n\r\n                    collectionAdapter.updateData(favoritesList)\r\n\r\n                    binding.textEmpty.visibility =\r\n                        if (favoritesList.isEmpty()) View.VISIBLE else View.GONE\r\n                } else {\r\n                    binding.textEmpty.visibility = View.VISIBLE\r\n                }\r\n            }\r\n    }\r\n\r\n    private fun showGuide(view: View, guideMessage: String) {\r\n        // Mostrar el overlay y el mensaje de la guía\r\n        val overlay = view.findViewById<View>(R.id.overlay)\r\n        val guideText = view.findViewById<TextView>(R.id.guideText)\r\n        val finishButton = view.findViewById<Button>(R.id.finishGuideButton)\r\n\r\n        overlay.visibility = View.VISIBLE\r\n        guideText.text = guideMessage\r\n\r\n        finishButton.setOnClickListener {\r\n            overlay.visibility = View.GONE\r\n        }\r\n    }\r\n\r\n    override fun onDestroyView() {\r\n        super.onDestroyView()\r\n        _binding = null\r\n        listenerRegistration?.remove() // Detiene la escucha de Firestore\r\n    }\r\n}\r\n
+Subsystem: com.intellij.openapi.diff.impl.patch.CharsetEP
+<+>UTF-8
+===================================================================
+diff --git a/app/src/main/java/com/example/elrincondeltenedor/CollectionFragment.kt b/app/src/main/java/com/example/elrincondeltenedor/CollectionFragment.kt
+--- a/app/src/main/java/com/example/elrincondeltenedor/CollectionFragment.kt	(revision 7464c643722a3b2ba91a6f3639b2b0ceb40b3bc4)
++++ b/app/src/main/java/com/example/elrincondeltenedor/CollectionFragment.kt	(date 1737711992814)
+@@ -81,7 +81,7 @@
+                         try {
+                             val name = doc.getString("name") ?: return@mapNotNull null
+                             val description = doc.getString("description") ?: ""
+-                            val imageResId = doc.getString("imageResId") ?: "" // Leer el enlace
++                            val imageResId = doc.getString("imageResId") ?: ""
+ 
+                             ItemData(name, imageResId, description)
+                         } catch (e: Exception) {
+@@ -101,7 +101,7 @@
+     }
+ 
+     private fun showGuide(view: View, guideMessage: String) {
+-        // Mostrar el overlay y el mensaje de la guía
++        // Mostrar el overlay y el mensaje de la guia
+         val overlay = view.findViewById<View>(R.id.overlay)
+         val guideText = view.findViewById<TextView>(R.id.guideText)
+         val finishButton = view.findViewById<Button>(R.id.finishGuideButton)
