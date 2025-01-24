@@ -11,28 +11,8 @@
         android:label="@string/mapa"
         tools:layout="@layout/home_screen_01" >
         <action
-            android:id="@+id/action_home01Fragment_to_home02Fragment"
-            app:destination="@id/home02Fragment"
-            app:enterAnim="@anim/nav_default_enter_anim"
-            app:exitAnim="@anim/nav_default_exit_anim"/>
-        <action
             android:id="@+id/action_home01Fragment_to_profileUserFragment"
             app:destination="@id/profileUserFragment"
-            app:enterAnim="@anim/nav_default_enter_anim"
-            app:exitAnim="@anim/nav_default_exit_anim"/>
-        <action
-            android:id="@+id/action_home01Fragment_to_settingsFragment"
-            app:destination="@id/settingsFragment"
-            app:enterAnim="@anim/nav_default_enter_anim"
-            app:exitAnim="@anim/nav_default_exit_anim"/>
-        <action
-            android:id="@+id/action_home01Fragment_to_collectionFragment"
-            app:destination="@id/collectionFragment"
-            app:enterAnim="@anim/nav_default_enter_anim"
-            app:exitAnim="@anim/nav_default_exit_anim"/>
-        <action
-            android:id="@+id/action_home01Fragment_to_detailFragment"
-            app:destination="@id/detailFragment"
             app:enterAnim="@anim/nav_default_enter_anim"
             app:exitAnim="@anim/nav_default_exit_anim"/>
     </fragment>
@@ -42,26 +22,6 @@
         android:name="com.example.elrincondeltenedor.Home02Fragment"
         android:label="@string/restaurantes_por_zona"
         tools:layout="@layout/screen_home_02" >
-        <action
-            android:id="@+id/action_home02Fragment_to_home01Fragment"
-            app:destination="@id/home01Fragment"
-            app:enterAnim="@anim/nav_default_enter_anim"
-            app:exitAnim="@anim/nav_default_exit_anim"/>
-        <action
-            android:id="@+id/action_home02Fragment_to_profileUserFragment"
-            app:destination="@id/profileUserFragment"
-            app:enterAnim="@anim/nav_default_enter_anim"
-            app:exitAnim="@anim/nav_default_exit_anim"/>
-        <action
-            android:id="@+id/action_home02Fragment_to_collectionFragment"
-            app:destination="@id/collectionFragment"
-            app:enterAnim="@anim/nav_default_enter_anim"
-            app:exitAnim="@anim/nav_default_exit_anim"/>
-        <action
-            android:id="@+id/action_home02Fragment_to_settingsFragment"
-            app:destination="@id/settingsFragment"
-            app:enterAnim="@anim/nav_default_enter_anim"
-            app:exitAnim="@anim/nav_default_exit_anim"/>
     </fragment>
 
     <fragment
@@ -69,11 +29,6 @@
         android:name="com.example.elrincondeltenedor.ProfileUserFragment"
         android:label="@string/perfil_de_usuario"
         tools:layout="@layout/screen_user_profile" >
-        <action
-            android:id="@+id/action_profileUserFragment_to_loginFragment"
-            app:destination="@id/loginFragment"
-            app:enterAnim="@anim/nav_default_enter_anim"
-            app:exitAnim="@anim/nav_default_exit_anim"/>
     </fragment>
 
     <fragment
@@ -86,11 +41,6 @@
         android:id="@+id/loginFragment"
         android:label="@string/login"
         tools:layout="@layout/login_screen" >
-        <action
-            android:id="@+id/action_loginFragment_to_home01Fragment"
-            app:destination="@id/home01Fragment"
-            app:enterAnim="@anim/nav_default_enter_anim"
-            app:exitAnim="@anim/nav_default_exit_anim"/>
     </fragment>
 
     <fragment
@@ -98,21 +48,6 @@
         android:name="com.example.elrincondeltenedor.ValoracionesFragment"
         android:label="@string/valoraciones"
         tools:layout="@layout/valoraciones_recyclerview" >
-        <action
-            android:id="@+id/action_valoracionesFragment_to_home01Fragment"
-            app:destination="@id/home01Fragment"
-            app:enterAnim="@anim/nav_default_enter_anim"
-            app:exitAnim="@anim/nav_default_exit_anim"/>
-        <action
-            android:id="@+id/action_valoracionesFragment_to_collectionFragment"
-            app:destination="@id/collectionFragment"
-            app:enterAnim="@anim/nav_default_enter_anim"
-            app:exitAnim="@anim/nav_default_exit_anim"/>
-        <action
-            android:id="@+id/action_valoracionesFragment_to_profileUserFragment"
-            app:destination="@id/profileUserFragment"
-            app:enterAnim="@anim/nav_default_enter_anim"
-            app:exitAnim="@anim/nav_default_exit_anim"/>
     </fragment>
 
     <fragment
@@ -120,11 +55,6 @@
         android:name="com.example.elrincondeltenedor.DetailsFragment"
         android:label="@string/detalles_del_restaurante"
         tools:layout="@layout/restaurant_detail_screen" >
-        <action
-            android:id="@+id/action_detailFragment_to_collectionFragment"
-            app:destination="@id/collectionFragment"
-            app:enterAnim="@anim/nav_default_enter_anim"
-            app:exitAnim="@anim/nav_default_exit_anim"/>
         <action
             android:id="@+id/action_detailFragment_to_valoracionesFragment"
             app:destination="@id/valoracionesFragment"
@@ -137,16 +67,6 @@
         android:name="com.example.elrincondeltenedor.CollectionFragment"
         android:label="@string/collection"
         tools:layout="@layout/collection_screen" >
-        <action
-            android:id="@+id/action_collectionFragment_to_profileUserFragment"
-            app:destination="@id/profileUserFragment"
-            app:enterAnim="@anim/nav_default_enter_anim"
-            app:exitAnim="@anim/nav_default_exit_anim"/>
-        <action
-            android:id="@+id/action_collectionFragment_to_settingsFragment"
-            app:destination="@id/settingsFragment"
-            app:enterAnim="@anim/nav_default_enter_anim"
-            app:exitAnim="@anim/nav_default_exit_anim"/>
         <action
             android:id="@+id/action_collectionFragment_to_detailFragment"
             app:destination="@id/detailFragment"
